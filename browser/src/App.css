@@ -9,7 +9,7 @@
 
 .App-header {
   background-color: navy;
-  min-height: 80vh;
+  min-height: 60vH;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,6 +22,6 @@
   }
   to {
     transform: rotateX(450deg);
-    height: 60vmin;
+    height: 80vmin;
   }
 }
