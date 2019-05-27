@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Impressum from './components/impressum.js';
-import AllGesBed from './components/agb.js';
+import {Footer} from './components/footer.js';
+
 
 
 class App extends React.Component {
@@ -12,8 +12,7 @@ class App extends React.Component {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
       </header>
-      <Impressum />
-      <AllGesBed />
+      <Footer />
     </div>
   )};
 }
