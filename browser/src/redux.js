@@ -6,7 +6,10 @@ const reducer = (state=initialState, action)=> {
   const copyOfState = {...state};
 
   switch(action.type) {
-    case '';
+    case '':
+    return copyOfState;
+
+    default:
     return copyOfState;
   }
 }
