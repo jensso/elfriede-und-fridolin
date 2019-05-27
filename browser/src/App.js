@@ -1,7 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import AlertDialog from './components/impressum.js';
+import Impressum from './components/impressum.js';
+import AllGesBed from './components/agb.js';
+
 
 class App extends React.Component {
   render() {
@@ -10,7 +12,8 @@ class App extends React.Component {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
       </header>
-      <AlertDialog />
+      <Impressum />
+      <AllGesBed />
     </div>
   )};
 }

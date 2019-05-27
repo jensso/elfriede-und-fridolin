@@ -3,10 +3,9 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-function AlertDialog() {
+function Impressum() {
   const [open, setOpen] = React.useState(false);
 
   function handleClickOpen() {
@@ -30,7 +29,6 @@ function AlertDialog() {
       >
         <DialogTitle id="alert-dialog-title">{"Impressum"}</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
           <h4>Elfriede und Fridolin®</h4>
           <ul>Adresse
             <li>Horner Landstraße 146</li>
@@ -46,7 +44,6 @@ function AlertDialog() {
             <li>BIC: INGDDEFFXXX</li>
             <li>Kontoinhaber: Antje Abeler</li>
           </ul>
-          </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary" autoFocus>
@@ -58,4 +55,4 @@ function AlertDialog() {
   );
 }
 
-export default AlertDialog;
+export default Impressum;
