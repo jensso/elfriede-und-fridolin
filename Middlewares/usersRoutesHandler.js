@@ -1,5 +1,7 @@
 const userModel = require('../models/usersModel');
 const { check, validationResult } = require('express-validator/check');
+const createError = require('http-errors');
+
 
 const getAllUsers = async (req, res, next) => {
   try {
@@ -11,7 +13,7 @@ const getAllUsers = async (req, res, next) => {
 }
 
 const createUsers = async (req, res, next) => {
-  
+
   const errors = validationResult(req);
   if (errors.isEmpty()) {
     try {

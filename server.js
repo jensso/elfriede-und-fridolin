@@ -11,6 +11,7 @@ const usersRoutes = require('./routes/usersRoutes');
 
 
 
+
 mongoose.set('useNewUrlParser', true);
 
 server.listen('4000',  () => console.log('Server is listening to the designated port'));
