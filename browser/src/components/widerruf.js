@@ -57,6 +57,7 @@ function Widerruf() {
             <li>Horner Landstraße 146</li>
             <li>22111 Hamburg, Deutschland</li>
             <li>E-Mail: elfriede-und-fridolin@gmx.de</li>
+            <hr/>
             <section>Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über den Kauf der folgenden Waren (*)/die Erbringung der folgenden Dienstleistung (*)
 _______________________________________________________
 _______________________________________________________<br/>
@@ -65,7 +66,9 @@ ________________________________________________________<br/>
 Name des/der Verbraucher(s)
 ________________________________________________________<br/>
 Anschrift des/der Verbraucher(s)
-________________________________________________________
+________________________________________________________<br/>
+________________________________________________________<br/>
+
 Unterschrift des/der Verbraucher(s) (nur bei Mitteilung auf Papier)<br/>
 _________________________<br/>
 Datum<br/>
