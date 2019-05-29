@@ -9,6 +9,8 @@ const userSchema = new mongoose.Schema({
   Ort: {type: String, required: true},
   Land: {type: String, required: true},
   Email: {type: String, required: true},
+  Password: {type: String, required: true},
+  isConfirmed: {type: Boolean, required: false, defualt: false},
   Roll: {type: String, required: false}
 }, {versionKey: false})
 
