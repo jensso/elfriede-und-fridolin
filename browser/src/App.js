@@ -1,9 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Footer } from './components/footer.js';
 import { NavBar } from './components/navbar.js';
-import { LandingPage } from './components/main.js'
+import { LandingPage } from './components/main.js';
+// import  ImgMediaCard  from './components/productCard.js';
 
 
 

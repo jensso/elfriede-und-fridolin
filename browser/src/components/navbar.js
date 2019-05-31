@@ -4,6 +4,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
+import { NavHome } from './navHome.js';
 
 
 function SimpleMenuHome() {
@@ -22,9 +23,7 @@ return (
  HOME
 </Button>
 <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-<MenuItem onClick={handleClose}>x</MenuItem>
-<MenuItem onClick={handleClose}>xx</MenuItem>
-<MenuItem onClick={handleClose}>xxx</MenuItem>
+<MenuItem onClick={handleClose}> <NavHome/> </MenuItem>
 </Menu>
 </div>
 );
@@ -68,9 +67,9 @@ return (
  NEWS
 </Button>
 <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-<MenuItem onClick={handleClose}>x</MenuItem>
-<MenuItem onClick={handleClose}>xx</MenuItem>
-<MenuItem onClick={handleClose}>xxx</MenuItem>
+<MenuItem onClick={handleClose}>Neue Produkte</MenuItem>
+<MenuItem onClick={handleClose}>Info</MenuItem>
+<MenuItem onClick={handleClose}>Angebote</MenuItem>
 </Menu>
 </div>
 );
@@ -149,19 +148,18 @@ return (
 
 const MyNavBar= styled(Container)({
   display: 'flex',
-  background: '#753',
-  border: '0.2vw solid silver',
+  background: 'white',
   margin: '0 auto',
   '& div': {
     margin: '1vw auto',
     '& button': {
-      fontSize: '0.5vw',
-      fontFamily: 'courier',
-      color: 'white',
+      fontSize: '2vw',
+      fontFamily: 'Amatic SC',
+      color: '#753',
       border: 'none',
       '&:hover': {
         background: 'white',
-        color: '#753',
+        fontWeight: 'bolder',
       }
     },
   }

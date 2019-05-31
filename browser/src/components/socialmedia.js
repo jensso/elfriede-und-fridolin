@@ -5,11 +5,12 @@ import Link from '@material-ui/core/Link';
 
 
 const MyLink =styled(Link)({
-  padding: '0.5vw',
+  padding: '1vw',
   margin: '1vw auto',
   color: '#753',
+  fontFamily: 'Open Sans Condensed',
   '& i': {
-    padding: '0.5vw',
+    padding: '1vw',
     color: 'grey',
   }
 

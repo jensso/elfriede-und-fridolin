@@ -9,19 +9,20 @@ import BottomNavigation from '@material-ui/core/BottomNavigation';
 
 
 const MyBottomNavigation= styled(BottomNavigation)({
-  background: '#753',
-  border: '0.2vw solid silver',
-  margin: '1vw auto',
+  display: 'flex',
+  background: 'white',
+  margin: '0 auto',
   '& div': {
     margin: '1vw auto',
     '& button': {
-      fontSize: '0.5vw',
-      fontFamily: 'courier',
-      color: 'white',
+      fontSize: '2vw',
+      fontFamily: 'Amatic SC',
+      color: '#753',
       border: 'none',
       '&:hover': {
         background: 'white',
-        color: '#753',
+        fontWeight: 'bolder',
+        border: 'none',
       }
     },
   }

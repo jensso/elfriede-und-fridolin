@@ -1,32 +1,41 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
+// you need to import the img from the relative path in order to use them
+import Image from '../content/images/example.jpg';
+import Logo from '../content/images/logo.jpg';
 
 const MyLandingPage= styled(Container)({
-  display: 'flex',
-  border: '0.2vw solid silver',
+    display: 'flex',
+    position: 'relative',
   '& div': {
   '&:nth-of-type(1)': {
-    background: 'red',
+    backgroundImage: `url(${Image})`,
+    backgroundSize: 'cover',
+    transform: 'scaleX(-1)',
     width: '50%',
     height: '50vw',
   },
   '&:nth-of-type(2)': {
-    background: 'green',
+    backgroundImage: `url(${Image})`,
+    backgroundSize: '100% 100%',
     width: '50%',
     height: '50vw',
   },
   '&:nth-of-type(3)': {
-    background: 'lime',
+    background: 'white',
+    backgroundImage: `url(${Logo})`,
+    backgroundSize: '100% 100%',
+    border: '0.5vw double grey',
     width: '50%',
-    height: '25vw',
+    height: '33%',
     position: 'absolute',
-    top: '25%',
+    top: '30%',
     left: '25%',
-    '&:hover': {opacity: '0.3'},
+    '&:hover': {
+      opacity: '0.5',
+    },
   },
-
-
 },
 });
 
