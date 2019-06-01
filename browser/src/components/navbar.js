@@ -5,6 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
 import { NavHome } from './navHome.js';
+import { NavGallery } from './navGallery.js';
 
 
 function SimpleMenuHome() {
@@ -90,9 +91,7 @@ return (
  GALLERY
 </Button>
 <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-<MenuItem onClick={handleClose}>x</MenuItem>
-<MenuItem onClick={handleClose}>xx</MenuItem>
-<MenuItem onClick={handleClose}>xxx</MenuItem>
+<MenuItem onClick={handleClose}><NavGallery /></MenuItem>
 </Menu>
 </div>
 );
@@ -146,7 +145,7 @@ return (
 );
 }
 
-const MyNavBar= styled(Container)({
+const MuiNavBar= styled(Container)({
   display: 'flex',
   background: 'white',
   margin: '0 auto',
@@ -169,14 +168,14 @@ const MyNavBar= styled(Container)({
 export class NavBar extends React.Component {
   render() {
     return(
-      <MyNavBar>
+      <MuiNavBar>
         <SimpleMenuHome />
         <SimpleMenuShop />
         <SimpleMenuNews />
         <SimpleMenuGallery />
         <SimpleMenuBasket />
         <SimpleMenuLogin />
-      </MyNavBar>
+      </MuiNavBar>
       )
   }
 }

@@ -1,9 +1,10 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
+import Minnie from '../content/images/Minnie_Mouse.png';
 
 
-const MyNavHome= styled(Container)({
+const MuiNavHome= styled(Container)({
   color: '#753',
   margin: '2vw auto',
   fontFamily: 'Amatic SC',
@@ -29,22 +30,22 @@ const MyNavHome= styled(Container)({
 export class NavHome extends React.Component {
   render() {
     return (
-      <MyNavHome>
+      <MuiNavHome>
       <h4>...eine wunderbare Heiterkeit hat meine ganze Seele eingenommen, gleich dem süßen Frühling...</h4>
       <section>
           <div>
-            <img src="../content/images/example.jpg"></img>
-            <img src="../content/images/example.jpg"></img>
+            <img src={Minnie} alt="not available"></img>
+            <img src={Minnie} alt="not available"></img>
           </div>
           <div>
             <h4>MOIN!</h4>
             <p>eine wunderbare Heiterkeit hat meine ganze Seele eingenommen<br/>, gleich dem süßen Frühling</p>
             <br/>
             <p>eine wunderbare Heiterkeit hat meine ganze Seele eingenommen<br/>, gleich dem süßen Frühling</p>
-            <a href="#">hier erfährst Du mehr über mich</a>
+            <a href="https://www.google.com">hier erfährst Du mehr über mich</a>
           </div>
         </section>
-      </MyNavHome>
+      </MuiNavHome>
     )
   }
 }

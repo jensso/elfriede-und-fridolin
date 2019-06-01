@@ -8,7 +8,7 @@ import { styled } from '@material-ui/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 
 
-const MyBottomNavigation= styled(BottomNavigation)({
+const MuiBottomNavigation= styled(BottomNavigation)({
   display: 'flex',
   background: 'white',
   margin: '0 auto',
@@ -35,12 +35,12 @@ export class Footer extends React.Component {
     return(
       <>
       <SocialMedia />
-      <MyBottomNavigation>
+      <MuiBottomNavigation>
           <Impressum />
           <AllGesBed />
           <Datenschutz />
           <Widerruf />
-      </MyBottomNavigation>
+      </MuiBottomNavigation>
       </>
     )
   }

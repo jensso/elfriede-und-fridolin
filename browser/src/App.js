@@ -3,7 +3,7 @@ import './App.css';
 import { Footer } from './components/footer.js';
 import { NavBar } from './components/navbar.js';
 import { LandingPage } from './components/main.js';
-// import  ImgMediaCard  from './components/productCard.js';
+import  ImgMediaCard  from './components/productCard.js';
 
 
 
