@@ -33,15 +33,12 @@ export class Footer extends React.Component {
   render() {
 
     return(
-      <>
-      <SocialMedia />
       <MuiBottomNavigation>
           <Impressum />
           <AllGesBed />
           <Datenschutz />
           <Widerruf />
       </MuiBottomNavigation>
-      </>
     )
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
-import ImgMediaCard from './productCard.js';
+import ProductCard from './productCard.js';
 
 const MuiNavGallery= styled(Container)({
   display: 'flex',
@@ -15,9 +15,7 @@ export class NavGallery extends React.Component {
   render() {
     return (
       <MuiNavGallery>
-        <ImgMediaCard />
-        <ImgMediaCard />
-        <ImgMediaCard />
+        <ProductCard />
       </MuiNavGallery>
     )
   }

@@ -11,11 +11,12 @@ import Mickey from '../content/images/Mickey_Mouse.jpg';
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: 345,
+    maxWidth: '20vw',
+    // maxHeight: '25vw',
   },
 });
 
-function ImgMediaCard() {
+function ProductCard() {
   const classes = useStyles();
 
   return (
@@ -30,7 +31,7 @@ function ImgMediaCard() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Mickey
+            Mickey Mouse
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
               Mickey Mouse is a funny animal cartoon character and the mascot of The Walt Disney Company.
@@ -50,4 +51,4 @@ function ImgMediaCard() {
   );
 }
 
-export default ImgMediaCard;
+export default ProductCard;
