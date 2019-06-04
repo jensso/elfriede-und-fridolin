@@ -10,7 +10,6 @@ const userSchema = new mongoose.Schema({
   Land: {type: String, required: true},
   Email: {type: String, required: true},
   Password: {type: String, required: true},
-  isConfirmed: {type: Boolean, required: false, defualt: false},
   Roll: {type: String, required: false}
 }, {versionKey: false})
 

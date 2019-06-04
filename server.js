@@ -5,7 +5,6 @@ const dotenv = require('dotenv').config();
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const errorHandler = require('./Middlewares/errorHandler');
-// const PORT = process.env.PORT || 8080;
 const connectDb = require('./utilities/dbConnect');
 const usersRoutes = require('./routes/usersRoutes');
 
