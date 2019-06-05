@@ -28,4 +28,13 @@ const deleteProducts = async (req, res, next) => {
   }
 }
 
-module.exports = { addProducts, getAllProducts, deleteProducts };
+const updateProducts = async (req, res, next) => {
+  try {
+    productToUpdate = await productsModel.findOneAndUpdate({produktnummer: req.params.produktnummer}, req.body);
+    productToUpdate ? res.status(200).json({'message': `The product with the ID: ${req.params.produktnummer} was updated successfully.`}) : res.status(404).json({'message': `The product with the ID: ${req.params.pruduktnummer} does not exist!`})
+  } catch(error) {
+    next(error);
+  }
+}
+
+module.exports = { addProducts, getAllProducts, deleteProducts, updateProducts };
