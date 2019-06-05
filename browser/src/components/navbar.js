@@ -7,7 +7,7 @@ import { styled } from '@material-ui/styles';
 import { NavHome } from './navHome.js';
 import { NavGallery } from './navGallery.js';
 import { UserLogin } from './userLogin.js';
-
+import { NavLink } from 'react-router-dom';
 
 function SimpleMenuHome() {
 const [anchorEl, setAnchorEl] = React.useState(null);
@@ -46,8 +46,12 @@ return (
  SHOP
 </Button>
 <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-<MenuItem onClick={handleClose}>Schnittmuster</MenuItem>
-<MenuItem onClick={handleClose}>Kleidung</MenuItem>
+<MenuItem onClick={handleClose}>
+  <NavLink to="/Schnittmuster">Schnittmuster</NavLink>
+</MenuItem>
+<MenuItem onClick={handleClose}>
+Kleidung
+</MenuItem>
 </Menu>
 </div>
 );

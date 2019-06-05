@@ -12,7 +12,7 @@ import Mickey from '../content/images/Mickey_Mouse.jpg';
 const useStyles = makeStyles({
   card: {
     maxWidth: '20vw',
-    // maxHeight: '25vw',
+    maxHeight: '45vw',
   },
 });
 

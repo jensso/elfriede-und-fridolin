@@ -3,7 +3,7 @@ import Impressum from './impressum.js';
 import AllGesBed from './agb.js';
 import Datenschutz from './datenschutz.js';
 import Widerruf from './widerruf.js';
-import SocialMedia from './socialmedia.js';
+// import SocialMedia from './socialmedia.js';
 import { styled } from '@material-ui/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 

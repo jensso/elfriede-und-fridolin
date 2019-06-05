@@ -5,37 +5,38 @@ import { styled } from '@material-ui/styles';
 import Mickey from '../content/images/Mickey_Mouse.jpg';
 import Minnie from '../content/images/Minnie_Mouse.png';
 import Logo from '../content/images/logo.jpg';
+import home_1 from '../content/images/home_1.jpg';
+import home_2 from '../content/images/home_2.jpg';
 
 const MuiLandingPage= styled(Container)({
     display: 'flex',
     position: 'relative',
   '& div': {
   '&:nth-of-type(1)': {
-    backgroundImage: `url(${Mickey})`,
+    backgroundImage: `url(${home_1})`,
     backgroundSize: '100% 100%',
-    transform: 'scaleX(-1)',
     width: '50%',
     height: '50vw',
   },
   '&:nth-of-type(2)': {
-    backgroundImage: `url(${Minnie})`,
+    backgroundImage: `url(${home_2})`,
     backgroundSize: '100% 100%',
     width: '50%',
     height: '50vw',
   },
   '&:nth-of-type(3)': {
-    background: 'lightblue',
+    background: '#9c938e',
     padding: '1vw 2vw',
     backgroundImage: `url(${Logo})`,
     backgroundSize: '100% 100%',
-    border: '0.5vw double grey',
+    border: '0.5vw double white',
     width: '50%',
     height: '33%',
     position: 'absolute',
     top: '30%',
     left: '25%',
     '&:hover': {
-      opacity: '0.2',
+      opacity: '0.8',
     },
   },
 },

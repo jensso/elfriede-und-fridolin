@@ -75,7 +75,7 @@ export class NavHome extends React.Component {
               <br/>
               Neben dem designen von Schnittmustern erschaffe ich auch gern praktische Kleinigkeiten für dich und mich und andere an meiner Nähmaschine.<br/>
               Diese Einzelstücke findest du auch hier im Shop.
-              Aber Achtung: es handelt sich (meist) um absolute Einzelstücke, die es so eben nur ein einziges Mal geben wird.
+              Aber Achtung: es handelt sich (meist) um absolute Einzelstücke, die es so eben nur ein einziges Mal geben wird. 
               <i>Es gilt also: Wenn weg, dann weg.</i>
               <br/>
               Wenn du jedoch bestimmte Wünsche zu einem Artikel hast, schreib mich gern an und wir finden das Passende für dich!
