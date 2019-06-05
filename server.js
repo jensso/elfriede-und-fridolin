@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const errorHandler = require('./Middlewares/errorHandler');
 const connectDb = require('./utilities/dbConnect');
 const usersRoutes = require('./routes/usersRoutes');
+const productsRoutes = require('./routes/productsRoutes');
 
 
 
@@ -22,5 +23,6 @@ server.use(express.urlencoded({extended: false}));
 server.use(cookieParser()); // creates req.cookies to read from and the res.cookie to write to a cookie
 
 server.use('/users', usersRoutes);
+server.use('/products', productsRoutes);
 
 server.use(errorHandler);
