@@ -8,6 +8,8 @@ import { NavHome } from './navHome.js';
 import { NavGallery } from './navGallery.js';
 import { UserLogin } from './userLogin.js';
 import { NavLink } from 'react-router-dom';
+import { NewsSection } from './news.js';
+
 
 function SimpleMenuHome() {
 const [anchorEl, setAnchorEl] = React.useState(null);
@@ -73,9 +75,9 @@ return (
  NEWS
 </Button>
 <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-<MenuItem onClick={handleClose}>Neue Produkte</MenuItem>
-<MenuItem onClick={handleClose}>Info</MenuItem>
-<MenuItem onClick={handleClose}>Angebote</MenuItem>
+<MenuItem onClick={handleClose}>
+<NewsSection />
+</MenuItem>
 </Menu>
 </div>
 );

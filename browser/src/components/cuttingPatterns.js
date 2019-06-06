@@ -1,9 +1,31 @@
 import React from 'react';
 import { styled } from '@material-ui/styles';
-import Box from '@material-ui/core/Box';
+import {Box,Button} from '@material-ui/core';
 import Minnie from '../content/images/Minnie_Mouse.png';
 import { NavBar } from './navbar.js';
 
+const patterns = [
+  {name: 'skirts',
+  price: 7.95,
+  description: 'a fancy skirt',
+  category: 'Damen'
+  },
+  {name: 'another skirt',
+  price: 17.95,
+  description: 'a more fancy skirt',
+  category: 'Damen'
+  },
+  {name: 'kiddy hoody',
+  price: 6.99,
+  description: 'a hoody for the kid',
+  category: 'Kinder'
+  },
+  {name: 'sunglass box',
+  price: 4.50,
+  description: 'a box for your sunglasses',
+  category: 'Acessoires'
+  },
+];
 const MuiBox = styled(Box)({
   '& h2': {
     fontFamily: 'Amatic SC',
@@ -48,41 +70,46 @@ const MuiBox = styled(Box)({
 },
 })
 export class CuttingPatterns extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: patterns,
+    }
+    console.log(this.state);
+  }
+  handleFilter(ev) {
+    const copyPatterns = [...patterns];
+    const shownPatterns = copyPatterns.filter((obj)=> {
+      return obj.category.toLowerCase() === ev.target.innerText.toLowerCase();
+
+    })
+    this.setState({
+      products: shownPatterns
+    })
+
+    }
+
   render() {
     return (
       <MuiBox>
         <NavBar />
         <h2>Schnittmuster</h2>
-        <a href="/Damen">Damen</a>
+        <Button onClick={this.handleFilter.bind(this)}>Damen</Button>
         |
-        <a href="/Kinder">Kinder</a>
+        <Button onClick={this.handleFilter.bind(this)}>Kinder</Button>
         |
-        <a href="/Acessoires">Acessoires</a>
+        <Button onClick={this.handleFilter.bind(this)}>Acessoires</Button>
         <main>
-          <section>
-            <img src={Minnie}></img>
-            <div>
-                <h5>Oversized Sweater Maxima</h5>
-                <p>some text to provide.some text to provide.some text to provide.some text to provide.some text to provide.</p>
-                <span>€ 6,90</span><i className="material-icons">&#xe8cc;</i>
-              </div>
-          </section>
-          <section>
-            <img src={Minnie}></img>
-            <div>
-                <h5>Oversized Sweater Maxima</h5>
-                <p>some text to provide.some text to provide.some text to provide.some text to provide.some text to provide.</p>
-                <span>€ 6,90</span><i className="material-icons">&#xe8cc;</i>
-              </div>
-          </section>
-          <section>
-            <img src={Minnie}></img>
-            <div>
-                <h5>Oversized Sweater Maxima</h5>
-                <p>some text to provide.some text to provide.some text to provide.some text to provide.some text to provide.</p>
-                <span>€ 6,90</span><i className="material-icons">&#xe8cc;</i>
-              </div>
-          </section>
+          {this.state.products.map((obj, index)=>
+            <section key={index}>
+             <img src={Minnie} alt="#"></img>
+             <div>
+                 <h5>{obj.name}</h5>
+                 <p>{obj.description}</p>
+                 <span>{obj.price}</span><i className="material-icons">&#xe8cc;</i>
+               </div>
+           </section>
+)}
         </main>
       </MuiBox>
     )

@@ -8,6 +8,7 @@ import { ContactFooter } from './components/contactFooter.js';
 import { CuttingPatterns } from './components/cuttingPatterns.js';
 import { BrowserRouter, NavLink, Route, Switch } from 'react-router-dom';
 
+
 class Start extends React.Component {
   render() {
     return (

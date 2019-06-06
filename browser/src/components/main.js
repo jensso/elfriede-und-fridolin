@@ -2,8 +2,6 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
 // you need to import the img from the relative path in order to use them
-import Mickey from '../content/images/Mickey_Mouse.jpg';
-import Minnie from '../content/images/Minnie_Mouse.png';
 import Logo from '../content/images/logo.jpg';
 import home_1 from '../content/images/home_1.jpg';
 import home_2 from '../content/images/home_2.jpg';
