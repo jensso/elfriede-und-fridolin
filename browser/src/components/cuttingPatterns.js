@@ -30,6 +30,9 @@ const MuiBox = styled(Box)({
   '& h2': {
     fontFamily: 'Amatic SC',
     margin: '4vw',
+    '&:hover': {
+      cursor: 'pointer',
+    },
   },
   '& a': {
     padding: '2vw',
@@ -39,11 +42,11 @@ const MuiBox = styled(Box)({
   },
   '& main': {
     display: 'flex',
-    margin: '2vw 0.5vw',
+    margin: '2vw auto',
   '& section': {
     display: 'flex',
     padding: '2vw',
-    margin: '2vw 0.4vw',
+    margin: '2vw auto',
     border: '0.2vw dotted #bda96c',
     width: '30%',
     '&:nth-of-type(2)': {
@@ -81,19 +84,22 @@ export class CuttingPatterns extends React.Component {
     const copyPatterns = [...patterns];
     const shownPatterns = copyPatterns.filter((obj)=> {
       return obj.category.toLowerCase() === ev.target.innerText.toLowerCase();
-
     })
     this.setState({
       products: shownPatterns
     })
-
+  }
+  showAll(ev) {
+     const shownPatterns = [...patterns];
+     this.setState({products: shownPatterns})
     }
+
 
   render() {
     return (
       <MuiBox>
         <NavBar />
-        <h2>Schnittmuster</h2>
+        <h2 onClick={this.showAll.bind(this)}>Schnittmuster</h2>
         <Button onClick={this.handleFilter.bind(this)}>Damen</Button>
         |
         <Button onClick={this.handleFilter.bind(this)}>Kinder</Button>
