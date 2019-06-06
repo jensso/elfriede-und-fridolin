@@ -1,10 +1,10 @@
 const express = require('express');
 const clothesRoutes = express.Router();
-const { addClothes, getClothesByID, deleteClothesByID, updateClothesByID } = require('../middlewares/clothesRoutesHandler');
+const { addClothes, getAllClothes, deleteClothesByID, updateClothesByID } = require('../middlewares/clothesRoutesHandler');
 
 
 clothesRoutes.post('/addClothes', addClothes);
-clothesRoutes.get('/:produktnummer', getClothesByID);
+clothesRoutes.get('/getAllClothes', getAllClothes);
 clothesRoutes.delete('/:produktnummer', deleteClothesByID);
 clothesRoutes.put('/:produktnummer', updateClothesByID);
 
