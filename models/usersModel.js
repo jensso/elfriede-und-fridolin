@@ -5,13 +5,14 @@ const userSchema = new mongoose.Schema({
   Vorname: {type: String, required: true},
   Nachname: {type: String, required: true},
   Strasse: {type: String, required: true},
-  Postleitzahl: {type: String, required: true},
+  Postleitzahl: {type: Number, required: true},
   Ort: {type: String, required: true},
   Land: {type: String, required: true},
-  Email: {type: Email, required: true},
+  Email: {type: String, required: true},
+  Password: {type: String, required: true},
   Roll: {type: String, required: false}
 }, {versionKey: false})
 
-const userModel = mongoose.model('Users', userSchema);
+const userModel = mongoose.model('users', userSchema);
 
 module.exports = userModel;
