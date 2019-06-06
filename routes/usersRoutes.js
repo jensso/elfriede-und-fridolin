@@ -1,7 +1,7 @@
 const express = require('express');
 const usersRoutes = express.Router();
-const userCreateValidator = require('../Middlewares/validateUserCreate');
-const { getAllUsers, createUsers } = require('../Middlewares/usersRoutesHandler');
+const userCreateValidator = require('../middlewares/validateUserCreate');
+const { getAllUsers, createUsers } = require('../middlewares/usersRoutesHandler');
 
 
 usersRoutes.post('/signUp', userCreateValidator, createUsers)
