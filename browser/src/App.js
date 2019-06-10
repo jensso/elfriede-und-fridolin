@@ -3,6 +3,7 @@ import './App.css';
 import { Footer } from './components/footer.js';
 import { NavBar } from './components/navbar.js';
 import { LandingPage } from './components/main.js';
+import { HomeGallery } from './components/homeGallery.js';
 import { NavHome } from './components/navHome.js';
 import { ContactFooter } from './components/contactFooter.js';
 import { CuttingPatterns } from './components/cuttingPatterns.js';

@@ -155,13 +155,29 @@ function SimpleMenuLogin() {
   );
 }
 
-const MuiNavBar= styled(Container)({
-  display: 'flex',
-  background: 'white',
-  margin: '0 auto',
-  '& div': {
-    margin: '1vw auto',
-    '& button': {
+// const MuiNavBar= styled(Container)({
+//   display: 'flex',
+//   background: 'white',
+//   margin: '0 auto',
+//   // '& div': {
+//   //   margin: '1vw auto',
+//   //   '& button': {
+//   //     fontSize: '1rem',
+//   //     fontFamily: 'Open Sans Condensed',
+//   //     color: '#9c938e',
+//   //     letterSpacing: '0.1rem',
+//   //     border: 'none',
+//   //     '&:hover': {
+//   //       background: 'white',
+//   //       fontWeight: 'bolder',
+//   //     }
+//   //   },
+//   // },
+// });
+
+const MuiNavButton= styled(Container)({
+
+      margin: '1vw auto',
       fontSize: '1rem',
       fontFamily: 'Open Sans Condensed',
       color: '#9c938e',
@@ -170,23 +186,21 @@ const MuiNavBar= styled(Container)({
       '&:hover': {
         background: 'white',
         fontWeight: 'bolder',
-      },
-    },
-  },
+      }
 });
 
 
-export class NavBar extends React.Component {
+export class NavBarButtons extends React.Component {
   render() {
     return(
-      <MuiNavBar>
-        <SimpleMenuHome />
-        <SimpleMenuShop />
-        <SimpleMenuNews />
-        <SimpleMenuGallery />
-        <SimpleMenuBasket />
-        <SimpleMenuLogin />
-      </MuiNavBar>
+        <MuiNavButton>
+          <SimpleMenuHome />
+          <SimpleMenuShop />
+          <SimpleMenuNews />
+          <SimpleMenuGallery />
+          <SimpleMenuBasket />
+          <SimpleMenuLogin />
+        </MuiNavButton>
       )
   }
 }
