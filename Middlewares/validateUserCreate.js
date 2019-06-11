@@ -12,7 +12,13 @@ const userCreateValidator = [
     .exists().withMessage('Please provide an email for this field')
     .trim()
     .isEmail().withMessage('The email must be in this format: example@example.com')
-    .escape()
+    .escape(),
+
+    check('Password')
+    .exists().withMessage('The password field is mandatory')
+    .trim()
+    .isLength({min:8, max: 35}).withMessage('Password between 8 and 35')
+    .escape(),
 ];
 
 module.exports = userCreateValidator;
