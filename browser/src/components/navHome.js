@@ -24,7 +24,7 @@ const MuiNavHome= styled(Container)({
             textAlign: 'center',
             fontFamily: 'Open Sans Condensed',
             fontWeight: 'lighter',
-            fontSize: '1.2em',
+            fontSize: '150%',
             textTransform: 'Uppercase',
             // maxWidth: '30vw'
           },
@@ -52,16 +52,17 @@ const MuiNavHome= styled(Container)({
             position: 'relative',
 
           '& h3': {
+            marginTop: '0',
             marginLeft: '20vw',
             position: 'absolute',
             fontFamily: 'Amatic SC',
-            fontSize: '150%',
+            fontSize: '180%',
             textAlign: 'center'
           },
 
           '& img' : {
+            marginTop: '0',
             marginLeft: '12vw',
-            marginTop: '4vw',
             position: 'relative',
             zIndex: '-1',
             opacity: '0.5',

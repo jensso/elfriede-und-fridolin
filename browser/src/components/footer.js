@@ -17,7 +17,8 @@ const MuiBottomNavigation= styled(BottomNavigation)({
     '& button': {
       fontSize: '2vw',
       fontFamily: 'Amatic SC',
-      color: '#753',
+      fontWeight: 'lighter',
+      color: '#AD8262',
       border: 'none',
       '&:hover': {
         background: 'white',
