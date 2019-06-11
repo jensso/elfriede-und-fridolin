@@ -21,7 +21,7 @@ connectDb();
 server.use(morgan('dev'));
 server.use(express.json());
 server.use(express.urlencoded({extended: false}));
-server.use(cookieParser()); // creates req.cookies to read from and the res.cookie to write to a cookie
+server.use(cookieParser());
 
 server.use('/users', usersRoutes);
 server.use('/patterns', patternsRoutes);
