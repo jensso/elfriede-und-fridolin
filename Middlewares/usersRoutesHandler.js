@@ -31,7 +31,7 @@ const createUsers = async (req, res, next) => {
   }
 }
 
-const getUserByEmail = async (req, res, next) => {
+const userLogin = async (req, res, next) => {
   try {
     const findUser = await userModel.findOne({Email: req.body.Email});
     if(!findUser){
@@ -51,4 +51,4 @@ const getUserByEmail = async (req, res, next) => {
   }
 }
 
-module.exports = { getAllUsers, createUsers, getUserByEmail };
+module.exports = { getAllUsers, createUsers, userLogin };
