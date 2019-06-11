@@ -55,7 +55,7 @@ const MuiLandingPage= styled(Container)({
         color: '#AD8262',
         fontSize: '4rem',
         '@media (max-width: 600px)': {
-          fontSize: '2rem'
+          fontSize: '1.5rem'
         },
         fontWeight: 'lighter',
         margin: '1vw 1vw',
@@ -68,7 +68,8 @@ const MuiLandingPage= styled(Container)({
         color: 'black',
         fontSize: '1rem',
         '@media (max-width: 600px)': {
-          fontSize: '0.6rem'
+          fontSize: '0.5rem',
+          letterSpacing: 2.5
         },
         fontWeight: 'lighter',
         letterSpacing: 4.5,
