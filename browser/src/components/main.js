@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
 // you need to import the img from the relative path in order to use them
-import Logo from '../content/images/logo.jpg';
+// import Logo from '../content/images/logo.jpg';
 import home_1 from '../content/images/home_1.jpg';
 import home_2 from '../content/images/home_2.jpg';
 
@@ -20,6 +20,9 @@ const MuiLandingPage= styled(Container)({
         backgroundSize: 'cover',
         width: '50%',
         height: '50vw',
+        '@media (max-width: 600px)': {
+            height: '80vw',
+          },
       },
       '&:nth-of-type(2)': {
         margin: '0.4vw',
@@ -27,6 +30,10 @@ const MuiLandingPage= styled(Container)({
         backgroundSize: 'cover',
         width: '50%',
         height: '50vw',
+
+        '@media (max-width: 600px)': {
+            height: '80vw',
+          },
         },
 
       '&:nth-of-type(3)': {
@@ -37,6 +44,10 @@ const MuiLandingPage= styled(Container)({
         left: '25%',
         width: '50%',
         height: 'auto',
+        '@media (max-width: 600px)': {
+          width: '90%',
+          left: '7%'
+        },
 
         '& div': {
           backgroundColor: 'red',
@@ -55,7 +66,7 @@ const MuiLandingPage= styled(Container)({
         color: '#AD8262',
         fontSize: '4rem',
         '@media (max-width: 600px)': {
-          fontSize: '1.5rem'
+          fontSize: '2.5rem'
         },
         fontWeight: 'lighter',
         margin: '1vw 1vw',
@@ -65,14 +76,14 @@ const MuiLandingPage= styled(Container)({
       },
       '& p': {
         fontFamily: 'Open Sans Condensed',
-        color: 'black',
+        color: '#9c938e',
         fontSize: '1rem',
         '@media (max-width: 600px)': {
-          fontSize: '0.5rem',
-          letterSpacing: 2.5
+          fontSize: '1rem',
+          letterSpacing: 1.5
         },
         fontWeight: 'lighter',
-        letterSpacing: 4.5,
+        letterSpacing: 3.5,
         margin: '1vw',
         position: 'relative',
         zIndex: '100',

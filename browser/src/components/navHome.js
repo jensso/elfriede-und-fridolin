@@ -13,12 +13,21 @@ const MuiNavHome= styled(Container)({
   '& section': {
     marginTop: '2vw',
     display: 'flex',
+    '@media (max-width: 600px)': {
+      flexWrap: 'wrap',
+    },
 
     '& div': {
       margin: '2vw',
 
       '&:nth-of-type(1)': {
-        width: '40%',
+
+        // flexGrow: '2',
+        order: '1',
+        '@media (min-width: 600px)': {
+          flexGrow: '1',
+        },
+        // width: '40%',
           '& h2': {
             paddingLeft: '2vw',
             textAlign: 'center',
@@ -44,7 +53,12 @@ const MuiNavHome= styled(Container)({
       },
 
       '&:nth-of-type(2)': {
-        width: '60%',
+        // width: '60%',
+        // maxWidth: '50%',
+        // flexGrow: '3',
+        '@media (min-width: 600px)': {
+          order: '1',
+        },
 
           '& div' : {
             display: 'flex',
@@ -53,7 +67,11 @@ const MuiNavHome= styled(Container)({
 
           '& h3': {
             marginTop: '0',
-            marginLeft: '20vw',
+            marginLeft: '5vw',
+            '@media (max-width: 600px)': {
+              marginLeft: '38vw',
+              fontSize: '180%',
+            },
             position: 'absolute',
             fontFamily: 'Amatic SC',
             fontSize: '180%',
@@ -61,9 +79,11 @@ const MuiNavHome= styled(Container)({
           },
 
           '& img' : {
-            marginTop: '0',
-            marginLeft: '12vw',
+            width: '80% !important',
             position: 'relative',
+            // marginTop: '-3%',
+            // marginLeft: '30%',
+            marginRight: '20%',
             zIndex: '-1',
             opacity: '0.5',
             // transform: 'translate(0 20vw)'
