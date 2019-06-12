@@ -72,20 +72,16 @@ const MuiContactFooter = styled(Container)({
           },
         },
       },
-
-
-      '&:nth-of-type(2)': {
-        flexGrow: '2',
-        '& section': {
-          background: '#AD8262',
-
-          '& img': {
-            width: '25%',
-            height: 'auto',
-            margin: '1vw 1vw',
-            padding: '1vw',
-          },
-        },
+    },
+    '&:nth-of-type(2)': {
+      width: '60%',
+      '& section': {
+        background: '#bda96c',
+      },
+      '& img': {
+        width: '25%',
+        margin: '1vw',
+        padding: '1vw',
       },
 
     },
@@ -113,9 +109,11 @@ export class ContactFooter extends React.Component {
         <div>
           <h2>Instagram</h2>
           <section>
+
             <img src={Mickey} alt="pic"></img> // fuck mickey
             <img src={Mickey} alt="pic"></img>
             <img src={Mickey} alt="pic"></img>
+
           </section>
         </div>
       </MuiContactFooter>

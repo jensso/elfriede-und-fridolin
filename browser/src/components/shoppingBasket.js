@@ -1,20 +1,23 @@
 import React from 'react';
+import Container from '@material-ui/core/Container';
 
-class ShoppingBasket extends React.Component {
+const basket = [];
+
+export class ShoppingBasket extends React.Component {
   render() {
     return(
-      <>
+      <Container>
       <div>
         <i>your Products:</i><br/>
         <ul>
-        {this.props.basket.map((obj, index)=>{
+        {basket.map((obj, index)=>{
           return <li className="list-group-item" key={index}>{obj.amount}x {obj.type} for {obj.price.toFixed(2)} <br />
           <i>={obj.sum.toFixed(2)}</i>
           </li>
         })}
         </ul>
       </div>
-      </>
+      </Container>
     )
   }
 }

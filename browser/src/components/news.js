@@ -8,6 +8,9 @@ const MuiBox = styled(Box)({
   '& h2': {
     fontFamily: 'Amatic SC',
     margin: '4vw',
+    '&:hover': {
+      cursor: 'pointer',
+    },
   },
   '& a': {
     padding: '2vw',
@@ -17,11 +20,11 @@ const MuiBox = styled(Box)({
   },
   '& main': {
     display: 'flex',
-    margin: '2vw 0.5vw',
+    margin: '2vw auto',
   '& section': {
     display: 'flex',
     padding: '2vw',
-    margin: '2vw 0.4vw',
+    margin: '2vw auto',
     border: '0.2vw dotted #bda96c',
     width: '30%',
     '&:nth-of-type(2)': {

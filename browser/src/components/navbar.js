@@ -4,10 +4,11 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
-import { NavHome } from './navHome.js';
-import { NavGallery } from './navGallery.js';
-import { UserLogin } from './userLogin.js';
 import { NavLink } from 'react-router-dom';
+import { NavGallery } from './navGallery.js';
+import { NavHome } from './navHome.js';
+
+import { UserLogin } from './userLogin.js';
 import { NewsSection } from './news.js';
 
 function SimpleMenuHome() {
@@ -29,9 +30,8 @@ function SimpleMenuHome() {
         <MenuItem onClick={handleClose}> <NavHome/> </MenuItem>
       </Menu>
     </div>
-    );
+    )
   }
-
 function SimpleMenuShop() {
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -58,7 +58,6 @@ function SimpleMenuShop() {
       </div>
     );
 }
-
 function SimpleMenuNews() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -83,7 +82,6 @@ function SimpleMenuNews() {
     </div>
   );
 }
-
 function SimpleMenuGallery() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -106,7 +104,6 @@ function SimpleMenuGallery() {
     </div>
   );
 }
-
 function SimpleMenuBasket() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -118,20 +115,20 @@ function SimpleMenuBasket() {
     setAnchorEl(null);
   }
 
-  return (
-    <div>
-      <Button aria-owns={anchorEl ? 'simple-menu' : undefined} aria-haspopup="true" onClick={handleClick}>
-       WARENKORB
-      </Button>
-      <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-        <MenuItem onClick={handleClose}>x</MenuItem>
-        <MenuItem onClick={handleClose}>xx</MenuItem>
-        <MenuItem onClick={handleClose}>xxx</MenuItem>
-      </Menu>
-    </div>
-  );
-}
+return (
+<div>
+<Button aria-owns={anchorEl ? 'simple-menu' : undefined} aria-haspopup="true" onClick={handleClick}>
+ WARENKORB
+</Button>
+<Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
+<MenuItem onClick={handleClose}>
+<NavLink to="/Warenkorb">Warenkorb</NavLink>
 
+</MenuItem>
+</Menu>
+</div>
+);
+}
 function SimpleMenuLogin() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
