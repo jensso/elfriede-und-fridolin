@@ -6,8 +6,6 @@ import Minnie from '../content/images/Minnie_Mouse.png';
 import aboutMe_1 from '../content/images/aboutMe_1.jpg';
 import aboutMe_2 from '../content/images/aboutMe_2.jpg';
 import watercolour_green from '../content/images/watercolour_green.png';
-import about1 from '../content/images/about_1.jpg';
-import about2 from '../content/images/about_2.jpg';
 
 
 const MuiNavHome= styled(Container)({
@@ -105,31 +103,6 @@ const MuiNavHome= styled(Container)({
             },
           },
         },
-      width: '50%',
-      '& img': {
-        '&:nth-of-type(1)': {
-          width: '45%',
-          height: '90%',
-          padding: '4vw 1vw',
-        },
-        '&:nth-of-type(2)': {
-          width: '45%',
-          height: '70%',
-          paddingTop: '8vw',
-        },
-      },
-      margin: '2vw',
-      '& h3': {
-        textAlign: 'center',
-      },
-      '& p': {
-        fontFamily: 'Open Sans Condensed Light',
-        textAlign: 'left',
-      },
-      '& a': {
-        textDecoration: 'none',
-        color: 'navy',
-      },
     },
   },
 });

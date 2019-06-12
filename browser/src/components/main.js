@@ -107,9 +107,7 @@ export class LandingPage extends React.Component {
             <p>SELBSTgenäht</p>
             <div></div>
         </div>
-
       </section>
-        <div>Elfriede & Fridolin</div>
       </MuiLandingPage>
     )
   }

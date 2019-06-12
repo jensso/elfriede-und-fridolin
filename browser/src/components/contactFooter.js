@@ -1,13 +1,15 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
-import Mickey from '../content/images/Mickey_Mouse.jpg';
+import Markise from '../content/images/mood_markise.jpg';
+import Livi from '../content/images/mood_livi.jpg';
+import Zebra from '../content/images/mood_zebra.jpg';
 import watercolour_green from '../content/images/watercolour_green.png';
 
 const MuiContactFooter = styled(Container)({
   display: 'flex',
   '@media (max-width: 600px)': {
-    flexWrap: 'wrap', // make it responsive
+    flexWrap: 'wrap',
   },
 
   color: '#9c938e',
@@ -72,16 +74,29 @@ const MuiContactFooter = styled(Container)({
           },
         },
       },
-    },
-    '&:nth-of-type(2)': {
-      width: '60%',
-      '& section': {
-        background: '#bda96c',
-      },
-      '& img': {
-        width: '25%',
-        margin: '1vw',
-        padding: '1vw',
+
+
+      '&:nth-of-type(2)': {
+        width: '400%',
+        // flexGrow: '2',
+        '& section': {
+          background: '#AD8262',
+          width: '70%',
+          margin: '0 auto',
+
+          '@media (min-width: 600px)': {
+            width: '100%',
+          },
+
+          '& img': {
+            maxWidth: '100%',
+            objectFit: 'cover',
+            width: '30%',
+            height: '20vw',
+            // margin: '1vw 1vw',
+            padding: '1vw',
+          },
+        },
       },
 
     },
@@ -109,11 +124,9 @@ export class ContactFooter extends React.Component {
         <div>
           <h2>Instagram</h2>
           <section>
-
-            <img src={Mickey} alt="pic"></img> // fuck mickey
-            <img src={Mickey} alt="pic"></img>
-            <img src={Mickey} alt="pic"></img>
-
+            <img src={Livi} alt="pic"></img>
+            <img src={Markise} alt="pic"></img>
+            <img src={Zebra} alt="pic"></img>
           </section>
         </div>
       </MuiContactFooter>
