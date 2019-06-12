@@ -4,10 +4,9 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
-import { NavHome } from './navHome.js';
+import { NavLink } from 'react-router-dom';
 import { NavGallery } from './navGallery.js';
 import { UserLogin } from './userLogin.js';
-import { NavLink } from 'react-router-dom';
 import { NewsSection } from './news.js';
 
 function SimpleMenuHome() {
@@ -20,6 +19,7 @@ function SimpleMenuHome() {
     setAnchorEl(null);
   }
 
+<<<<<<< HEAD
   return (
     <div>
       <Button aria-owns={anchorEl ? 'simple-menu' : undefined} aria-haspopup="true" onClick={handleClick}>
@@ -31,6 +31,27 @@ function SimpleMenuHome() {
     </div>
     );
   }
+=======
+return (
+<div>
+<Button aria-owns={anchorEl ? 'simple-menu' : undefined} aria-haspopup="true" onClick={handleClick}>
+HOME
+</Button>
+<Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
+<MenuItem onClick={handleClose}>
+<NavLink to="/">Startseite</NavLink>
+</MenuItem>
+<MenuItem onClick={handleClose}>
+<NavLink to="/Kontakt">Kontakt</NavLink>
+
+</MenuItem>
+</Menu>
+</div>
+);
+}
+function SimpleMenuShop() {
+const [anchorEl, setAnchorEl] = React.useState(null);
+>>>>>>> jensBranch
 
 function SimpleMenuShop() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -59,6 +80,25 @@ function SimpleMenuShop() {
     );
 }
 
+<<<<<<< HEAD
+=======
+return (
+<div>
+<Button aria-owns={anchorEl ? 'simple-menu' : undefined} aria-haspopup="true" onClick={handleClick}>
+ SHOP
+</Button>
+<Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
+<MenuItem onClick={handleClose}>
+  <NavLink to="/Schnittmuster">Schnittmuster</NavLink>
+</MenuItem>
+<MenuItem onClick={handleClose}>
+  <NavLink to="/Kleidung">Kleidung</NavLink>
+</MenuItem>
+</Menu>
+</div>
+);
+}
+>>>>>>> jensBranch
 function SimpleMenuNews() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -118,6 +158,7 @@ function SimpleMenuBasket() {
     setAnchorEl(null);
   }
 
+<<<<<<< HEAD
   return (
     <div>
       <Button aria-owns={anchorEl ? 'simple-menu' : undefined} aria-haspopup="true" onClick={handleClick}>
@@ -130,6 +171,21 @@ function SimpleMenuBasket() {
       </Menu>
     </div>
   );
+=======
+return (
+<div>
+<Button aria-owns={anchorEl ? 'simple-menu' : undefined} aria-haspopup="true" onClick={handleClick}>
+ WARENKORB
+</Button>
+<Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
+<MenuItem onClick={handleClose}>
+<NavLink to="/Warenkorb">Warenkorb</NavLink>
+
+</MenuItem>
+</Menu>
+</div>
+);
+>>>>>>> jensBranch
 }
 
 function SimpleMenuLogin() {
