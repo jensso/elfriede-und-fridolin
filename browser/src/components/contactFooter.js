@@ -113,7 +113,7 @@ export class ContactFooter extends React.Component {
         <div>
           <h2>Instagram</h2>
           <section>
-            <img src={Mickey} alt="pic"></img>
+            <img src={Mickey} alt="pic"></img> // fuck mickey
             <img src={Mickey} alt="pic"></img>
             <img src={Mickey} alt="pic"></img>
           </section>
