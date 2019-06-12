@@ -9,7 +9,7 @@ import watercolour_green from '../content/images/watercolour_green.png';
 const MuiContactFooter = styled(Container)({
   display: 'flex',
   '@media (max-width: 600px)': {
-    flexWrap: 'wrap',
+    flexWrap: 'wrap', // make it responsive
   },
 
   color: '#9c938e',
