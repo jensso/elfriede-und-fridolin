@@ -13,7 +13,10 @@ const addPatterns = async (req, res, next) => {
 const getAllPatterns = async (req, res, next) => {
   try {
     const allPatterns = await patternsModel.find();
-    res.status(200).send(allPatterns);
+    console.log(allPatterns);
+
+    allPatterns ? res.status(200).json(allPatterns) : res.status(404).json({'msg': 'data not found'});
+
   } catch(error) {
     next(error);
   }

@@ -3,6 +3,7 @@ import { styled } from '@material-ui/styles';
 import {Box,Button} from '@material-ui/core';
 import Minnie from '../content/images/Minnie_Mouse.png';
 import { NavBar } from './navbar.js';
+const url = 'http://localhost:3000/patterns/getPatterns';
 
 const patterns = [
   {name: 'skirts',
@@ -81,17 +82,16 @@ export class CuttingPatterns extends React.Component {
     }
   }
   componentDidMount() {
-
-  fetch('http:/localhost:4000/patterns/getPatterns', {
+  fetch(url, {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify()
-  }).then (res => res.json())
+    header: {
+      'Content-Type': 'application/json',
+      'Response-Type': 'application/json'
+    }
+  })
+  .then(res=> res.json())
   .then(data => console.log(data))
-  .catch(error => console.log(error));
-
+  .catch(error => console.log(error))
   }
 
   handleFilter(ev) {

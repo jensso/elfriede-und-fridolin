@@ -10,11 +10,8 @@ const usersRoutes = require('./routes/usersRoutes');
 const patternsRoutes = require('./routes/patternsRoutes');
 
 
-
-
 mongoose.set('useNewUrlParser', true);
 
-server.listen('4000',  () => console.log('Server is listening to the designated port'));
 connectDb();
 
 server.use(morgan('dev'));
@@ -25,4 +22,8 @@ server.use(cookieParser()); // creates req.cookies to read from and the res.cook
 server.use('/users', usersRoutes);
 server.use('/patterns', patternsRoutes);
 
+
+
 server.use(errorHandler);
+
+server.listen('4000',  () => console.log('Server is listening to the designated port'));
