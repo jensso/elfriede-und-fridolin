@@ -4,6 +4,7 @@ import { styled } from '@material-ui/styles';
 import footer1 from '../content/images/footer_1.jpg';
 import footer2 from '../content/images/footer_2.jpg';
 import footer3 from '../content/images/footer_3.jpg';
+import watercolour_green from '../content/images/watercolour_green.png';
 
 const MuiContactFooter = styled(Container)({
   display: 'flex',

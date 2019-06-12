@@ -2,15 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
-<<<<<<< HEAD
 import Minnie from '../content/images/Minnie_Mouse.png';
 import aboutMe_1 from '../content/images/aboutMe_1.jpg';
 import aboutMe_2 from '../content/images/aboutMe_2.jpg';
 import watercolour_green from '../content/images/watercolour_green.png';
-=======
 import about1 from '../content/images/about_1.jpg';
 import about2 from '../content/images/about_2.jpg';
->>>>>>> jensBranch
 
 
 const MuiNavHome= styled(Container)({
@@ -23,7 +20,6 @@ const MuiNavHome= styled(Container)({
     },
 
     '& div': {
-<<<<<<< HEAD
       margin: '2vw',
 
       '&:nth-of-type(1)': {
@@ -109,7 +105,6 @@ const MuiNavHome= styled(Container)({
             },
           },
         },
-=======
       width: '50%',
       '& img': {
         '&:nth-of-type(1)': {
@@ -135,7 +130,6 @@ const MuiNavHome= styled(Container)({
         textDecoration: 'none',
         color: 'navy',
       },
->>>>>>> jensBranch
     },
   },
 });
@@ -146,14 +140,9 @@ export class NavHome extends React.Component {
       <MuiNavHome injectfirst="true" >
       <section>
           <div>
-<<<<<<< HEAD
             <h2>"Ich bin gerne frei und trage mein Herz auf der Zunge.</h2>
             <img src={aboutMe_1} alt="antje_abeler"></img>
             <img src={aboutMe_2} alt="antje_abeler"></img>
-=======
-            <img src={about1} alt="Antje Abeler"></img>
-            <img src={about2} alt="Antje Abeler"></img>
->>>>>>> jensBranch
           </div>
           <div>
             <div>
@@ -179,11 +168,7 @@ export class NavHome extends React.Component {
               Für den perfekten Sitz werden all meine Schnitte von einer Schnittdirectrice gradiert.<br/>
               <br/>
               Neben dem designen von Schnittmustern erschaffe ich auch gern praktische Kleinigkeiten für dich und mich und andere an meiner Nähmaschine.<br/>
-<<<<<<< HEAD
               Diese Einzelstücke findest du auch <Link className="link" to={`/shop`}>hier in meinem Shop</Link>.
-=======
-              Diese Einzelstücke findest du auch hier im Shop.
->>>>>>> jensBranch
               Aber Achtung: es handelt sich (meist) um absolute Einzelstücke, die es so eben nur ein einziges Mal geben wird.
               <i>Es gilt also: Wenn weg, dann weg.</i>
               <br/>
