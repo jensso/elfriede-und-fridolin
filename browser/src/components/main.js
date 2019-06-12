@@ -102,7 +102,6 @@ export class LandingPage extends React.Component {
       <section>
         <div></div>
         <div></div>
-<<<<<<< HEAD
         <div>
             <h2>Elfriede & Fridolin</h2>
             <p>SELBSTgenäht</p>
@@ -110,9 +109,7 @@ export class LandingPage extends React.Component {
         </div>
 
       </section>
-=======
         <div>Elfriede & Fridolin</div>
->>>>>>> jensBranch
       </MuiLandingPage>
     )
   }
