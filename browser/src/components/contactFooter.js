@@ -1,7 +1,9 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
-import Mickey from '../content/images/Mickey_Mouse.jpg';
+import footer1 from '../content/images/footer_1.jpg';
+import footer2 from '../content/images/footer_2.jpg';
+import footer3 from '../content/images/footer_3.jpg';
 
 const MuiContactFooter = styled(Container)({
   display: 'flex',
@@ -45,7 +47,7 @@ const MuiContactFooter = styled(Container)({
       },
       '& img': {
         width: '25%',
-        margin: '2vw 1vw',
+        margin: '1vw',
         padding: '1vw',
       },
     },
@@ -73,9 +75,9 @@ export class ContactFooter extends React.Component {
         <div>
           <h2>Instagram</h2>
           <section>
-            <img src={Mickey} alt="pic"></img>
-            <img src={Mickey} alt="pic"></img>
-            <img src={Mickey} alt="pic"></img>
+            <img src={footer1} alt="pic"></img>
+            <img src={footer2} alt="pic"></img>
+            <img src={footer3} alt="pic"></img>
           </section>
         </div>
       </MuiContactFooter>

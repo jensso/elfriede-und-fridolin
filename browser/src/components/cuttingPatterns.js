@@ -77,9 +77,23 @@ export class CuttingPatterns extends React.Component {
     super(props);
     this.state = {
       products: patterns,
+      basket: [],
     }
-    console.log(this.state);
   }
+  componentDidMount() {
+
+  fetch('http:/localhost:4000/patterns/getPatterns', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify()
+  }).then (res => res.json())
+  .then(data => console.log(data))
+  .catch(error => console.log(error));
+
+  }
+
   handleFilter(ev) {
     const copyPatterns = [...patterns];
     const shownPatterns = copyPatterns.filter((obj)=> {
@@ -93,7 +107,11 @@ export class CuttingPatterns extends React.Component {
      const shownPatterns = [...patterns];
      this.setState({products: shownPatterns})
     }
-
+    buyItem(ev) {
+      console.log(patterns);
+      this.state.basket.push(patterns[0]);
+      console.log(this.state.basket);
+    }
 
   render() {
     return (
@@ -112,7 +130,10 @@ export class CuttingPatterns extends React.Component {
              <div>
                  <h5>{obj.name}</h5>
                  <p>{obj.description}</p>
-                 <span>{obj.price}</span><i className="material-icons">&#xe8cc;</i>
+                 <span>{obj.price}</span>
+                 <button onClick={this.buyItem.bind(this)}>
+                   in den Warenkorb<i className="material-icons">&#xe8cc;</i>
+                 </button>
                </div>
            </section>
 )}

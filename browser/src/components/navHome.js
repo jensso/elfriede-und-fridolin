@@ -1,7 +1,8 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
-import Minnie from '../content/images/Minnie_Mouse.png';
+import about1 from '../content/images/about_1.jpg';
+import about2 from '../content/images/about_2.jpg';
 
 
 const MuiNavHome= styled(Container)({
@@ -11,21 +12,19 @@ const MuiNavHome= styled(Container)({
   '& section': {
     display: 'flex',
     '& div': {
+      width: '50%',
       '& img': {
         '&:nth-of-type(1)': {
           width: '45%',
-          height: '60%',
-          paddingTop: '4vw',
-          transform: 'skew(15deg) scaleX(-1)',
+          height: '90%',
+          padding: '4vw 1vw',
         },
         '&:nth-of-type(2)': {
           width: '45%',
-          height: '80%',
+          height: '70%',
           paddingTop: '8vw',
-          transform: 'skew(-5deg)',
         },
       },
-      width: '50%',
       margin: '2vw',
       '& h3': {
         textAlign: 'center',
@@ -49,8 +48,8 @@ export class NavHome extends React.Component {
       <h2>...eine wunderbare Heiterkeit hat meine ganze Seele eingenommen, gleich dem süßen Frühling...</h2>
       <section>
           <div>
-            <img src={Minnie} alt="not available"></img>
-            <img src={Minnie} alt="not available"></img>
+            <img src={about1} alt="Antje Abeler"></img>
+            <img src={about2} alt="Antje Abeler"></img>
           </div>
           <div>
             <h3>MOIN!</h3>
@@ -75,7 +74,7 @@ export class NavHome extends React.Component {
               <br/>
               Neben dem designen von Schnittmustern erschaffe ich auch gern praktische Kleinigkeiten für dich und mich und andere an meiner Nähmaschine.<br/>
               Diese Einzelstücke findest du auch hier im Shop.
-              Aber Achtung: es handelt sich (meist) um absolute Einzelstücke, die es so eben nur ein einziges Mal geben wird. 
+              Aber Achtung: es handelt sich (meist) um absolute Einzelstücke, die es so eben nur ein einziges Mal geben wird.
               <i>Es gilt also: Wenn weg, dann weg.</i>
               <br/>
               Wenn du jedoch bestimmte Wünsche zu einem Artikel hast, schreib mich gern an und wir finden das Passende für dich!

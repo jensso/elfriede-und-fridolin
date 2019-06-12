@@ -6,7 +6,10 @@ import { LandingPage } from './components/main.js';
 import { NavHome } from './components/navHome.js';
 import { ContactFooter } from './components/contactFooter.js';
 import { CuttingPatterns } from './components/cuttingPatterns.js';
-import { BrowserRouter, NavLink, Route, Switch } from 'react-router-dom';
+import { Clothes } from './components/clothes.js';
+import { ShoppingBasket } from './components/shoppingBasket.js';
+
+import { BrowserRouter, Route } from 'react-router-dom';
 
 
 class Start extends React.Component {
@@ -29,6 +32,10 @@ class App extends React.Component {
     <BrowserRouter>
       <Route exact path='/' component={Start}/>
       <Route path='/Schnittmuster' component={CuttingPatterns}/>
+      <Route path='/Kleidung' component={Clothes}/>
+      <Route path='/Kontakt' component={NavBar}/>
+      <Route path='/Kontakt' component={ContactFooter}/>
+      <Route path='/Warenkorb' component={ShoppingBasket}/>
     </BrowserRouter>
     </div>
   )};

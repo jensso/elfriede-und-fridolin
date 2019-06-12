@@ -4,10 +4,9 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
-import { NavHome } from './navHome.js';
+import { NavLink } from 'react-router-dom';
 import { NavGallery } from './navGallery.js';
 import { UserLogin } from './userLogin.js';
-import { NavLink } from 'react-router-dom';
 import { NewsSection } from './news.js';
 
 
@@ -24,10 +23,16 @@ setAnchorEl(null);
 return (
 <div>
 <Button aria-owns={anchorEl ? 'simple-menu' : undefined} aria-haspopup="true" onClick={handleClick}>
- HOME
+HOME
 </Button>
 <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-<MenuItem onClick={handleClose}> <NavHome/> </MenuItem>
+<MenuItem onClick={handleClose}>
+<NavLink to="/">Startseite</NavLink>
+</MenuItem>
+<MenuItem onClick={handleClose}>
+<NavLink to="/Kontakt">Kontakt</NavLink>
+
+</MenuItem>
 </Menu>
 </div>
 );
@@ -52,7 +57,7 @@ return (
   <NavLink to="/Schnittmuster">Schnittmuster</NavLink>
 </MenuItem>
 <MenuItem onClick={handleClose}>
-Kleidung
+  <NavLink to="/Kleidung">Kleidung</NavLink>
 </MenuItem>
 </Menu>
 </div>
@@ -120,9 +125,10 @@ return (
  WARENKORB
 </Button>
 <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-<MenuItem onClick={handleClose}>x</MenuItem>
-<MenuItem onClick={handleClose}>xx</MenuItem>
-<MenuItem onClick={handleClose}>xxx</MenuItem>
+<MenuItem onClick={handleClose}>
+<NavLink to="/Warenkorb">Warenkorb</NavLink>
+
+</MenuItem>
 </Menu>
 </div>
 );
@@ -164,9 +170,9 @@ const MuiNavBar= styled(Container)({
       '&:hover': {
         background: 'white',
         fontWeight: 'bolder',
-      }
+      },
     },
-  }
+  },
 });
 
 
