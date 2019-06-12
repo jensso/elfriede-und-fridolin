@@ -8,6 +8,7 @@ const errorHandler = require('./Middlewares/errorHandler');
 const connectDb = require('./utilities/dbConnect');
 const usersRoutes = require('./routes/usersRoutes');
 const patternsRoutes = require('./routes/patternsRoutes');
+const clothesRoutes = require('./routes/clothesRoutes');
 
 
 
@@ -24,5 +25,6 @@ server.use(cookieParser()); // creates req.cookies to read from and the res.cook
 
 server.use('/users', usersRoutes);
 server.use('/patterns', patternsRoutes);
+server.use('/clothes', clothesRoutes);
 
 server.use(errorHandler);
