@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
-import Minnie from '../content/images/Minnie_Mouse.png';
+// import Minnie from '../content/images/Minnie_Mouse.png';
 import aboutMe_1 from '../content/images/aboutMe_1.jpg';
 import aboutMe_2 from '../content/images/aboutMe_2.jpg';
 import watercolour_green from '../content/images/watercolour_green.png';
-import about1 from '../content/images/about_1.jpg';
-import about2 from '../content/images/about_2.jpg';
+// import about1 from '../content/images/about_1.jpg';
+// import about2 from '../content/images/about_2.jpg';
 
 
 const MuiNavHome= styled(Container)({
@@ -118,7 +118,7 @@ const MuiNavHome= styled(Container)({
           paddingTop: '8vw',
         },
       },
-      margin: '2vw',
+      // margin: '2vw',
       '& h3': {
         textAlign: 'center',
       },
