@@ -1,27 +1,29 @@
-.App {
-  text-align: center;
+#simple-menu > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-paper.MuiPaper-rounded > ul > li > a {
+  text-decoration: none;
+  position: relative;
+  padding: 0 0.3rem;
+  text-transform: uppercase;
+  font-style: italic;
+  color: #9c938e;
+  font-size: 0.8rem;
+  letter-spacing: 0.2rem;
+  font-family: Open Sans Condensed Light;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 4s ease-out;
-  pointer-events: none;
+#simple-menu > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-paper.MuiPaper-rounded > ul > li > a:hover {
+  background-image: url("./content/images/watercolour_green_light.png");
+  background-size: 100% 100%;
 }
 
-.App-header {
-  background-color: navy;
-  min-height: 60vH;
+#simple-menu > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-paper.MuiPaper-rounded > ul > li > a:active, a:focus, a:visited {
+  color: #9c938e;
+}
+
+#simple-menu > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-paper.MuiPaper-rounded {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin-top: 4vw;
+  height: auto;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotateX(0deg);
-    height: 0;
-  }
-  to {
-    transform: rotateX(450deg);
-    height: 20vmin;
-  }
+.MuiListItem-button:hover {
+    background-color: rgba(0, 0, 0, 0.00) !important;
 }

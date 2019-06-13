@@ -7,9 +7,9 @@ import { styled } from '@material-ui/styles';
 import { NavLink } from 'react-router-dom';
 import { NavGallery } from './navGallery.js';
 import { NavHome } from './navHome.js';
-
 import { UserLogin } from './userLogin.js';
 import { NewsSection } from './news.js';
+import watercolour_green from '../content/images/watercolour_green.png';
 
 function SimpleMenuHome() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -27,7 +27,9 @@ function SimpleMenuHome() {
       HOME
       </Button>
       <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-        <MenuItem onClick={handleClose}> <NavHome/> </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/Home">Home</NavLink>
+        </MenuItem>
       </Menu>
     </div>
     )
@@ -51,8 +53,9 @@ function SimpleMenuShop() {
           <MenuItem onClick={handleClose}>
             <NavLink to="/Schnittmuster">Schnittmuster</NavLink>
           </MenuItem>
+
           <MenuItem onClick={handleClose}>
-          Kleidung
+            <NavLink to="/Kleidung">Kleidung</NavLink>
           </MenuItem>
         </Menu>
       </div>
@@ -76,34 +79,42 @@ function SimpleMenuNews() {
       </Button>
       <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
         <MenuItem onClick={handleClose}>
-          <NewsSection />
+          <NavLink to="/Neuheiten">Neuheiten</NavLink>
+        </MenuItem>
+
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/Angebote">Angebote</NavLink>
+        </MenuItem>
+
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/Info">Info</NavLink>
         </MenuItem>
       </Menu>
     </div>
   );
 }
-function SimpleMenuGallery() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-    function handleClick(event) {
-      setAnchorEl(event.currentTarget);
-    }
-
-    function handleClose() {
-      setAnchorEl(null);
-    }
-
-  return (
-    <div>
-      <Button aria-owns={anchorEl ? 'simple-menu' : undefined} aria-haspopup="true" onClick={handleClick}>
-       GALLERY
-      </Button>
-      <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-        <MenuItem onClick={handleClose}><NavGallery /></MenuItem>
-      </Menu>
-    </div>
-  );
-}
+// function SimpleMenuGallery() {
+//   const [anchorEl, setAnchorEl] = React.useState(null);
+//
+//     function handleClick(event) {
+//       setAnchorEl(event.currentTarget);
+//     }
+//
+//     function handleClose() {
+//       setAnchorEl(null);
+//     }
+//
+//   return (
+//     <div>
+//       <Button aria-owns={anchorEl ? 'simple-menu' : undefined} aria-haspopup="true" onClick={handleClick}>
+//        GALLERY
+//       </Button>
+//       <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
+//         <MenuItem onClick={handleClose}><NavGallery /></MenuItem>
+//       </Menu>
+//     </div>
+//   );
+// }
 function SimpleMenuBasket() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -117,15 +128,15 @@ function SimpleMenuBasket() {
 
 return (
 <div>
-<Button aria-owns={anchorEl ? 'simple-menu' : undefined} aria-haspopup="true" onClick={handleClick}>
- WARENKORB
-</Button>
-<Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-<MenuItem onClick={handleClose}>
-<NavLink to="/Warenkorb">Warenkorb</NavLink>
+  <Button aria-owns={anchorEl ? 'simple-menu' : undefined} aria-haspopup="true" onClick={handleClick}>
+   WARENKORB
+  </Button>
+  <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
+    <MenuItem onClick={handleClose}>
+      <NavLink to="/Warenkorb">Warenkorb</NavLink>
 
-</MenuItem>
-</Menu>
+    </MenuItem>
+  </Menu>
 </div>
 );
 }
@@ -169,6 +180,16 @@ const MuiNavBar= styled(Container)({
         fontWeight: 'bolder',
       },
     },
+
+      '& ul': {
+        '& li:nth-child(1)': {
+          '& a' : {
+            color: 'red',
+          }
+        }
+      }
+
+
   },
 });
 
@@ -176,11 +197,10 @@ const MuiNavBar= styled(Container)({
 export class NavBar extends React.Component {
   render() {
     return(
-      <MuiNavBar>
+      <MuiNavBar injectfirst="true">
         <SimpleMenuHome />
         <SimpleMenuShop />
         <SimpleMenuNews />
-        <SimpleMenuGallery />
         <SimpleMenuBasket />
         <SimpleMenuLogin />
       </MuiNavBar>

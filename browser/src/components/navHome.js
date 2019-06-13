@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
-import Minnie from '../content/images/Minnie_Mouse.png';
 import aboutMe_1 from '../content/images/aboutMe_1.jpg';
 import aboutMe_2 from '../content/images/aboutMe_2.jpg';
 import watercolour_green from '../content/images/watercolour_green.png';
@@ -111,7 +110,7 @@ export class NavHome extends React.Component {
   render() {
     return (
       <MuiNavHome injectfirst="true" >
-      <section>
+        <section>
           <div>
             <h2>"Ich bin gerne frei und trage mein Herz auf der Zunge.</h2>
             <img src={aboutMe_1} alt="antje_abeler"></img>
