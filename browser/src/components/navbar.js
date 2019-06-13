@@ -52,7 +52,7 @@ function SimpleMenuShop() {
             <NavLink to="/Schnittmuster">Schnittmuster</NavLink>
           </MenuItem>
           <MenuItem onClick={handleClose}>
-          Kleidung
+          <NavLink to="/Kleidung">Kleidung</NavLink>
           </MenuItem>
         </Menu>
       </div>

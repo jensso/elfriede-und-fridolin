@@ -1,31 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { fetchFromExpress } from '../redux.js';
 import { styled } from '@material-ui/styles';
 import {Box,Button} from '@material-ui/core';
 import Minnie from '../content/images/Minnie_Mouse.png';
 import { NavBar } from './navbar.js';
 
-const patterns = [
-  {name: 'skirts',
-  price: 7.95,
-  description: 'a fancy skirt',
-  category: 'Damen'
-  },
-  {name: 'another skirt',
-  price: 17.95,
-  description: 'a more fancy skirt',
-  category: 'Damen'
-  },
-  {name: 'kiddy hoody',
-  price: 6.99,
-  description: 'a hoody for the kid',
-  category: 'Kinder'
-  },
-  {name: 'sunglass box',
-  price: 4.50,
-  description: 'a box for your sunglasses',
-  category: 'Acessoires'
-  },
-];
 const MuiBox = styled(Box)({
   '& h2': {
     fontFamily: 'Amatic SC',
@@ -76,40 +56,23 @@ export class CuttingPatterns extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: patterns,
+      products: [...this.props.payload],
       basket: [],
     }
   }
   componentDidMount() {
-
-  fetch('http:/localhost:4000/patterns/getPatterns', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify()
-  }).then (res => res.json())
-  .then(data => console.log(data))
-  .catch(error => console.log(error));
-
+    this.props.makeFetch();
   }
 
   handleFilter(ev) {
-    const copyPatterns = [...patterns];
-    const shownPatterns = copyPatterns.filter((obj)=> {
+      this.props.payload.filter((obj)=> {
       return obj.category.toLowerCase() === ev.target.innerText.toLowerCase();
-    })
-    this.setState({
-      products: shownPatterns
     })
   }
   showAll(ev) {
-     const shownPatterns = [...patterns];
-     this.setState({products: shownPatterns})
+     const shownPatterns = [...this.props.payload];
     }
     buyItem(ev) {
-      console.log(patterns);
-      this.state.basket.push(patterns[0]);
       console.log(this.state.basket);
     }
 
@@ -124,13 +87,13 @@ export class CuttingPatterns extends React.Component {
         |
         <Button onClick={this.handleFilter.bind(this)}>Acessoires</Button>
         <main>
-          {this.state.products.map((obj, index)=>
+          {this.props.payload.map((obj, index)=>
             <section key={index}>
              <img src={Minnie} alt="#"></img>
              <div>
-                 <h5>{obj.name}</h5>
-                 <p>{obj.description}</p>
-                 <span>{obj.price}</span>
+                 <h5>{obj.produktname}</h5>
+                 <p>{obj.produktbeschreibung}</p>
+                 <span>{obj.preis}</span>
                  <button onClick={this.buyItem.bind(this)}>
                    in den Warenkorb<i className="material-icons">&#xe8cc;</i>
                  </button>
@@ -142,3 +105,16 @@ export class CuttingPatterns extends React.Component {
     )
   }
 }
+
+const mapStateToProps = (state)=> {
+  return {
+      payload: state.payload
+  }
+}
+
+const mapDispatchToProps = (dispatch)=> {
+  return {
+    makeFetch: ()=> dispatch(fetchFromExpress())
+  }
+}
+export const CuttingPatternsRX = connect(mapStateToProps,mapDispatchToProps)(CuttingPatterns)

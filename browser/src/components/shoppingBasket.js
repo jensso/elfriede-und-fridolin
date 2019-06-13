@@ -11,7 +11,7 @@ export class ShoppingBasket extends React.Component {
         <i>your Products:</i><br/>
         <ul>
         {basket.map((obj, index)=>{
-          return <li className="list-group-item" key={index}>{obj.amount}x {obj.type} for {obj.price.toFixed(2)} <br />
+          return <li key={index}>{obj.amount}x {obj.type} for {obj.price.toFixed(2)} <br />
           <i>={obj.sum.toFixed(2)}</i>
           </li>
         })}

@@ -7,7 +7,7 @@ import { LandingPage } from './components/main.js';
 import { NavHome } from './components/navHome.js';
 // import { SwipeableTextMobileStepper } from './components/homeGallery.js';
 import { ContactFooter } from './components/contactFooter.js';
-import { CuttingPatterns } from './components/cuttingPatterns.js';
+import { CuttingPatternsRX } from './components/cuttingPatterns.js';
 import { Clothes } from './components/clothes.js';
 import { ShoppingBasket } from './components/shoppingBasket.js';
 
@@ -33,7 +33,7 @@ class App extends React.Component {
     <div className="App">
     <BrowserRouter>
       <Route exact path='/' component={Start}/>
-      <Route path='/Schnittmuster' component={CuttingPatterns}/>
+      <Route path='/Schnittmuster' component={CuttingPatternsRX}/>
       <Route path='/Kleidung' component={Clothes}/>
       <Route path='/Kontakt' component={NavBar}/>
       <Route path='/Kontakt' component={ContactFooter}/>
