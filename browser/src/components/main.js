@@ -64,6 +64,7 @@ const MuiLandingPage= styled(Container)({
         fontFamily: 'Amatic SC',
         color: '#AD8262',
         fontSize: '4rem',
+        textAlign: 'center',
         '@media (max-width: 600px)': {
           fontSize: '2.5rem'
         },
@@ -77,6 +78,7 @@ const MuiLandingPage= styled(Container)({
         fontFamily: 'Open Sans Condensed',
         color: '#9c938e',
         fontSize: '1rem',
+        textAlign: 'center',
         '@media (max-width: 600px)': {
           fontSize: '1rem',
           letterSpacing: 1.5

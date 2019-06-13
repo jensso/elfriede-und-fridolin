@@ -16,6 +16,7 @@ const MuiContactFooter = styled(Container)({
   margin: '2vw auto',
   padding: '1vw',
   fontFamily: 'Amatic SC',
+  textAlign: 'center',
     '& div': {
 
       '& h2': {

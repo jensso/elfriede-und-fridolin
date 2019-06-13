@@ -35,12 +35,12 @@ class App extends React.Component {
     <div className="App">
     <BrowserRouter>
       <Route exact path='/' component={Start}/>
+      <Route path='/Home' component={Start}/>
       <Route path='/Schnittmuster' component={CuttingPatterns}/>
+      <Route path='/Neuheiten' component={NewsSection}/>
       <Route path='/Kleidung' component={Clothes}/>
       <Route path='/Kontakt' component={NavBar}/>
       <Route path='/Kontakt' component={ContactFooter}/>
-      <Route path='/News' component={NewsSection}/>
-      <Route path='/Home' component={Start}/>
       <Route path='/Warenkorb' component={ShoppingBasket}/>
     </BrowserRouter>
     </div>
