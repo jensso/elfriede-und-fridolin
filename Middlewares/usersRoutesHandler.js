@@ -3,7 +3,8 @@ const { check, validationResult } = require('express-validator/check');
 const createError = require('http-errors');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
+const dotenv = require('dotenv').config();
+const saltRounds = parseInt(process.env.SALT_ROUNDS);
 
 const getAllUsers = async (req, res, next) => {
   try {
@@ -19,7 +20,7 @@ const createUsers = async (req, res, next) => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
     try {
-      const hashedPassword = await bcrypt.hash(req.body.Password, 10);
+      const hashedPassword = await bcrypt.hash(req.body.Password, saltRounds);
       req.body.Password = hashedPassword;
       await userModel.create(req.body)
       res.status(200).json({'message': 'User has been created'});
@@ -41,8 +42,8 @@ const userLogin = async (req, res, next) => {
     if (!passwordMatched) {
       return res.status(404).json({'message': 'Invalid Password'});
     }
-    const secret = 'theDevilIsInTheDetails';
-    const initialToken = await jwt.sign({Email: findUser.Email}, secret);
+
+    const initialToken = await jwt.sign({Email: findUser.Email}, process.env.SECRET);
     const token = 'Bearer' + initialToken;
     res.cookie('authToken', token, {httpOnly: true});
     res.status(200).json({'message': 'You are logged in!'});
@@ -51,4 +52,14 @@ const userLogin = async (req, res, next) => {
   }
 }
 
-module.exports = { getAllUsers, createUsers, userLogin };
+const userLoggedOut = async (req, res, next) => {
+  try {
+    
+    res.clearCookie('authToken');
+    res.status(200).json({'message': 'User is logged out'});
+  }catch (error) {
+    next(error);
+  }
+}
+
+module.exports = { getAllUsers, createUsers, userLogin, userLoggedOut };
