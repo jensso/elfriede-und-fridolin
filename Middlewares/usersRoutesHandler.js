@@ -54,7 +54,7 @@ const userLogin = async (req, res, next) => {
 
 const userLoggedOut = async (req, res, next) => {
   try {
-    
+
     res.clearCookie('authToken');
     res.status(200).json({'message': 'User is logged out'});
   }catch (error) {
