@@ -86,6 +86,8 @@ export class CuttingPatterns extends React.Component {
   }
 
   render() {
+    console.log(this.props.next);
+
     return (
       <MuiBox>
         <NavBar />
@@ -98,7 +100,7 @@ export class CuttingPatterns extends React.Component {
         <main>
           {this.props.shownPatterns.map((obj, index)=>
             <section key={index}>
-             <img onClick={i => console.log(i)} src={require(`../content/images/${obj.produktfotos[0]}.jpg`)} alt={`pic of ${obj.produktfotos[0]}`}></img>
+             <img onClick={(ev)=>console.log(ev.currentTarget)} src={require(`../content/images/${obj.produktfotos[this.props.next]}.jpg`)} alt={`pic of ${obj.produktfotos[this.props.next]}`}></img>
              <div>
                  <h5>{obj.produktname}</h5>
                  <p>{obj.produktbeschreibung}</p>

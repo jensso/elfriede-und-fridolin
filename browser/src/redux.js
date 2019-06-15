@@ -5,6 +5,8 @@ const initialState = {
   payload: [],
   shownPatterns: [],
   shownClothes: [],
+  next: 0,
+  target: null,
  };
 
 const reducer = (state=initialState, action)=> {
@@ -17,23 +19,36 @@ const reducer = (state=initialState, action)=> {
     copyOfState.shownClothes = action.payload;
     console.table(copyOfState.payload);
     return copyOfState;
-
     case 'FILTERDATA':
     const filteredPatterns = copyOfState.payload.filter(obj=> {
-      return obj.category.toLowerCase() === action.ev.target.innerText.toLowerCase();
-          });
-      copyOfState.shownPatterns = filteredPatterns;
-      copyOfState.shownClothes = filteredPatterns;
-
-
-  return copyOfState;
-
+    return obj.category.toLowerCase() === action.ev.target.innerText.toLowerCase();
+      });
+    copyOfState.shownPatterns = filteredPatterns;
+    copyOfState.shownClothes = filteredPatterns;
+    return copyOfState;
+    case 'NEXT':
+    for (let i=0; i< copyOfState.payload[i].produktfotos.length; i++) {
+      console.log(copyOfState.payload[i].produktfotos.length);
+      if (copyOfState.next <= copyOfState.payload[i].produktfotos.length)
+        {
+          copyOfState.next++;
+          console.warn(copyOfState.next);
+          return copyOfState;
+          }
+    else {
+          copyOfState.next = 0;
+          console.warn(copyOfState.next);
+          return copyOfState;
+            }
+  }
+    console.log(copyOfState.next);
+    return copyOfState;
 
     default:
     return copyOfState;
   }
 }
-const bringPayload = (data)=> {
+export const bringPayload = (data)=> {
   console.log(data);
   return {
     type: 'FETCHDATA',
@@ -48,6 +63,14 @@ export const filterPayload = (ev)=> {
     ev: ev,
   }
 }
+export const nextPic = (ev)=> {
+  return {
+    type: 'NEXT',
+    ev: ev,
+    target: ev.target,
+  }
+}
+
 export const fetchFromExpress = ()=> {
   return function(dispatch) {
     fetch('/patterns/getPatterns')

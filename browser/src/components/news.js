@@ -3,8 +3,8 @@ import { styled } from '@material-ui/styles';
 import {Box,Button} from '@material-ui/core';
 import Minnie from '../content/images/Minnie_Mouse.png';
 import { NavBar } from './navbar.js';
-import { connect } from 'react-redux';
-import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
+// import { connect } from 'react-redux';
+// import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
 
 const MuiBox = styled(Box)({
   '& h2': {
