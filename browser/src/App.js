@@ -8,7 +8,7 @@ import { NavHome } from './components/navHome.js';
 // import { SwipeableTextMobileStepper } from './components/homeGallery.js';
 import { ContactFooter } from './components/contactFooter.js';
 import { CuttingPatternsRX } from './components/cuttingPatterns.js';
-import { Clothes } from './components/clothes.js';
+import { ClothesRX } from './components/clothes.js';
 import { ShoppingBasket } from './components/shoppingBasket.js';
 
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -34,7 +34,7 @@ class App extends React.Component {
     <BrowserRouter>
       <Route exact path='/' component={Start}/>
       <Route path='/Schnittmuster' component={CuttingPatternsRX}/>
-      <Route path='/Kleidung' component={Clothes}/>
+      <Route path='/Kleidung' component={ClothesRX}/>
       <Route path='/Kontakt' component={NavBar}/>
       <Route path='/Kontakt' component={ContactFooter}/>
       <Route path='/Warenkorb' component={ShoppingBasket}/>

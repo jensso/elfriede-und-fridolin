@@ -1,10 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { fetchFromExpress } from '../redux.js';
 import { styled } from '@material-ui/styles';
 import {Box,Button} from '@material-ui/core';
-import Minnie from '../content/images/Minnie_Mouse.png';
 import { NavBar } from './navbar.js';
+import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
 
 const MuiBox = styled(Box)({
   '& h2': {
@@ -22,18 +21,23 @@ const MuiBox = styled(Box)({
   },
   '& main': {
     display: 'flex',
+    flexWrap: 'wrap',
     margin: '2vw auto',
   '& section': {
     display: 'flex',
-    padding: '2vw',
-    margin: '2vw auto',
-    border: '0.2vw dotted #bda96c',
+    padding: '1vw',
+    margin: '0.5vw',
+    border: '0.1vw dotted #bda96c',
     width: '30%',
-    '&:nth-of-type(2)': {
+    '&:nth-of-type(even)': {
       background: '#ad8262',
+      '& span': {
+        color: 'white',
+      }
     },
     '& img': {
-      width: '40%',
+      width: '50%',
+      height: '95%',
       padding: '0.4vw',
       border: '0.1vw solid #999',
       background: '#b5c4af',
@@ -44,57 +48,62 @@ const MuiBox = styled(Box)({
       flexDirection: 'column',
       '& h5': {
         fontFamily: 'Amatic SC',
+        fontSize: '1.5vw',
       },
       '& p': {
         textAlign: 'justify',
-      }
+        fontFamily: 'Amatic SC',
+        fontSize: '1vw',
+        flexGrow: '1',
+      },
+      '& span': {
+        color: 'olive',
+        fontSize: '1vw',
+      },
+      '& button': {
+        background: 'silver',
+        padding: '0.4vw',
+        margin: '0.4vw',
+        border: '0.1vw solid grey',
+        borderRadius: '1vw',
+        opacity: '0.6',
+        '&:hover': {
+          color: 'olive',
+          opacity: '1',
+        }
+      },
+      '& i': {
+        color: 'grey',
+        padding: '0.4vw',
+    }
     },
   },
 },
 })
 export class CuttingPatterns extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      products: [...this.props.payload],
-      basket: [],
-    }
-  }
   componentDidMount() {
     this.props.makeFetch();
   }
-
-  handleFilter(ev) {
-      this.props.payload.filter((obj)=> {
-      return obj.category.toLowerCase() === ev.target.innerText.toLowerCase();
-    })
-  }
-  showAll(ev) {
-     const shownPatterns = [...this.props.payload];
-    }
-    buyItem(ev) {
-      console.log(this.state.basket);
-    }
 
   render() {
     return (
       <MuiBox>
         <NavBar />
-        <h2 onClick={this.showAll.bind(this)}>Schnittmuster</h2>
-        <Button onClick={this.handleFilter.bind(this)}>Damen</Button>
+        <h2 onClick={this.props.makeFetch}>Schnittmuster</h2>
+        <Button onClick={this.props.filterData}>Damen</Button>
         |
-        <Button onClick={this.handleFilter.bind(this)}>Kinder</Button>
+        <Button onClick={this.props.filterData}>Kinder</Button>
         |
-        <Button onClick={this.handleFilter.bind(this)}>Acessoires</Button>
+        <Button onClick={this.props.filterData}>Accessoires</Button>
         <main>
-          {this.props.payload.map((obj, index)=>
+          {this.props.shownPatterns.map((obj, index)=>
             <section key={index}>
-             <img src={Minnie} alt="#"></img>
+             <img onClick={i => console.log(i)} src={require(`../content/images/${obj.produktfotos[0]}.jpg`)} alt={`pic of ${obj.produktfotos[0]}`}></img>
              <div>
                  <h5>{obj.produktname}</h5>
                  <p>{obj.produktbeschreibung}</p>
                  <span>{obj.preis}</span>
-                 <button onClick={this.buyItem.bind(this)}>
+                 <button onClick={(ev)=>console.log(ev)}>
                    in den Warenkorb<i className="material-icons">&#xe8cc;</i>
                  </button>
                </div>
@@ -103,18 +112,6 @@ export class CuttingPatterns extends React.Component {
         </main>
       </MuiBox>
     )
-  }
-}
-
-const mapStateToProps = (state)=> {
-  return {
-      payload: state.payload
-  }
-}
-
-const mapDispatchToProps = (dispatch)=> {
-  return {
-    makeFetch: ()=> dispatch(fetchFromExpress())
   }
 }
 export const CuttingPatternsRX = connect(mapStateToProps,mapDispatchToProps)(CuttingPatterns)

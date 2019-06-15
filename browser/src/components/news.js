@@ -3,6 +3,8 @@ import { styled } from '@material-ui/styles';
 import {Box,Button} from '@material-ui/core';
 import Minnie from '../content/images/Minnie_Mouse.png';
 import { NavBar } from './navbar.js';
+import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
 
 const MuiBox = styled(Box)({
   '& h2': {
@@ -20,19 +22,25 @@ const MuiBox = styled(Box)({
   },
   '& main': {
     display: 'flex',
+    flexWrap: 'wrap',
     margin: '2vw auto',
   '& section': {
     display: 'flex',
-    padding: '2vw',
-    margin: '2vw auto',
-    border: '0.2vw dotted #bda96c',
-    width: '30%',
-    '&:nth-of-type(2)': {
+    padding: '1vw',
+    margin: '0.5vw',
+    border: '0.5vw dotted #bda96c',
+    width: '20%',
+    '&:nth-of-type(even)': {
       background: '#ad8262',
+      '& span': {
+        color: 'white',
+      }
+
     },
     '& img': {
-      width: '40%',
-      padding: '0.4vw',
+      width: '60%',
+      height: '60%',
+      padding: '0.2vw',
       border: '0.1vw solid #999',
       background: '#b5c4af',
     },
@@ -42,10 +50,20 @@ const MuiBox = styled(Box)({
       flexDirection: 'column',
       '& h5': {
         fontFamily: 'Amatic SC',
+        fontSize: '1.5vw',
+
       },
       '& p': {
         textAlign: 'justify',
-      }
+        fontFamily: 'Amatic SC',
+        fontSize: '1vw',
+        flexGrow: '1',
+      },
+      '& span': {
+        color: 'grey',
+        fontSize: '1vw',
+      },
+
     },
   },
 },
@@ -54,8 +72,9 @@ const MuiBox = styled(Box)({
 export class NewsSection extends React.Component {
   render() {
     return (
+      <>
+      <NavBar />
       <MuiBox>
-        <NavBar />
         <h2>NEWS</h2>
         <Button>Neuzugänge</Button>
         |
@@ -89,6 +108,7 @@ export class NewsSection extends React.Component {
           </section>
         </main>
       </MuiBox>
+      </>
     )
   }
 }
