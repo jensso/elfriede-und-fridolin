@@ -1,4 +1,4 @@
-import { fetchFromExpress, filterPayload, nextPic } from '../redux.js';
+import { buyItem, removeItem, fetchFromExpress, filterPayload, nextPic } from '../redux.js';
 
 
 export const mapStateToProps = (state)=> {
@@ -7,6 +7,7 @@ export const mapStateToProps = (state)=> {
     shownPatterns: state.shownPatterns,
     next: state.next,
     target: state.target,
+    basket: state.basket,
   }
 }
 export const mapDispatchToProps = (dispatch)=> {
@@ -14,5 +15,7 @@ export const mapDispatchToProps = (dispatch)=> {
     makeFetch: (ev)=> dispatch(fetchFromExpress(ev)),
     filterData: (ev)=> dispatch(filterPayload(ev)),
     nextPic: (ev)=> dispatch(nextPic(ev)),
+    buyItem: (ev)=> dispatch(buyItem(ev)),
+    removeItem: (ev)=> dispatch(removeItem(ev)),
   }
 }

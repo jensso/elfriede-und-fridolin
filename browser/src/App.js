@@ -9,7 +9,7 @@ import { NavHome } from './components/navHome.js';
 import { ContactFooter } from './components/contactFooter.js';
 import { CuttingPatternsRX } from './components/cuttingPatterns.js';
 import { ClothesRX } from './components/clothes.js';
-import { ShoppingBasket } from './components/shoppingBasket.js';
+import { ShoppingBasketRX } from './components/shoppingBasket.js';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 
@@ -37,7 +37,7 @@ class App extends React.Component {
       <Route path='/Kleidung' component={ClothesRX}/>
       <Route path='/Kontakt' component={NavBar}/>
       <Route path='/Kontakt' component={ContactFooter}/>
-      <Route path='/Warenkorb' component={ShoppingBasket}/>
+      <Route path='/Warenkorb' component={ShoppingBasketRX}/>
     </BrowserRouter>
     </div>
   )};

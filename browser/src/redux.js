@@ -5,6 +5,7 @@ const initialState = {
   payload: [],
   shownPatterns: [],
   shownClothes: [],
+  basket: [],
   next: 0,
   target: null,
  };
@@ -44,6 +45,15 @@ const reducer = (state=initialState, action)=> {
     console.log(copyOfState.next);
     return copyOfState;
 
+    case 'BUYITEM':
+    copyOfState.basket.push(action.ev.target);
+    console.log(copyOfState.basket);
+    return copyOfState;
+
+    case 'REMOVEITEM':
+    console.table(copyOfState.basket);
+    return copyOfState;
+
     default:
     return copyOfState;
   }
@@ -68,6 +78,20 @@ export const nextPic = (ev)=> {
     type: 'NEXT',
     ev: ev,
     target: ev.target,
+  }
+}
+
+export const buyItem = (ev)=> {
+  return {
+    type: 'BUYITEM',
+    ev: ev,
+  }
+}
+
+export const removeItem = (ev)=> {
+  return {
+    type: 'REMOVEITEM',
+    ev: ev,
   }
 }
 

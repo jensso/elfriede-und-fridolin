@@ -105,7 +105,7 @@ export class CuttingPatterns extends React.Component {
                  <h5>{obj.produktname}</h5>
                  <p>{obj.produktbeschreibung}</p>
                  <span>{obj.preis}</span>
-                 <button onClick={(ev)=>console.log(ev)}>
+                 <button onClick={this.props.buyItem}>
                    in den Warenkorb<i className="material-icons">&#xe8cc;</i>
                  </button>
                </div>
