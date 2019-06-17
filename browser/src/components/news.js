@@ -1,13 +1,17 @@
 import React from 'react';
 import { styled } from '@material-ui/styles';
 import {Box,Button} from '@material-ui/core';
-import Minnie from '../content/images/Minnie_Mouse.png';
 import { NavBar } from './navbar.js';
+// import { connect } from 'react-redux';
+// import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
 
 const MuiBox = styled(Box)({
   '& h2': {
     fontFamily: 'Amatic SC',
     margin: '4vw',
+    '&:hover': {
+      cursor: 'pointer',
+    },
   },
   '& a': {
     padding: '2vw',
@@ -17,19 +21,25 @@ const MuiBox = styled(Box)({
   },
   '& main': {
     display: 'flex',
-    margin: '2vw 0.5vw',
+    flexWrap: 'wrap',
+    margin: '2vw auto',
   '& section': {
     display: 'flex',
-    padding: '2vw',
-    margin: '2vw 0.4vw',
-    border: '0.2vw dotted #bda96c',
-    width: '30%',
-    '&:nth-of-type(2)': {
+    padding: '1vw',
+    margin: '0.5vw',
+    border: '0.5vw dotted #bda96c',
+    width: '20%',
+    '&:nth-of-type(even)': {
       background: '#ad8262',
+      '& span': {
+        color: 'white',
+      }
+
     },
     '& img': {
-      width: '40%',
-      padding: '0.4vw',
+      width: '60%',
+      height: '60%',
+      padding: '0.2vw',
       border: '0.1vw solid #999',
       background: '#b5c4af',
     },
@@ -39,10 +49,20 @@ const MuiBox = styled(Box)({
       flexDirection: 'column',
       '& h5': {
         fontFamily: 'Amatic SC',
+        fontSize: '1.5vw',
+
       },
       '& p': {
         textAlign: 'justify',
-      }
+        fontFamily: 'Amatic SC',
+        fontSize: '1vw',
+        flexGrow: '1',
+      },
+      '& span': {
+        color: 'grey',
+        fontSize: '1vw',
+      },
+
     },
   },
 },
@@ -51,8 +71,9 @@ const MuiBox = styled(Box)({
 export class NewsSection extends React.Component {
   render() {
     return (
+      <>
+      <NavBar />
       <MuiBox>
-        <NavBar />
         <h2>NEWS</h2>
         <Button>Neuzugänge</Button>
         |
@@ -61,7 +82,7 @@ export class NewsSection extends React.Component {
         <Button>Angebote</Button>
         <main>
           <section>
-            <img src={Minnie}  alt="#"></img>
+            <img></img>
             <div>
                 <h5>Oversized Sweater Maxima</h5>
                 <p>some text to provide.some text to provide.some text to provide.some text to provide.some text to provide.</p>
@@ -69,7 +90,7 @@ export class NewsSection extends React.Component {
               </div>
           </section>
           <section>
-            <img src={Minnie} alt="#"></img>
+            <img alt="#"></img>
             <div>
                 <h5>Oversized Sweater Maxima</h5>
                 <p>some text to provide.some text to provide.some text to provide.some text to provide.some text to provide.</p>
@@ -77,7 +98,7 @@ export class NewsSection extends React.Component {
               </div>
           </section>
           <section>
-            <img src={Minnie} alt="#"></img>
+            <img alt="#"></img>
             <div>
                 <h5>Oversized Sweater Maxima</h5>
                 <p>some text to provide.some text to provide.some text to provide.some text to provide.some text to provide.</p>
@@ -86,6 +107,7 @@ export class NewsSection extends React.Component {
           </section>
         </main>
       </MuiBox>
+      </>
     )
   }
 }

@@ -11,19 +11,23 @@ import BottomNavigation from '@material-ui/core/BottomNavigation';
 const MuiBottomNavigation= styled(BottomNavigation)({
   display: 'flex',
   background: 'white',
-  margin: '0 auto',
+  margin: '0 20vw',
   '& div': {
     margin: '1vw auto',
     '& button': {
-      fontSize: '2vw',
-      fontFamily: 'Amatic SC',
-      color: '#753',
+      fontSize: '100%',
+      fontFamily: 'Open Sans Condensed',
+      // fontWeight: 'lighter',
+      color: '#AD8262',
       border: 'none',
       '&:hover': {
         background: 'white',
         fontWeight: 'bolder',
         border: 'none',
-      }
+      },
+      '@media (max-width: 600px)': {
+        fontSize: '70%',
+      },
     },
   }
 });

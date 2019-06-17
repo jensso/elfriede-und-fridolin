@@ -1,123 +1,219 @@
 import React from 'react';
 import { styled } from '@material-ui/styles';
 import {Box,Button} from '@material-ui/core';
-import Minnie from '../content/images/Minnie_Mouse.png';
+import mood_livi from '../content/images/mood_livi.jpg';
 import { NavBar } from './navbar.js';
+import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
 
-const patterns = [
-  {name: 'skirts',
-  price: 7.95,
-  description: 'a fancy skirt',
-  category: 'Damen'
-  },
-  {name: 'another skirt',
-  price: 17.95,
-  description: 'a more fancy skirt',
-  category: 'Damen'
-  },
-  {name: 'kiddy hoody',
-  price: 6.99,
-  description: 'a hoody for the kid',
-  category: 'Kinder'
-  },
-  {name: 'sunglass box',
-  price: 4.50,
-  description: 'a box for your sunglasses',
-  category: 'Acessoires'
-  },
-];
 const MuiBox = styled(Box)({
-  '& h2': {
-    fontFamily: 'Amatic SC',
-    margin: '4vw',
-    '&:hover': {
-      cursor: 'pointer',
-    },
-  },
-  '& a': {
-    padding: '2vw',
-    margin: '4vw',
-    color: '#bda96c',
-    textDecoration: 'none',
-  },
-  '& main': {
-    display: 'flex',
-    margin: '2vw auto',
   '& section': {
-    display: 'flex',
-    padding: '2vw',
-    margin: '2vw auto',
-    border: '0.2vw dotted #bda96c',
-    width: '30%',
-    '&:nth-of-type(2)': {
-      background: '#ad8262',
-    },
-    '& img': {
-      width: '40%',
-      padding: '0.4vw',
-      border: '0.1vw solid #999',
-      background: '#b5c4af',
-    },
-    '& div': {
-      padding: '0.4vw 1vw',
       display: 'flex',
       flexDirection: 'column',
+      textAlign: 'center',
+
+      '& h2': {
+        fontFamily: 'Open Sans Condensed',
+        textTransform: 'uppercase',
+        fontWeight: 'lighter',
+        letterSpacing: '0.5rem',
+        color: '#ad8262',
+      },
+
+      '& span': {
+        fontFamily: 'Open Sans Condensed',
+        fontWeight: 'bolder',
+        textTransform: 'capitalize',
+        letterSpacing: '0.2rem',
+        margin: '0 1rem',
+        fontSize: '0.8rem',
+        color: '#9C938E',
+
+        '&:hover': {
+          color: '#B5C4AF',
+        },
+        '&:active': {
+          color: '#B5C4AF',
+        },
+      },
+
+      '& button': {
+        backgroundColor: 'rgba(0, 0, 0, 0.00)',
+        color: '#9C938E',
+        '&:hover': {
+          backgroundColor: 'rgba(0, 0, 0, 0.00)',
+          cursor: 'pointer',
+          color: '#B5C4AF',
+          },
+        '&:focus': {
+          outline: 'none',
+          }
+      }
+
+  },
+
+  '& main': {
+    display: 'flex',
+    width: '100%',
+    margin: '0 auto',
+
+    '@media (max-width: 600px)': {
+      flexWrap: 'wrap',
+    },
+
+    '& div': {
+      display: 'flex',
+      flexGrow: '1',
+      alignItems: 'center',
+      flexDirection: 'column',
+      width: '33.33%',
+      margin: '1rem 2rem',
+
       '& h5': {
         fontFamily: 'Amatic SC',
+        textAlign: 'center',
+        fontSize: '0.rem',
+        letterSpacing: '0.1rem',
+        color: '#ad8262',
+        },
+
+      '& img': {
+        maxWidth: '90%',
+        margin: '1rem auto',
+        // padding: '0.3rem',
+          },
+
+      '& p' : {
+        fontSize: '0.5rem',
+        fontFamily: 'Open Sans',
+        color: '#9C938E',
+        textAlign: 'left',
+        margin: '1rem 1rem',
       },
-      '& p': {
-        textAlign: 'justify',
-      }
+
+      '& button': {
+        border: 'none',
+      },
+
+      '& div': {
+        marginLeft: '0',
+        marginRight: '0',
+      },
+
+        '&:nth-of-type(1)': {
+          '& section': {
+          outline: '0.1rem dotted #ad8262',
+          outlineOffset: '0.2rem',
+
+          '& div': {
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between'
+          },
+
+          '& span': {
+            '&:hover': {
+              color: '#9C938E',
+            }
+          }
+
+        },
+      },
+
+        '&:nth-of-type(2)': {
+          '& section': {
+          backgroundColor: '#ad8262',
+          marginTop: '-0.2rem',
+          paddingTop: '0.2rem',
+
+          '& div': {
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between'
+          },
+
+          '& p, span': {
+            color: 'white',
+          },
+
+          '& button': {
+            color: 'white',
+            '&:hover': {
+              color: '#B5C4AF',
+            }
+          }
+        },
+      },
+
+        '&:nth-of-type(3)': {
+          '& section': {
+          outline: '0.1rem solid #ad8262',
+          outlineOffset: '0.2rem',
+
+          '& div': {
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between'
+          },
+
+          '& span': {
+            '&:hover': {
+              color: '#9C938E',
+            }
+          }
+        },
+      },
+
     },
   },
-},
 })
-export class CuttingPatterns extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      products: patterns,
-    }
-    console.log(this.state);
-  }
-  handleFilter(ev) {
-    const copyPatterns = [...patterns];
-    const shownPatterns = copyPatterns.filter((obj)=> {
-      return obj.category.toLowerCase() === ev.target.innerText.toLowerCase();
-    })
-    this.setState({
-      products: shownPatterns
-    })
-  }
-  showAll(ev) {
-     const shownPatterns = [...patterns];
-     this.setState({products: shownPatterns})
-    }
 
+
+export class CuttingPatterns extends React.Component {
+  componentDidMount() {
+    this.props.makeFetch();
+  }
 
   render() {
+    console.log(this.props.next);
+    console.warn(this.props.payload);
     return (
-      <MuiBox>
+      <>
         <NavBar />
-        <h2 onClick={this.showAll.bind(this)}>Schnittmuster</h2>
-        <Button onClick={this.handleFilter.bind(this)}>Damen</Button>
-        |
-        <Button onClick={this.handleFilter.bind(this)}>Kinder</Button>
-        |
-        <Button onClick={this.handleFilter.bind(this)}>Acessoires</Button>
-        <main>
-          {this.state.products.map((obj, index)=>
-            <section key={index}>
-             <img src={Minnie} alt="#"></img>
-             <div>
-                 <h5>{obj.name}</h5>
-                 <p>{obj.description}</p>
-                 <span>{obj.price}</span><i className="material-icons">&#xe8cc;</i>
-               </div>
-           </section>
-)}
-        </main>
-      </MuiBox>
+          <MuiBox>
+            <section>
+              <h2 onClick={this.props.makeFetch}>Schnittmuster</h2>
+              <div>
+                <Button onClick={this.props.filterData}>Damen</Button>
+                <span>|</span>
+                <Button onClick={this.props.filterData}>Kinder</Button>
+                <span>|</span>
+                <Button onClick={this.props.filterData}>Accessoires</Button>
+              </div>
+            </section>
+
+            <main>
+              {this.props.shownPatterns.map((obj, index)=>
+                <div>
+                  <h5>{obj.produktname}</h5>
+                  <section id={obj.id} key={index}>
+                      <img onClick={(ev)=>console.log(obj.id)} src={require(`../content/images/${obj.produktfotos[this.props.next]}.jpg`)} alt={`pic of ${obj.produktfotos[this.props.next]}`}></img>                     <p>{obj.description}</p>
+                      <div id={obj.id}>
+                       <span>{obj.preis}</span>
+                       <button onClick={this.props.buyItem}>
+                         <i className="material-icons">&#xe8cc;</i>
+                       </button>
+                      </div>
+                  </section>
+                </div>
+              )}
+            </main>
+        </MuiBox>
+      </>
     )
   }
 }
+export const CuttingPatternsRX = connect(mapStateToProps,mapDispatchToProps)(CuttingPatterns)
