@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Mickey from '../content/images/Mickey_Mouse.jpg';
+// import Mickey from '../content/images/Mickey_Mouse.jpg';
 
 const useStyles = makeStyles({
   card: {
@@ -26,7 +26,7 @@ function ProductCard() {
           component="img"
           alt="Mr. MM"
           height="25%"
-          image={Mickey}
+          image={'Mickey'}
           title="MickyMaus"
         />
         <CardContent>

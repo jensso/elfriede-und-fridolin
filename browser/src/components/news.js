@@ -1,7 +1,6 @@
 import React from 'react';
 import { styled } from '@material-ui/styles';
 import {Box,Button} from '@material-ui/core';
-import Minnie from '../content/images/Minnie_Mouse.png';
 import { NavBar } from './navbar.js';
 
 const MuiBox = styled(Box)({
@@ -64,7 +63,7 @@ export class NewsSection extends React.Component {
         <Button>Angebote</Button>
         <main>
           <section>
-            <img src={Minnie}  alt="#"></img>
+            <img></img>
             <div>
                 <h5>Oversized Sweater Maxima</h5>
                 <p>some text to provide.some text to provide.some text to provide.some text to provide.some text to provide.</p>
@@ -72,7 +71,7 @@ export class NewsSection extends React.Component {
               </div>
           </section>
           <section>
-            <img src={Minnie} alt="#"></img>
+            <img alt="#"></img>
             <div>
                 <h5>Oversized Sweater Maxima</h5>
                 <p>some text to provide.some text to provide.some text to provide.some text to provide.some text to provide.</p>
@@ -80,7 +79,7 @@ export class NewsSection extends React.Component {
               </div>
           </section>
           <section>
-            <img src={Minnie} alt="#"></img>
+            <img alt="#"></img>
             <div>
                 <h5>Oversized Sweater Maxima</h5>
                 <p>some text to provide.some text to provide.some text to provide.some text to provide.some text to provide.</p>

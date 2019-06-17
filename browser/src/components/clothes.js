@@ -1,7 +1,6 @@
 import React from 'react';
 import { styled } from '@material-ui/styles';
 import {Box,Button} from '@material-ui/core';
-import Minnie from '../content/images/Minnie_Mouse.png';
 import { NavBar } from './navbar.js';
 
 const clothings = [
@@ -108,7 +107,7 @@ export class Clothes extends React.Component {
         <main>
           {this.state.clothes.map((obj, index)=>
             <section key={index}>
-             <img src={Minnie} alt="#"></img>
+             <img></img>
              <div>
                  <h5>{obj.name}</h5>
                  <p>{obj.description}</p>
