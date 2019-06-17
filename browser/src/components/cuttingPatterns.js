@@ -3,24 +3,8 @@ import { styled } from '@material-ui/styles';
 import {Box,Button} from '@material-ui/core';
 import mood_livi from '../content/images/mood_livi.jpg';
 import { NavBar } from './navbar.js';
-
-const patterns = [
-  {name: 'Oversized Sweater Maxima | Gr. 34-52',
-  price: 7.95,
-  description: 'Dies ist ein Typoblindtext. An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen. Manchmal benutzt man Worte wie Hamburgefonts, Rafgenduks oder Handgloves, um Schriften zu testen.',
-  category: 'Damen'
-  },
-  {name: 'Oversized Sweater Maxima | Gr. 34-52',
-  price: 17.95,
-  description: 'Dies ist ein Typoblindtext. An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen. Manchmal benutzt man Worte wie Hamburgefonts, Rafgenduks oder Handgloves, um Schriften zu testen.',
-  category: 'Kinder'
-  },
-  {name: 'Oversized Sweater Maxima | Gr. 34-52',
-  price: 6.99,
-  description: 'Dies ist ein Typoblindtext. An ihm kann man sehen, ob alle Buchstaben da sind und wie sie aussehen. Manchmal benutzt man Worte wie Hamburgefonts, Rafgenduks oder Handgloves, um Schriften zu testen.',
-  category: 'Accessoires'
-  }
-];
+import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
 
 const MuiBox = styled(Box)({
   '& section': {
@@ -189,72 +173,37 @@ const MuiBox = styled(Box)({
 
 
 export class CuttingPatterns extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      products: patterns,
-      basket: [],
-    }
-  }
   componentDidMount() {
-
-  fetch('http:/localhost:4000/patterns/getPatterns', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify()
-  }).then (res => res.json())
-  .then(data => console.log(data))
-  .catch(error => console.log(error));
-
+    this.props.makeFetch();
   }
-
-  handleFilter(ev) {
-    const copyPatterns = [...patterns];
-    const shownPatterns = copyPatterns.filter((obj)=> {
-      return obj.category.toLowerCase() === ev.target.innerText.toLowerCase();
-    })
-    this.setState({
-      products: shownPatterns
-    })
-  }
-  showAll(ev) {
-     const shownPatterns = [...patterns];
-     this.setState({products: shownPatterns})
-    }
-    buyItem(ev) {
-      console.log(patterns);
-      this.state.basket.push(patterns[0]);
-      console.log(this.state.basket);
-    }
 
   render() {
+    console.log(this.props.next);
+    console.warn(this.props.payload);
     return (
       <>
         <NavBar />
           <MuiBox>
             <section>
-              <h2 onClick={this.showAll.bind(this)}>Schnittmuster</h2>
+              <h2 onClick={this.props.makeFetch}>Schnittmuster</h2>
               <div>
-                <Button onClick={this.handleFilter.bind(this)}>Damen</Button>
+                <Button onClick={this.props.filterData}>Damen</Button>
                 <span>|</span>
-                <Button onClick={this.handleFilter.bind(this)}>Kinder</Button>
+                <Button onClick={this.props.filterData}>Kinder</Button>
                 <span>|</span>
-                <Button onClick={this.handleFilter.bind(this)}>Accessoires</Button>
+                <Button onClick={this.props.filterData}>Accessoires</Button>
               </div>
             </section>
 
             <main>
-              {this.state.products.map((obj, index)=>
+              {this.props.shownPatterns.map((obj, index)=>
                 <div>
-                  <h5>{obj.name}</h5>
-                  <section key={index}>
-                    <img src={mood_livi} alt="#"></img>
-                     <p>{obj.description}</p>
-                      <div>
-                       <span>{obj.price}</span>
-                       <button onClick={this.buyItem.bind(this)}>
+                  <h5>{obj.produktname}</h5>
+                  <section id={obj.id} key={index}>
+                      <img onClick={(ev)=>console.log(obj.id)} src={require(`../content/images/${obj.produktfotos[this.props.next]}.jpg`)} alt={`pic of ${obj.produktfotos[this.props.next]}`}></img>                     <p>{obj.description}</p>
+                      <div id={obj.id}>
+                       <span>{obj.preis}</span>
+                       <button onClick={this.props.buyItem}>
                          <i className="material-icons">&#xe8cc;</i>
                        </button>
                       </div>
@@ -267,3 +216,4 @@ export class CuttingPatterns extends React.Component {
     )
   }
 }
+export const CuttingPatternsRX = connect(mapStateToProps,mapDispatchToProps)(CuttingPatterns)

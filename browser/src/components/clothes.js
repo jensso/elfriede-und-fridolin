@@ -2,29 +2,9 @@ import React from 'react';
 import { styled } from '@material-ui/styles';
 import {Box,Button} from '@material-ui/core';
 import { NavBar } from './navbar.js';
+import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
 
-const clothings = [
-  {name: 'shirt 2tone',
-  price: 22.95,
-  description: 'a fancy shirt',
-  category: 'Damen'
-  },
-  {name: 'another shirt',
-  price: 14.95,
-  description: 'a unique thing',
-  category: 'Damen'
-  },
-  {name: 'kiddy hoody',
-  price: 6.99,
-  description: 'a hoody for the kid',
-  category: 'Kinder'
-  },
-  {name: 'sunglass box',
-  price: 4.50,
-  description: 'a box for your sunglasses',
-  category: 'Acessoires'
-  },
-];
 const MuiBox = styled(Box)({
   '& h2': {
     fontFamily: 'Amatic SC',
@@ -41,18 +21,24 @@ const MuiBox = styled(Box)({
   },
   '& main': {
     display: 'flex',
+    flexWrap: 'wrap',
     margin: '2vw auto',
   '& section': {
     display: 'flex',
-    padding: '2vw',
-    margin: '2vw auto',
-    border: '0.2vw dotted #bda96c',
+    padding: '1vw',
+    margin: '0.5vw',
+    border: '0.1vw dotted #bda96c',
     width: '30%',
-    '&:nth-of-type(2)': {
+    '&:nth-of-type(even)': {
       background: '#ad8262',
+      '& span': {
+        color: 'white',
+      }
     },
+
     '& img': {
-      width: '40%',
+      width: '50%',
+      height: '95%',
       padding: '0.4vw',
       border: '0.1vw solid #999',
       background: '#b5c4af',
@@ -63,55 +49,65 @@ const MuiBox = styled(Box)({
       flexDirection: 'column',
       '& h5': {
         fontFamily: 'Amatic SC',
+        fontSize: '1.5vw',
       },
       '& p': {
-        textAlign: 'justify',
-      }
+        textAlign: 'center',
+        fontFamily: 'Amatic SC',
+        fontSize: '1vw',
+        flexGrow: '1',
+      },
+      '& span': {
+        color: 'grey',
+        fontSize: '1vw',
+      },
+      '& button': {
+        background: 'white',
+        padding: '0.4vw',
+        margin: '0.4vw',
+        border: '0.1vw solid grey',
+        borderRadius: '1vw',
+        opacity: '0.6',
+        '&:hover': {
+          color: 'olive',
+          opacity: '1',
+        }
+      },
+      '& i': {
+        color: 'grey',
+        padding: '0.4vw',
+    }
+
     },
   },
 },
 })
 export class Clothes extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      clothes: clothings,
-    }
-    console.log(this.state);
+  componentDidMount() {
+    this.props.makeFetch();
   }
-  handleFilter(ev) {
-    const copyClothings = [...clothings];
-    const shownClothes = copyClothings.filter((obj)=> {
-      return obj.category.toLowerCase() === ev.target.innerText.toLowerCase();
-    })
-    this.setState({
-      clothes: shownClothes,
-    })
-  }
-  showAll(ev) {
-     const shownClothes = [...clothings];
-     this.setState({clothes: shownClothes})
-    }
-
 
   render() {
     return (
       <MuiBox>
         <NavBar />
-        <h2 onClick={this.showAll.bind(this)}>Kleidung</h2>
-        <Button onClick={this.handleFilter.bind(this)}>Damen</Button>
+        <h2 onClick={this.props.makeFetch}>Kleidung</h2>
+        <Button onClick={this.props.filterData}>Damen</Button>
         |
-        <Button onClick={this.handleFilter.bind(this)}>Kinder</Button>
+        <Button onClick={this.props.filterData}>Kinder</Button>
         |
-        <Button onClick={this.handleFilter.bind(this)}>Acessoires</Button>
+        <Button onClick={this.props.filterData}>Accessoires</Button>
         <main>
-          {this.state.clothes.map((obj, index)=>
+          {this.props.shownPatterns.map((obj, index)=>
             <section key={index}>
-             <img></img>
+            <img src={require(`../content/images/${obj.produktfotos[0]}.jpg`)} alt={`pic of ${obj.produktfotos[0]}`}></img>
              <div>
-                 <h5>{obj.name}</h5>
-                 <p>{obj.description}</p>
-                 <span>{obj.price}</span><i className="material-icons">&#xe8cc;</i>
+             <h5>{obj.produktname}</h5>
+             <p>{obj.produktbeschreibung}</p>
+             <span>{obj.preis}</span>
+             <button onClick={(ev)=>console.log(ev)}>
+               in den Warenkorb<i className="material-icons">&#xe8cc;</i>
+             </button>
                </div>
            </section>
 )}
@@ -120,3 +116,4 @@ export class Clothes extends React.Component {
     )
   }
 }
+export const ClothesRX = connect(mapStateToProps,mapDispatchToProps)(Clothes);

@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
-import ProductCard from './productCard.js';
+import { HomeGallery } from './homeGallery.js';
 
 const MuiNavGallery= styled(Container)({
   display: 'flex',
@@ -15,7 +15,7 @@ export class NavGallery extends React.Component {
   render() {
     return (
       <MuiNavGallery>
-        <ProductCard />
+        <HomeGallery />
       </MuiNavGallery>
     )
   }

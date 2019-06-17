@@ -1,15 +1,14 @@
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
+import { Button, Typography } from '@material-ui/core/';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import home_1 from '../content/images/home_1.jpg';
-import home_2 from '../content/images/home_2.jpg';
+// import home_2 from '../content/images/home_2.jpg';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -43,24 +42,26 @@ const tutorialSteps = [
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'inline-flex',
-    flexDirection: 'column',
-    maxWidth: 400,
-    flexGrow: 2,
+    margin: '1vw auto',
   },
   header: {
     display: 'flex',
-    alignItems: 'center',
-    height: 50,
-    paddingLeft: theme.spacing(4),
-    backgroundColor: theme.palette.background.default,
+    height: '4vw',
+    padding: '2vw',
+    backgroundColor: '#753',
+    color: 'white',
+    '& button': {
+      color: 'white',
+    }
   },
   img: {
-    maxHeight: '50vw',
-    display: 'inline-block',
-    maxWidth: 400,
+    width: '50%',
+    height: '25vw',
     overflow: 'hidden',
-    width: '100%',
+    '&:nth-of-type(odd)':
+    {
+      transform: 'scaleX(-1)',
+    },
   },
 }));
 
@@ -96,12 +97,16 @@ function SwipeableTextMobileStepper() {
         {tutorialSteps.map((step, index) => (
           <div key={step.label}>
             {Math.abs(activeStep - index) <= 2 ? (
+              <>
               <img className={classes.img} src={step.imgPath} alt={step.label} />
+              <img className={classes.img} src={step.imgPath} alt={step.label} />
+              </>
             ) : null}
           </div>
         ))}
       </AutoPlaySwipeableViews>
       <MobileStepper
+        className={classes.header}
         steps={maxSteps}
         position="static"
         variant="text"
@@ -126,7 +131,6 @@ export class HomeGallery extends React.Component {
   render() {
     return (
       <>
-        <SwipeableTextMobileStepper />
         <SwipeableTextMobileStepper />
       </>
     )

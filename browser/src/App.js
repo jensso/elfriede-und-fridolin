@@ -2,16 +2,15 @@ import React from 'react';
 import './App.css';
 import { Footer } from './components/footer.js';
 import { NavBar } from './components/navbar.js';
-import { Navbar2 } from './components/navbar2.js';
 import { LandingPage } from './components/main.js';
-import { HomeGallery } from './components/homeGallery.js';
+// import { HomeGallery } from './components/homeGallery.js';
 import { NavHome } from './components/navHome.js';
 // import { SwipeableTextMobileStepper } from './components/homeGallery.js';
 import { ContactFooter } from './components/contactFooter.js';
-import { CuttingPatterns } from './components/cuttingPatterns.js';
+import { CuttingPatternsRX } from './components/cuttingPatterns.js';
+import { ClothesRX } from './components/clothes.js';
+import { ShoppingBasketRX } from './components/shoppingBasket.js';
 import { NewsSection } from './components/news.js';
-import { Clothes } from './components/clothes.js';
-import { ShoppingBasket } from './components/shoppingBasket.js';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 
@@ -36,12 +35,12 @@ class App extends React.Component {
     <BrowserRouter>
       <Route exact path='/' component={Start}/>
       <Route path='/Home' component={Start}/>
-      <Route path='/Schnittmuster' component={CuttingPatterns}/>
+      <Route path='/Schnittmuster' component={CuttingPatternsRX}/>
       <Route path='/Neuheiten' component={NewsSection}/>
-      <Route path='/Kleidung' component={Clothes}/>
+      <Route path='/Kleidung' component={ClothesRX}/>
       <Route path='/Kontakt' component={NavBar}/>
       <Route path='/Kontakt' component={ContactFooter}/>
-      <Route path='/Warenkorb' component={ShoppingBasket}/>
+      <Route path='/Warenkorb' component={ShoppingBasketRX}/>
     </BrowserRouter>
     </div>
   )};

@@ -11,9 +11,12 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: '20vw',
+    maxWidth: '15vw',
     maxHeight: '45vw',
   },
+  cardcontent: {
+    background: 'lime',
+  }
 });
 
 function ProductCard() {
@@ -25,12 +28,11 @@ function ProductCard() {
         <CardMedia
           component="img"
           alt="Mr. MM"
-          height="25%"
-          image={'Mickey'}
+          image={Mickey}
           title="MickyMaus"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h5" component="h5">
             Mickey Mouse
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
@@ -40,10 +42,10 @@ function ProductCard() {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button size="small">
           Share
         </Button>
-        <Button size="small" color="primary">
+        <Button size="small">
           Learn More
         </Button>
       </CardActions>

@@ -7,6 +7,7 @@ import { styled } from '@material-ui/styles';
 import { NavLink } from 'react-router-dom';
 import { NavGallery } from './navGallery.js';
 import { NavHome } from './navHome.js';
+// import { ShoppingBasketRX } from './shoppingBasket.js';
 import { UserLogin } from './userLogin.js';
 import { NewsSection } from './news.js';
 import watercolour_green from '../content/images/watercolour_green.png';
@@ -164,6 +165,7 @@ function SimpleMenuLogin() {
 }
 
 const MuiNavBar= styled(Container)({
+
   display: 'flex',
   background: 'white',
   margin: '0 auto',
@@ -178,6 +180,9 @@ const MuiNavBar= styled(Container)({
       '&:hover': {
         background: 'white',
         fontWeight: 'bolder',
+      },
+      '&:active': {
+        color: '#753',
       },
     },
 
