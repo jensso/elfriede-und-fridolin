@@ -46,7 +46,7 @@ const userLogin = async (req, res, next) => {
             return res.status(401).json({message: 'Authentication Failed!'});
           }
           if (result) {
-            const initialToken = await jwt.sign({Email: userFound[0].Email}, process.env.SECRET, {expiresIn: '1h'});
+            const initialToken = await jwt.sign({Email: userFound[0].Email}, process.env.SECRET,);
             const token = 'Bearer ' + initialToken;
             res.cookie('authToken', token, {httpOnly: true});
             res.status(200).json({message: 'Authentication Success!'});
