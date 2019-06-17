@@ -5,14 +5,6 @@ import { NavBar } from './navbar.js';
 import { connect } from 'react-redux';
 import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
 
-const basket = [{amount: '2',
-                type: 'thing',
-                price: 10,
-                },
-                {amount: '5',
-                type: 'another thing',
-                price: 12.5,
-                }];
 const MuiBox = styled(Box)({
                 margin: '2vw auto',
                 width: '80%',
@@ -73,14 +65,14 @@ class ShoppingBasket extends React.Component {
           <h2>Deine Bestellung</h2>
           <ul>
 
-          {basket.map((obj, index)=>{
+          {this.props.basket.map((obj, index)=>{
             return (
-              <li key={index}>
-                <Button onClick={this.props.removeItem}>X</Button>
-                <img onClick={(ev)=>console.log(ev.currentTarget)} src={require(`../content/images/logo.jpg`)} alt="pic"></img>
+              <li  key={index}>
+                <Button id={obj.id} onClick={this.props.removeItem}>X</Button>
+                <img onClick={(ev)=>console.log(obj.id)} src={require(`../content/images/logo.jpg`)} alt="pic"></img>
                 <span>
-                  {obj.type}
-                  <i>= summe</i>
+                  {obj.produktname}{obj.id}<hr/ >
+                  {obj.produktbeschreibung}
                 </span>
               </li>
           )

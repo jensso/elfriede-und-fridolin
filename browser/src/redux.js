@@ -8,6 +8,8 @@ const initialState = {
   basket: [],
   next: 0,
   target: null,
+  elemId: '?',
+  ev: '',
  };
 
 const reducer = (state=initialState, action)=> {
@@ -28,6 +30,8 @@ const reducer = (state=initialState, action)=> {
     copyOfState.shownClothes = filteredPatterns;
     return copyOfState;
     case 'NEXT':
+    console.table(copyOfState);
+    // const id = ev.currentTarget.parentElement.id;
     for (let i=0; i< copyOfState.payload[i].produktfotos.length; i++) {
       console.log(copyOfState.payload[i].produktfotos.length);
       if (copyOfState.next <= copyOfState.payload[i].produktfotos.length)
@@ -44,14 +48,26 @@ const reducer = (state=initialState, action)=> {
   }
     console.log(copyOfState.next);
     return copyOfState;
-
     case 'BUYITEM':
-    copyOfState.basket.push(action.ev.target);
-    console.log(copyOfState.basket);
-    return copyOfState;
+    console.table(copyOfState);
+    for (let i=0; i< copyOfState.payload.length; i++) {
+      console.log(copyOfState.payload[i].id);
+      console.warn(action.ev.target.parentElement.id);
+      if (copyOfState.payload[i].id===action.ev.target.parentElement.id) {
+        copyOfState.basket.push(copyOfState.payload[i]);
+        console.log(copyOfState.basket);
+      }
+    }
 
+    return copyOfState;
     case 'REMOVEITEM':
-    console.table(copyOfState.basket);
+    console.table(copyOfState);
+    console.table(action.ev.target.id);
+    for (let i=0; i< copyOfState.basket.length; i++) {
+      if (copyOfState.basket[i].id===action.ev.target.id)
+      console.error(copyOfState.basket[i].id);
+    }
+
     return copyOfState;
 
     default:
@@ -74,24 +90,31 @@ export const filterPayload = (ev)=> {
   }
 }
 export const nextPic = (ev)=> {
+  console.log(ev.target.parentElement.id)
   return {
     type: 'NEXT',
     ev: ev,
     target: ev.target,
+    id: ev.target.parentElement.id,
   }
 }
 
 export const buyItem = (ev)=> {
+  console.log(ev.target.parentElement.id)
   return {
     type: 'BUYITEM',
     ev: ev,
+    target: ev.target,
+    id: ev.target.parentElement.id,
   }
 }
 
 export const removeItem = (ev)=> {
+  console.log(ev.target);
   return {
     type: 'REMOVEITEM',
     ev: ev,
+    id: ev.target.id
   }
 }
 

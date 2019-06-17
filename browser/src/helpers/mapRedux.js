@@ -5,9 +5,12 @@ export const mapStateToProps = (state)=> {
   return {
     payload: state.payload,
     shownPatterns: state.shownPatterns,
+    shownClothes: state.shownClothes,
+    basket: state.basket,
     next: state.next,
     target: state.target,
-    basket: state.basket,
+    elemId:  state.elemId,
+    ev: state.ev,
   }
 }
 export const mapDispatchToProps = (dispatch)=> {
