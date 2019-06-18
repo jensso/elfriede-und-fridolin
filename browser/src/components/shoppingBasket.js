@@ -3,6 +3,7 @@ import {Box,Button} from '@material-ui/core';
 import { styled } from '@material-ui/styles';
 import { NavBar } from './navbar.js';
 import { connect } from 'react-redux';
+import { ShopSummary } from './shopSummary.js';
 import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
 
 const MuiBox = styled(Box)({
@@ -39,10 +40,11 @@ const MuiBox = styled(Box)({
                         },
                       },
                       '& img': {
-                        width: '25%',
+                        width: '15vw',
+                        height: '15vw',
                         padding: '0.5vw 4vw',
                         margin: '0.5vw',
-                        background: 'salmon',
+                        backgroundSize: 'cover',
                       },
                       '& span': {
                         padding: '0.5vw',
@@ -69,17 +71,20 @@ class ShoppingBasket extends React.Component {
             return (
               <li  key={index}>
                 <Button id={obj.id} onClick={this.props.removeItem}>X</Button>
-                <img onClick={(ev)=>console.log(obj.id)} src={require(`../content/images/logo.jpg`)} alt="pic"></img>
+                <img onClick={(ev)=>console.log(ev.target.id)} src={require(`../content/images/${obj.produktfotos[0]}.jpg`)} alt="pic"></img>
                 <span>
-                  {obj.produktname}{obj.id}<hr/ >
-                  {obj.produktbeschreibung}
+                  {obj.produktname}<br/>
+                  {obj.produktbeschreibung}<br />
+                  {obj.preis}
+                  <hr/ >
+                  {obj.id}
                 </span>
               </li>
           )
           })}
           </ul>
-
         </div>
+        <ShopSummary />
       </MuiBox>
       </>
     )

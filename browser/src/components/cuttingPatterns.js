@@ -1,7 +1,6 @@
 import React from 'react';
 import { styled } from '@material-ui/styles';
 import {Box,Button} from '@material-ui/core';
-import mood_livi from '../content/images/mood_livi.jpg';
 import { NavBar } from './navbar.js';
 import { connect } from 'react-redux';
 import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
@@ -18,6 +17,10 @@ const MuiBox = styled(Box)({
         fontWeight: 'lighter',
         letterSpacing: '0.5rem',
         color: '#ad8262',
+        '&:hover': {
+          cursor: 'pointer',
+          fontWeight: 'bolder',
+        }
       },
 
       '& span': {
@@ -121,7 +124,7 @@ const MuiBox = styled(Box)({
         },
       },
 
-        '&:nth-of-type(2)': {
+        '&:nth-of-type(even)': {
           '& section': {
           backgroundColor: '#ad8262',
           marginTop: '-0.2rem',
@@ -170,8 +173,6 @@ const MuiBox = styled(Box)({
     },
   },
 })
-
-
 export class CuttingPatterns extends React.Component {
   componentDidMount() {
     this.props.makeFetch();
@@ -179,7 +180,7 @@ export class CuttingPatterns extends React.Component {
 
   render() {
     console.log(this.props.next);
-    console.warn(this.props.payload);
+    console.log(this.props.shownPatterns);
     return (
       <>
         <NavBar />
@@ -197,13 +198,14 @@ export class CuttingPatterns extends React.Component {
 
             <main>
               {this.props.shownPatterns.map((obj, index)=>
-                <div>
+                <div key={index}>
                   <h5>{obj.produktname}</h5>
-                  <section id={obj.id} key={index}>
-                      <img onClick={(ev)=>console.log(obj.id)} src={require(`../content/images/${obj.produktfotos[this.props.next]}.jpg`)} alt={`pic of ${obj.produktfotos[this.props.next]}`}></img>                     <p>{obj.description}</p>
+                  <section>
+                      <img onClick={(ev)=>console.log(obj.id)} src={require(`../content/images/${obj.produktfotos[this.props.next]}.jpg`)} alt={`pic of ${obj.produktname}`}></img>
+                      <p>{obj.produktbeschreibung}</p>
                       <div id={obj.id}>
                        <span>{obj.preis}</span>
-                       <button onClick={this.props.buyItem}>
+                       <button id={obj.id} onClick={this.props.buyItem}>
                          <i className="material-icons">&#xe8cc;</i>
                        </button>
                       </div>

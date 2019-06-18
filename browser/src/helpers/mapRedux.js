@@ -8,9 +8,6 @@ export const mapStateToProps = (state)=> {
     shownClothes: state.shownClothes,
     basket: state.basket,
     next: state.next,
-    target: state.target,
-    elemId:  state.elemId,
-    ev: state.ev,
   }
 }
 export const mapDispatchToProps = (dispatch)=> {

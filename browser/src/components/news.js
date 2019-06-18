@@ -82,7 +82,7 @@ export class NewsSection extends React.Component {
         <Button>Angebote</Button>
         <main>
           <section>
-            <img></img>
+            <img alt="#"></img>
             <div>
                 <h5>Oversized Sweater Maxima</h5>
                 <p>some text to provide.some text to provide.some text to provide.some text to provide.some text to provide.</p>

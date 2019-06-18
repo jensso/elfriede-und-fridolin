@@ -34,7 +34,6 @@ class App extends React.Component {
     <div className="App">
     <BrowserRouter>
       <Route exact path='/' component={Start}/>
-      <Route path='/Home' component={Start}/>
       <Route path='/Schnittmuster' component={CuttingPatternsRX}/>
       <Route path='/Neuheiten' component={NewsSection}/>
       <Route path='/Kleidung' component={ClothesRX}/>

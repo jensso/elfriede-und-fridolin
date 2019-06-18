@@ -7,9 +7,6 @@ const initialState = {
   shownClothes: [],
   basket: [],
   next: 0,
-  target: null,
-  elemId: '?',
-  ev: '',
  };
 
 const reducer = (state=initialState, action)=> {
@@ -31,13 +28,12 @@ const reducer = (state=initialState, action)=> {
     return copyOfState;
     case 'NEXT':
     console.table(copyOfState);
-    // const id = ev.currentTarget.parentElement.id;
     for (let i=0; i< copyOfState.payload[i].produktfotos.length; i++) {
       console.log(copyOfState.payload[i].produktfotos.length);
       if (copyOfState.next <= copyOfState.payload[i].produktfotos.length)
         {
           copyOfState.next++;
-          console.warn(copyOfState.next);
+          console.error(copyOfState.next);
           return copyOfState;
           }
     else {
@@ -52,24 +48,24 @@ const reducer = (state=initialState, action)=> {
     console.table(copyOfState);
     for (let i=0; i< copyOfState.payload.length; i++) {
       console.log(copyOfState.payload[i].id);
-      console.warn(action.ev.target.parentElement.id);
       if (copyOfState.payload[i].id===action.ev.target.parentElement.id) {
-        copyOfState.basket.push(copyOfState.payload[i]);
-        console.log(copyOfState.basket);
+        copyOfState.basket = [...state.basket,copyOfState.payload[i]];
       }
     }
-
     return copyOfState;
     case 'REMOVEITEM':
-    console.table(copyOfState);
-    console.table(action.ev.target.id);
+    // console.log(copyOfState.basket);
+    // console.log(action.id);
     for (let i=0; i< copyOfState.basket.length; i++) {
-      if (copyOfState.basket[i].id===action.ev.target.id)
-      console.error(copyOfState.basket[i].id);
+      if (copyOfState.basket[i].id===action.id) {
+        // console.log(copyOfState.basket[i].id===action.id);
+        copyOfState.basket.splice(i, 1);
+        copyOfState.basket = [...state.basket];
+        return copyOfState;
+      }
     }
-
-    return copyOfState;
-
+    break;
+    
     default:
     return copyOfState;
   }
@@ -100,21 +96,21 @@ export const nextPic = (ev)=> {
 }
 
 export const buyItem = (ev)=> {
-  console.log(ev.target.parentElement.id)
+  console.log(ev.target.id)
   return {
     type: 'BUYITEM',
     ev: ev,
     target: ev.target,
-    id: ev.target.parentElement.id,
+    id: ev.target.id,
   }
 }
 
 export const removeItem = (ev)=> {
-  console.log(ev.target);
+  // console.log(ev.target.parentElement.id);
   return {
     type: 'REMOVEITEM',
     ev: ev,
-    id: ev.target.id
+    id: ev.target.parentElement.id
   }
 }
 
