@@ -11,6 +11,8 @@ import { CuttingPatternsRX } from './components/cuttingPatterns.js';
 import { ClothesRX } from './components/clothes.js';
 import { ShoppingBasketRX } from './components/shoppingBasket.js';
 import { NewsSection } from './components/news.js';
+import { UserLogin } from './components/userLogin.js';
+import { UserRegistration } from './components/userRegistration.js';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -40,6 +42,8 @@ class App extends React.Component {
       <Route path='/Kontakt' component={NavBar}/>
       <Route path='/Kontakt' component={ContactFooter}/>
       <Route path='/Warenkorb' component={ShoppingBasketRX}/>
+      <Route path='/Login' component={UserLogin}/>
+      <Route path='/UserRegistration' component={UserRegistration}/>
     </BrowserRouter>
     </div>
   )};
