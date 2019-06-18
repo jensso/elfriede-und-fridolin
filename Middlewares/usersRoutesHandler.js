@@ -34,29 +34,32 @@ const createUsers = async (req, res, next) => {
 
 const userLogin = async (req, res, next) => {
   try {
-    await userModel.find({Email: req.body.Email})
-    .exec()
-    .then(userFound => {
-      if (userFound.length < 1) {
+    const userFound = await userModel.findOne({Email: req.body.Email})
+
+      if (!userFound) {
         return res.status(401).json({message: 'Authentication email Failed!'});
       }
-      bcrypt.compare(req.body.Password, userFound[0].Password, async (err, result) => {
-        try {
-          if (err) {
+      const matchedPassword = await bcrypt.compare(req.body.Password, userFound.Password);
+        if (!matchedPassword) {
             return res.status(401).json({message: 'Authentication Failed!'});
           }
-          if (result) {
-            const initialToken = await jwt.sign({Email: userFound[0].Email}, process.env.SECRET,);
+            const initialToken = await jwt.sign({Email: userFound.Email, isAdmin: userFound.isAdmin}, process.env.SECRET);
             const token = 'Bearer ' + initialToken;
             res.cookie('authToken', token, {httpOnly: true});
-            res.status(200).json({message: 'Authentication Success!'});
-          }
-          res.status(401).json({message: 'Authentication password Failed!'})
-        } catch (error) {
-          next(error);
+            res.status(200).json({message: 'Authentication Success!', Email: userFound.Email, isAdmin: userFound.isAdmin});
+
         }
-      })
-    })
+
+
+   catch (error) {
+    next(error);
+  }
+}
+
+const deleteUserById = async (req, res, next) => {
+  try {
+    const userToDelete = await userModel.findOneAndDelete({ _id: req.params.userId});
+    userToDelete ? res.status(200).json({message: 'Your account has been deactivated and you logged out!'}) :  res.status(404).json({message: 'User is Not Found!'});  
 
   } catch (error) {
     next(error);
@@ -65,12 +68,11 @@ const userLogin = async (req, res, next) => {
 
 const userLoggedOut = async (req, res, next) => {
   try {
-
     res.clearCookie('authToken');
-    res.status(200).json({'message': 'User is logged out'});
+    res.status(200).json({message: 'User is logged out'});
   }catch (error) {
     next(error);
   }
 }
 
-module.exports = { getAllUsers, createUsers, userLogin, userLoggedOut };
+module.exports = { getAllUsers, createUsers, userLogin, userLoggedOut, deleteUserById };
