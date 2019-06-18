@@ -5,6 +5,8 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv').config();
 const saltRounds = parseInt(process.env.SALT_ROUNDS);
+const {createOptions, transporter} = require('../utilities/emailOptions');
+
 
 const getAllUsers = async (req, res, next) => {
   try {
@@ -20,10 +22,19 @@ const createUsers = async (req, res, next) => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
     try {
+      req.body.isConfirmed = false;
+      const createTimestamp = Date.now();
+      const createMathRandom = Math.round(Math.random() * 10000);
+      req.body.temporaryToken = createTimestamp.toString() + createMathRandom.toString();
+
       const hashedPassword = await bcrypt.hash(req.body.Password, saltRounds);
       req.body.Password = hashedPassword;
-      await userModel.create(req.body)
-      res.status(200).json({'message': 'User has been created'});
+      await userModel.create(req.body);
+
+      const mailOptions = createOptions(req.body.Email, req.body.temporaryToken);
+      await transporter.sendMail(mailOptions);
+
+      res.status(200).json({'message': 'User has been created. Check your inbox for confirmation'});
     } catch(error){
       next(error);
     }
@@ -59,7 +70,7 @@ const userLogin = async (req, res, next) => {
 const deleteUserById = async (req, res, next) => {
   try {
     const userToDelete = await userModel.findOneAndDelete({ _id: req.params.userId});
-    userToDelete ? res.status(200).json({message: 'Your account has been deactivated and you logged out!'}) :  res.status(404).json({message: 'User is Not Found!'});  
+    userToDelete ? res.status(200).json({message: 'Your account has been deactivated and you logged out!'}) :  res.status(404).json({message: 'User is Not Found!'});
 
   } catch (error) {
     next(error);
