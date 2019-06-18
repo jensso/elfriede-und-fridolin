@@ -34,27 +34,38 @@ const createUsers = async (req, res, next) => {
 
 const userLogin = async (req, res, next) => {
   try {
-    const findUser = await userModel.findOne({Email: req.body.Email});
-    if(!findUser){
-      return res.status(404).json({'message': 'user not found!'})
-    }
-    const passwordMatched = await bcrypt.compare(req.body.Password, findUser.Password);
-    if (!passwordMatched) {
-      return res.status(404).json({'message': 'Invalid Password'});
-    }
+    await userModel.find({Email: req.body.Email})
+    .exec()
+    .then(userFound => {
+      if (userFound.length < 1) {
+        return res.status(401).json({message: 'Authentication email Failed!'});
+      }
+      bcrypt.compare(req.body.Password, userFound[0].Password, async (err, result) => {
+        try {
+          if (err) {
+            return res.status(401).json({message: 'Authentication Failed!'});
+          }
+          if (result) {
+            const initialToken = await jwt.sign({Email: userFound[0].Email}, process.env.SECRET,);
+            const token = 'Bearer ' + initialToken;
+            res.cookie('authToken', token, {httpOnly: true});
+            res.status(200).json({message: 'Authentication Success!'});
+          }
+          res.status(401).json({message: 'Authentication password Failed!'})
+        } catch (error) {
+          next(error);
+        }
+      })
+    })
 
-    const initialToken = await jwt.sign({Email: findUser.Email}, process.env.SECRET);
-    const token = 'Bearer' + initialToken;
-    res.cookie('authToken', token, {httpOnly: true});
-    res.status(200).json({'message': 'You are logged in!'});
-  } catch(error) {
+  } catch (error) {
     next(error);
   }
 }
 
 const userLoggedOut = async (req, res, next) => {
   try {
-    
+
     res.clearCookie('authToken');
     res.status(200).json({'message': 'User is logged out'});
   }catch (error) {

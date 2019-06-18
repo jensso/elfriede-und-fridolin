@@ -8,9 +8,11 @@ const userSchema = new mongoose.Schema({
   Postleitzahl: {type: Number, required: true},
   Ort: {type: String, required: true},
   Land: {type: String, required: true},
-  Email: {type: String, required: true},
+  Email: {type: String, required: true, unique: true},
   Password: {type: String, required: true},
-  Roll: {type: String, required: false}
+  resertPasswordToken: String,
+  resetPasswordExpires: Date,
+  isAdmin: {type: Boolean, required: false, default: false}
 }, {versionKey: false})
 
 const userModel = mongoose.model('users', userSchema);
