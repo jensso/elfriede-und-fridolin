@@ -15,7 +15,7 @@ const MuiUserRegistration = styled(Container)({
     color: '#ad8262',
     letterSpacing: '0.3rem',
     textAlign: 'center',
-    borderBottom: '1px solid #9C938E',
+    // borderBottom: '1px solid #9C938E',
     paddingBottom: '0.5vw',
     },
 
@@ -62,14 +62,14 @@ const MuiUserRegistration = styled(Container)({
     },
 
   '& button': {
-    fontSize: '1.3rem',
+    fontSize: '1rem',
     color: 'white',
     fontFamily: 'Open Sans Condensed',
     // fontWeight: 'bolder',
     letterSpacing: '0.1rem',
     background: '#ad8262',
     textTransform: 'uppercase',
-    margin: '2vw 33.3%',
+    margin: '5% 35%',
     '&:hover': {
       background: '#B5C4AF',
     },

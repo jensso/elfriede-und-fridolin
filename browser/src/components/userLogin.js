@@ -15,12 +15,12 @@ const MuiUserLogin = styled(Container)({
     color: '#ad8262',
     letterSpacing: '0.3rem',
     textAlign: 'center',
-    borderBottom: '1px solid #9C938E',
+    // borderBottom: '1px solid #9C938E',
     paddingBottom: '1vw',
     margin: '33% 0 15% 0'
     },
 
-    '& h5': {
+  '& h5': {
       fontFamily: 'Open Sans Condensed',
       fontSize: '1rem',
       textTransform: 'capitalize',
@@ -63,22 +63,23 @@ const MuiUserLogin = styled(Container)({
     },
 
   '& button': {
-    fontSize: '1.3rem',
+    fontSize: '1rem',
     color: 'white',
     fontFamily: 'Open Sans Condensed',
     // fontWeight: 'bolder',
     letterSpacing: '0.1rem',
     background: '#ad8262',
     textTransform: 'uppercase',
-    margin: '2vw 33.3%',
-    
+    margin: '10% 35%',
+
     '&:hover': {
       background: '#B5C4AF',
     },
     '&:focus': {
       outline: 'none',
     },
-},
+  },
+
 })
 export class UserLogin extends React.Component {
   render() {
