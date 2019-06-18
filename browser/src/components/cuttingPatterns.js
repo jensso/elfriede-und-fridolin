@@ -201,7 +201,7 @@ export class CuttingPatterns extends React.Component {
                 <div key={index}>
                   <h5>{obj.produktname}</h5>
                   <section>
-                      <img onClick={(ev)=>console.log(obj.id)} src={require(`../content/images/${obj.produktfotos[this.props.next]}.jpg`)} alt={`pic of ${obj.produktname}`}></img>
+                      <img onClick={(ev)=>console.log(obj.id)} src={require(`../content/produktfotos_ef/${obj.produktfotos[this.props.next]}.jpg`)} alt={`pic of ${obj.produktname}`}></img>
                       <p>{obj.produktbeschreibung}</p>
                       <div id={obj.id}>
                        <span>{obj.preis}</span>
