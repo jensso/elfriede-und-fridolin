@@ -3,7 +3,7 @@ import {Box,Button} from '@material-ui/core';
 import { styled } from '@material-ui/styles';
 import { NavBar } from './navbar.js';
 import { connect } from 'react-redux';
-import { ShopSummary } from './shopSummary.js';
+import { ShopSummaryRX } from './shopSummary.js';
 import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
 
 const MuiBox = styled(Box)({
@@ -84,10 +84,11 @@ class ShoppingBasket extends React.Component {
           })}
           </ul>
         </div>
-        <ShopSummary />
+        <ShopSummaryRX />
       </MuiBox>
       </>
     )
   }
 }
+
 export const ShoppingBasketRX = connect(mapStateToProps,mapDispatchToProps)(ShoppingBasket);

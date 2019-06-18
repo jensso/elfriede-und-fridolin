@@ -6,7 +6,10 @@ const initialState = {
   shownPatterns: [],
   shownClothes: [],
   basket: [],
+  newOrder: [],
   next: 0,
+  total: 0,
+  submitted: false,
  };
 
 const reducer = (state=initialState, action)=> {
@@ -21,7 +24,7 @@ const reducer = (state=initialState, action)=> {
     return copyOfState;
     case 'FILTERDATA':
     const filteredPatterns = copyOfState.payload.filter(obj=> {
-    return obj.category.toLowerCase() === action.ev.target.innerText.toLowerCase();
+     return obj.category.toLowerCase() === action.ev.target.innerText.toLowerCase();
       });
     copyOfState.shownPatterns = filteredPatterns;
     copyOfState.shownClothes = filteredPatterns;
@@ -47,7 +50,6 @@ const reducer = (state=initialState, action)=> {
     case 'BUYITEM':
     console.table(copyOfState);
     for (let i=0; i< copyOfState.payload.length; i++) {
-      console.log(copyOfState.payload[i].id);
       if (copyOfState.payload[i].id===action.ev.target.parentElement.id) {
         copyOfState.basket = [...state.basket,copyOfState.payload[i]];
       }
@@ -65,7 +67,18 @@ const reducer = (state=initialState, action)=> {
       }
     }
     break;
-    
+    case 'SUBMIT':
+    console.log(copyOfState);
+    copyOfState.newOrder = copyOfState.basket;
+    copyOfState.basket = [];
+    copyOfState.total = 0;
+    console.warn(copyOfState);
+
+    return copyOfState;
+
+    case 'REDIR':
+      return copyOfState;
+
     default:
     return copyOfState;
   }
@@ -112,6 +125,18 @@ export const removeItem = (ev)=> {
     ev: ev,
     id: ev.target.parentElement.id
   }
+}
+export const submitOrder = (ev)=> {
+  return {
+    type: 'SUBMIT',
+    ev: ev,
+  }
+}
+export const redir = (ev)=> {
+    return {
+      type: 'REDIR',
+      ev: ev,
+    }
 }
 
 export const fetchFromExpress = ()=> {

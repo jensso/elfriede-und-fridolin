@@ -12,7 +12,7 @@ import { ClothesRX } from './components/clothes.js';
 import { ShoppingBasketRX } from './components/shoppingBasket.js';
 import { NewsSection } from './components/news.js';
 
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 
 class Start extends React.Component {

@@ -1,4 +1,4 @@
-import { buyItem, removeItem, fetchFromExpress, filterPayload, nextPic } from '../redux.js';
+import { submitOrder, redir, buyItem, removeItem, fetchFromExpress, filterPayload, nextPic } from '../redux.js';
 
 
 export const mapStateToProps = (state)=> {
@@ -7,7 +7,10 @@ export const mapStateToProps = (state)=> {
     shownPatterns: state.shownPatterns,
     shownClothes: state.shownClothes,
     basket: state.basket,
+    newOrder: state.newOrder,
     next: state.next,
+    total: state.total,
+    submitted: state.submitted,
   }
 }
 export const mapDispatchToProps = (dispatch)=> {
@@ -17,5 +20,7 @@ export const mapDispatchToProps = (dispatch)=> {
     nextPic: (ev)=> dispatch(nextPic(ev)),
     buyItem: (ev)=> dispatch(buyItem(ev)),
     removeItem: (ev)=> dispatch(removeItem(ev)),
+    submit: (ev)=> dispatch(submitOrder(ev)),
+    redir: (ev)=> dispatch(redir(ev)),
   }
 }
