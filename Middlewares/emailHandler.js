@@ -9,4 +9,5 @@ const confirmEmail = async (req, res, next) => {
   }
 }
 
+
 module.exports = confirmEmail;

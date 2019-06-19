@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv').config();
 const saltRounds = parseInt(process.env.SALT_ROUNDS);
-const {createOptions, transporter} = require('../utilities/emailOptions');
+const {createOptions, transporter, resetPassCreateOptions} = require('../utilities/emailOptions');
 
 
 const getAllUsers = async (req, res, next) => {
@@ -86,4 +86,48 @@ const userLoggedOut = async (req, res, next) => {
   }
 }
 
-module.exports = { getAllUsers, createUsers, userLogin, userLoggedOut, deleteUserById };
+const sendTokenToResetPass = async (req, res, next) => {
+  try {
+    const userFound = await userModel.findOne({Email: req.body.email, isConfirmed: true});
+    if (!userFound) {
+      res.status(404).json({message: 'User with this email address does not exist or your email in not confirmed!'});
+      // return res.redirect('users/forgot');
+    }
+    const createTimestamp = Date.now();
+    const createMathRandom = Math.round(Math.random() * 10000);
+    userFound.resetPasswordToken = createTimestamp.toString() + createMathRandom.toString();
+    userFound.resetPasswordExpires = Date.now() + 3600000 ;
+
+    const token = userFound.resetPasswordToken;
+
+    const mailOptions = resetPassCreateOptions(req.body.email, token);
+    // await transporter.sendMail(mailOptions);
+    res.status(202).json({message: 'email sent'});
+  } catch(error) {
+    next(error);
+  }
+}
+
+const resetPass = async (req, res, next) => {
+  try {
+    const userWithValidToken = await userModel.findOne({
+      resetPasswordToken: req.params.token
+    });
+    if (!userWithValidToken) {
+      res.status(401).json({message: 'Password reset Token in invalid or expired!'});
+      // res.redirect('back');
+    }
+    const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+    req.body.password = hashedPassword;
+    await userModel.update({resetPasswordToken: req.params.token}, {$set: {Password: req.body.password}, $unset: {resetPasswordToken: undefined, resetPasswordExpires: undefined}});
+    res.status(200).json({message: 'Your Password has been successfully reset!'});
+
+
+
+  } catch(error) {
+    next(error);
+  }
+}
+
+
+module.exports = { getAllUsers, createUsers, userLogin, userLoggedOut, deleteUserById, sendTokenToResetPass, resetPass };
