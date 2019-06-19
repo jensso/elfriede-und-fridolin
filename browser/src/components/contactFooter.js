@@ -1,5 +1,6 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
+import { NavBar } from './navbar.js';
 import { styled } from '@material-ui/styles';
 import Markise from '../content/images/mood_markise.jpg';
 import Livi from '../content/images/mood_livi.jpg';
@@ -105,32 +106,35 @@ const MuiContactFooter = styled(Container)({
 export class ContactFooter extends React.Component {
   render() {
     return (
-      <MuiContactFooter>
-        <div>
-          <h2>Kontakt</h2>
-          <section>
-            <p>Elfriede und Fridolin®</p>
-            <span><i>Antje Abeler</i></span><br/><br/>
-            <span>www.elfriede-und-fridolin.de</span>
-            <p>elfriede-und-fridolin@gmx.de</p>
-          </section>
-          <h2>Folge Mir:</h2>
-          <section>
-            <a href="https://www.facebook.com"><i className='fab'>&#xf09a;</i></a>
-            <a href="https://www.instagram.de"><i className='fab'>&#xf16d;</i></a>
-            <a href="https://www.pinterest.de"><i className='fab'>&#xf0d2;</i></a>
-            <img src={watercolour_green} alt="watercolour_green"></img>
-          </section>
-        </div>
-        <div>
-          <h2>Instagram</h2>
-          <section>
-            <img src={Livi} alt="pic"></img>
-            <img src={Markise} alt="pic"></img>
-            <img src={Zebra} alt="pic"></img>
-          </section>
-        </div>
-      </MuiContactFooter>
+      <>
+        <NavBar />
+        <MuiContactFooter>
+          <div>
+            <h2>Kontakt</h2>
+            <section>
+              <p>Elfriede und Fridolin®</p>
+              <span><i>Antje Abeler</i></span><br/><br/>
+              <span>www.elfriede-und-fridolin.de</span>
+              <p>elfriede-und-fridolin@gmx.de</p>
+            </section>
+            <h2>Folge Mir:</h2>
+            <section>
+              <a href="https://www.facebook.com"><i className='fab'>&#xf09a;</i></a>
+              <a href="https://www.instagram.de"><i className='fab'>&#xf16d;</i></a>
+              <a href="https://www.pinterest.de"><i className='fab'>&#xf0d2;</i></a>
+              <img src={watercolour_green} alt="watercolour_green"></img>
+            </section>
+          </div>
+          <div>
+            <h2>Instagram</h2>
+            <section>
+              <img src={Livi} alt="pic"></img>
+              <img src={Markise} alt="pic"></img>
+              <img src={Zebra} alt="pic"></img>
+            </section>
+          </div>
+        </MuiContactFooter>
+      </>
     )
   }
 }

@@ -3,8 +3,10 @@ import './App.css';
 import { Footer } from './components/footer.js';
 import { NavBar } from './components/navbar.js';
 import { LandingPage } from './components/main.js';
-// import { HomeGallery } from './components/homeGallery.js';
+import { HomeGallery } from './components/homeGallery.js';
 import { NavHome } from './components/navHome.js';
+import { AdminUpdate } from './components/adminUpdate.js';
+
 // import { SwipeableTextMobileStepper } from './components/homeGallery.js';
 import { ContactFooter } from './components/contactFooter.js';
 import { CuttingPatternsRX } from './components/cuttingPatterns.js';
@@ -14,7 +16,7 @@ import { NewsSection } from './components/news.js';
 import { UserLogin } from './components/userLogin.js';
 import { UserRegistration } from './components/userRegistration.js';
 
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 
 class Start extends React.Component {
@@ -37,13 +39,14 @@ class App extends React.Component {
     <BrowserRouter>
       <Route exact path='/' component={Start}/>
       <Route path='/Schnittmuster' component={CuttingPatternsRX}/>
-      <Route path='/Neuheiten' component={NewsSection}/>
       <Route path='/Kleidung' component={ClothesRX}/>
-      <Route path='/Kontakt' component={NavBar}/>
-      <Route path='/Kontakt' component={ContactFooter}/>
+      <Route path='/Neuheiten' component={NewsSection}/>
       <Route path='/Warenkorb' component={ShoppingBasketRX}/>
       <Route path='/Login' component={UserLogin}/>
       <Route path='/UserRegistration' component={UserRegistration}/>
+      <Route path='/Kontakt' component={ContactFooter}/>
+      <Route path='/Galerie' component={HomeGallery}/>
+      <Route path='/UPDATE' component={AdminUpdate}/>
     </BrowserRouter>
     </div>
   )};
