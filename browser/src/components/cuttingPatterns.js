@@ -180,8 +180,6 @@ export class CuttingPatterns extends React.Component {
   }
 
   render() {
-    console.log(this.props.next);
-    console.log(this.props.shownPatterns);
     return (
       <>
         <NavBar />
