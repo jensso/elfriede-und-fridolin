@@ -9,9 +9,10 @@ class ShopSummary extends React.Component {
       <div>
         <span>netto {(this.props.total/1.19).toFixed(2)}</span><br/>
         <span>zzgl. MwSt {(this.props.total*0.19/1.19).toFixed(2)}</span><br/><br/>
-        <span>+ Versandkosten {(6.9).toFixed(2)}</span><br/><br/>
+        <br/><br/>
         <hr />
-        <b>Summe: € {(this.props.total+6.9).toFixed(2)}</b>
+        <b>Summe: € {this.props.total}</b><br />
+        {this.props.total !==0 && <span>(bei Postversand zzgl. Versandkosten € {(6.9).toFixed(2)})</span>}
         <hr />
         <Button onClick={this.props.submit}>bestellen</Button>
       </div>

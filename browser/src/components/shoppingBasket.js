@@ -71,14 +71,10 @@ class ShoppingBasket extends React.Component {
             return (
               <li  key={index}>
                 <Button id={obj.id} onClick={this.props.removeItem}>X</Button>
-                <img onClick={(ev)=>console.log(ev.target.id)} src={require(`../content/images/${obj.produktfotos[0]}.jpg`)} alt="pic"></img>
-                <span>
-                  {obj.produktname}<br/>
-                  {obj.produktbeschreibung}<br />
-                  {obj.preis}
-                  <hr/ >
-                  {obj.id}
-                </span>
+                <img onClick={(ev)=>console.log(ev.target.id)} src={require(`../content/produktfotos_ef/${obj.produktfotos[0]}.jpg`)} alt="pic"></img>
+                <span>{obj.produktTyp}</span><br/>
+                  <span>{obj.produktname}</span><br />
+                  <span>{(obj.preis).toFixed(2)} €</span>
               </li>
           )
           })}

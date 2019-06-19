@@ -174,6 +174,7 @@ const MuiBox = styled(Box)({
   },
 })
 export class CuttingPatterns extends React.Component {
+
   componentDidMount() {
     this.props.makeFetch();
   }
@@ -202,9 +203,10 @@ export class CuttingPatterns extends React.Component {
                   <h5>{obj.produktname}</h5>
                   <section>
                       <img onClick={(ev)=>console.log(obj.id)} src={require(`../content/produktfotos_ef/${obj.produktfotos[this.props.next]}.jpg`)} alt={`pic of ${obj.produktname}`}></img>
+                      <h5>{obj.produktTyp}</h5>
                       <p>{obj.produktbeschreibung}</p>
                       <div id={obj.id}>
-                       <span>{obj.preis}</span>
+                       <span>{(obj.preis).toFixed(2)} €</span>
                        <button id={obj.id} onClick={this.props.buyItem}>
                          <i className="material-icons">&#xe8cc;</i>
                        </button>
