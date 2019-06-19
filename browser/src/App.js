@@ -32,9 +32,9 @@ class App extends React.Component {
   render() {
   return (
     <div className="App">
-    <HomeGallery />
     <BrowserRouter>
       <Route exact path='/' component={Start}/>
+      <Route path='/Galerie' component={HomeGallery}/>
       <Route path='/Schnittmuster' component={CuttingPatternsRX}/>
       <Route path='/Neuheiten' component={NewsSection}/>
       <Route path='/Kleidung' component={ClothesRX}/>

@@ -7,6 +7,8 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
+import { NavBar } from './navbar.js';
+
 // import home_1 from '../content/images/home_1.jpg';
 // import home_2 from '../content/images/home_2.jpg';
 
@@ -157,6 +159,7 @@ export class HomeGallery extends React.Component {
   render() {
     return (
       <>
+        <NavBar />
         <SwipeableTextMobileStepper />
       </>
     )
