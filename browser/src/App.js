@@ -3,7 +3,7 @@ import './App.css';
 import { Footer } from './components/footer.js';
 import { NavBar } from './components/navbar.js';
 import { LandingPage } from './components/main.js';
-// import { HomeGallery } from './components/homeGallery.js';
+import { HomeGallery } from './components/homeGallery.js';
 import { NavHome } from './components/navHome.js';
 // import { SwipeableTextMobileStepper } from './components/homeGallery.js';
 import { ContactFooter } from './components/contactFooter.js';
@@ -32,6 +32,7 @@ class App extends React.Component {
   render() {
   return (
     <div className="App">
+    <HomeGallery />
     <BrowserRouter>
       <Route exact path='/' component={Start}/>
       <Route path='/Schnittmuster' component={CuttingPatternsRX}/>
