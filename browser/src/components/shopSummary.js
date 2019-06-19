@@ -196,6 +196,7 @@ const MuiBox = styled(Box)({
 class ShopSummary extends React.Component {
   render() {
     return(
+
       <MuiBox>
         <div>
           <section>
@@ -208,6 +209,7 @@ class ShopSummary extends React.Component {
           <Button onClick={this.props.submit}>bestellen</Button>
         </div>
       </MuiBox>
+
     )
   }
 }

@@ -54,6 +54,7 @@ const reducer = (state=initialState, action)=> {
         copyOfState.basket = [...state.basket,copyOfState.payload[i]];
       }
     }
+    copyOfState.total = copyOfState.basket.reduce((total, order)=> {return total+order.preis},0).toFixed(2);
     return copyOfState;
     case 'REMOVEITEM':
     // console.log(copyOfState.basket);
@@ -63,6 +64,8 @@ const reducer = (state=initialState, action)=> {
         // console.log(copyOfState.basket[i].id===action.id);
         copyOfState.basket.splice(i, 1);
         copyOfState.basket = [...state.basket];
+        copyOfState.total = copyOfState.basket.reduce((total, order)=> {return total+order.preis},0).toFixed(2);
+
         return copyOfState;
       }
     }

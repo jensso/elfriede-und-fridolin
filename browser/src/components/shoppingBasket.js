@@ -183,6 +183,7 @@ class ShoppingBasket extends React.Component {
   render() {
     return(
       <>
+
         <NavBar />
           <MuiBox>
             <section>
@@ -196,7 +197,7 @@ class ShoppingBasket extends React.Component {
                   <div>
                     <li key={index}>
                       <Button id={obj.id} onClick={this.props.removeItem}>X</Button>
-                      <img onClick={(ev)=>console.log(ev.target.id)} src={require(`../content/images/${obj.produktfotos[0]}.jpg`)} alt="pic"></img>
+                      <img onClick={(ev)=>console.log(ev.target.id)} src={require(`../content/produktfotos_ef/${obj.produktfotos[0]}.jpg`)} alt="pic"></img>
                       <div>
                         <p>{obj.produktname}</p>
                         <p>{obj.produktbeschreibung}</p>
@@ -212,6 +213,7 @@ class ShoppingBasket extends React.Component {
           <ShopSummaryRX />
 
         </main>
+
       </MuiBox>
       </>
     )
