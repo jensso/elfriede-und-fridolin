@@ -173,6 +173,7 @@ const MuiBox = styled(Box)({
     },
   },
 })
+
 export class CuttingPatterns extends React.Component {
 
   componentDidMount() {

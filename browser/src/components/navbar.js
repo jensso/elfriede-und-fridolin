@@ -135,7 +135,6 @@ return (
   <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
     <MenuItem onClick={handleClose}>
       <NavLink to="/Warenkorb">Warenkorb</NavLink>
-
     </MenuItem>
   </Menu>
 </div>
@@ -158,7 +157,14 @@ function SimpleMenuLogin() {
        LOGIN
       </Button>
       <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-        <MenuItem onClick={handleClose}><UserLogin /></MenuItem>
+
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/Login">Login</NavLink>
+        </MenuItem>
+
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/UserRegistration">Registrierung</NavLink>
+        </MenuItem>
       </Menu>
     </div>
   );
