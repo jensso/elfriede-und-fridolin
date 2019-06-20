@@ -7,36 +7,65 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
-import home_1 from '../content/images/home_1.jpg';
+import { NavBar } from './navbar.js';
+
+// import home_1 from '../content/images/home_1.jpg';
 // import home_2 from '../content/images/home_2.jpg';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
-
 const tutorialSteps = [
   {
-    label: 'San Francisco – Oakland Bay Bridge, United States',
-    imgPath:
-      home_1,
+    label: 'Barcode',
+    imgPath: require(`../content/produktfotos_ef/barcode1.jpg`),
+    },
+  {
+    label: 'Liebe-Glaube-Hoffnung',
+    imgPath: require(`../content/produktfotos_ef/faith1.jpg`)  },
+  {
+      label: 'faith',
+      imgPath: require(`../content/produktfotos_ef/faith2.jpg`)  },
+  {
+        label: 'Kalotte',
+        imgPath:
+        require(`../content/produktfotos_ef/kalotte1.jpg`)  },
+  {
+          label: 'Quadra 1',
+          imgPath: require(`../content/produktfotos_ef/quadra1.jpg`)  },
+  {
+            label: 'Quadra 2',
+            imgPath: require(`../content/produktfotos_ef/quadra2.jpg`)  },
+  {
+    label: 'Quadra 3',
+    imgPath: require(`../content/produktfotos_ef/quadra3.jpg`)  },
+  {
+   label: 'Markise',
+    imgPath: require(`../content/images/mood_markise.jpg`)  },
+  {
+    label: 'Triangulum 1',
+    imgPath: require(`../content/produktfotos_ef/triangulum1.jpg`)  },
+  {
+  label: 'Triangulum 2',
+  imgPath: require(`../content/produktfotos_ef/triangulum2.jpg`)
   },
   {
-    label: 'Bird',
-    imgPath:
-    'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80',
+  label: 'Triangulum 3',
+  imgPath: require(`../content/produktfotos_ef/triangulum3.jpg`)
   },
   {
-    label: 'Bali, Indonesia',
-    imgPath:
-      'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80',
+  label: 'Triangulum 4',
+  imgPath: require(`../content/produktfotos_ef/triangulum4.jpg`)
   },
   {
-    label: 'NeONBRAND Digital Marketing, Las Vegas, United States',
-    imgPath:
-      'https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=400&h=250&q=60',
+  label: 'Vestis 1',
+  imgPath: require(`../content/produktfotos_ef/vestis1.jpg`)
   },
   {
-    label: 'Goč, Serbia',
-    imgPath:
-      'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
+  label: 'Vestis 2',
+  imgPath: require(`../content/produktfotos_ef/vestis2.jpg`)
+  },
+  {
+  label: 'Hoody',
+  imgPath: require(`../content/images/home_1.jpg`)
   },
 ];
 
@@ -55,13 +84,13 @@ const useStyles = makeStyles(theme => ({
     }
   },
   img: {
-    width: '50%',
-    height: '25vw',
+    width: '100%',
+    height: '50vw',
     overflow: 'hidden',
-    '&:nth-of-type(odd)':
-    {
-      transform: 'scaleX(-1)',
-    },
+    // '&:nth-of-type(odd)':
+    // {
+    //   transform: 'scaleX(-1)',
+    // },
   },
 }));
 
@@ -99,7 +128,6 @@ function SwipeableTextMobileStepper() {
             {Math.abs(activeStep - index) <= 2 ? (
               <>
               <img className={classes.img} src={step.imgPath} alt={step.label} />
-              <img className={classes.img} src={step.imgPath} alt={step.label} />
               </>
             ) : null}
           </div>
@@ -131,6 +159,7 @@ export class HomeGallery extends React.Component {
   render() {
     return (
       <>
+        <NavBar />
         <SwipeableTextMobileStepper />
       </>
     )

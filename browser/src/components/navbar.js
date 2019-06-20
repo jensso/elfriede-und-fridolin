@@ -9,6 +9,7 @@ import { NavLink } from 'react-router-dom';
 // import { NavHome } from './navHome.js';
 // import { ShoppingBasketRX } from './shoppingBasket.js';
 import { UserLogin } from './userLogin.js';
+import { AdminLogin } from './adminLogin.js';
 // import { NewsSection } from './news.js';
 // import watercolour_green from '../content/images/watercolour_green.png';
 
@@ -135,7 +136,6 @@ return (
   <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
     <MenuItem onClick={handleClose}>
       <NavLink to="/Warenkorb">Warenkorb</NavLink>
-
     </MenuItem>
   </Menu>
 </div>
@@ -158,7 +158,15 @@ function SimpleMenuLogin() {
        LOGIN
       </Button>
       <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-        <MenuItem onClick={handleClose}><UserLogin /></MenuItem>
+
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/Login">Login</NavLink>
+        </MenuItem>
+
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/UserRegistration">Registrierung</NavLink>
+        </MenuItem>
+
       </Menu>
     </div>
   );
