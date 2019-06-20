@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-
 const initialState = {
   payload: [],
   shownPatterns: [],
@@ -10,6 +9,12 @@ const initialState = {
   next: 0,
   total: 0,
   submitted: false,
+  userVal: '',
+  pwVal: '',
+  loginRedir: false,
+  userInfo: null,
+  loginFail: false,
+  redirHome: false,
  };
 
 const reducer = (state=initialState, action)=> {
@@ -86,6 +91,20 @@ const reducer = (state=initialState, action)=> {
     return copyOfState;
   }
 }
+const jwt = require('jsonwebtoken');
+const authenticated = async (req, res, next) => {
+  try {
+    const tokenCookie = req.cookies.authToken.split(' ')[1];
+    await jwt.verify(tokenCookie, process.env.SECRET);
+
+    req.token = tokenCookie;
+
+    next();
+  }catch (error) {
+    next(error);
+  }
+}
+
 export const bringPayload = (data)=> {
   console.log(data);
   return {
@@ -150,6 +169,76 @@ export const fetchFromExpress = ()=> {
       dispatch(bringPayload(data))
     })
     .catch(err=> console.error(err))
+  }
+}
+export const hasFailedAction = () => {
+  return {
+    type: 'HAS_FAILED',
+  }
+}
+export const changeAction = userPayload => {
+  return {
+    type: 'CHANGE',
+    userPayload: userPayload,
+  }
+}
+export const requestAction = userData => {
+  return {
+    type: 'FETCH_DATA',
+    userData: userData,
+  }
+}
+export const redirectToLogin = () => {
+  return {
+    type: 'REDIRECT_LOGIN',
+  }
+}
+export const redirectToHome = () => {
+  return {
+    type: 'REDIRECT_HOME',
+  }
+}
+export const loginFetch = credentials => {
+  return function(dispatch) {
+    fetch('/users/login', {
+      method: 'post',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify(credentials)
+    })
+    .then(res => {
+      if (res.status === 400 || res.status === 404) {
+        throw new Error('Authentication failed');
+      }
+
+      return res.json();
+    })
+    .then(userData => {
+      console.log(userData);
+      authenticated.login();
+      dispatch(requestAction(userData));
+      dispatch(redirectToLogin());
+    })
+    .catch(err => {
+      console.warn(err);
+      dispatch(hasFailedAction());
+    })
+  }
+}
+export const reduxLogout = () => {
+  return function(dispatch) {
+    fetch('/users/loggedOut')
+      .then(res => {
+        if (res.status === 400 || res.status === 404) {
+          throw new Error('Log out failed');
+        }
+        return res.json();
+      })
+      .then(msgData => {
+        console.log(msgData);
+        dispatch(redirectToHome());
+      })
+      .catch(err => console.warn(err))
   }
 }
 

@@ -11,6 +11,9 @@ const userSchema = new mongoose.Schema({
   Land: {type: String, required: true},
   Email: {type: String, required: true},
   Password: {type: String, required: true},
+  resertPasswordToken: String,
+  resetPasswordExpires: String,
+  isAdmin: {type: Boolean, required: false, default: false}
   resetPasswordToken: String,
   resetPasswordExpires: Date,
   isAdmin: {type: Boolean, default: false},
