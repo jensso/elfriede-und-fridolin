@@ -11,17 +11,11 @@ const userSchema = new mongoose.Schema({
   Land: {type: String, required: true},
   Email: {type: String, required: true},
   Password: {type: String, required: true},
-<<<<<<< HEAD
   resetPasswordToken: String,
   resetPasswordExpires: Date,
   isAdmin: {type: Boolean, default: false},
   isConfirmed: {type: Boolean, default: false},
   temporaryToken: String
-=======
-  resertPasswordToken: String,
-  resetPasswordExpires: String,
-  isAdmin: {type: Boolean, required: false, default: false}
->>>>>>> makeAdminUpdate
 }, {versionKey: false})
 
 
