@@ -17,7 +17,7 @@ const userCreateValidator = [
     check('Password')
     .exists().withMessage('The password field is mandatory')
     .trim()
-    .isLength({min:8, max: 35}).withMessage('Password between 8 and 35')
+    .isLength({min:8, max: 35}).withMessage('Password must be between 8 and 35 letters!')
     .escape(),
 ];
 
