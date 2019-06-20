@@ -88,23 +88,8 @@ export class Admin extends React.Component {
       <>
         <NavBar />
         <MuiUserLogin>
-          <form>
           <h2>Willkommen Antje!</h2>
-
-              <div>
-                <label>Email-Adresse*</label>
-                <input
-                  type="email"
-                />
-              </div>
-              <div>
-                <label>Kennwort*</label>
-                <input
-                  type="password"
-                />
-              </div>
-
-              <span>* Pflichtfelder</span><br />
+          <form>
 
           </form>
 
