@@ -1,7 +1,8 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 const initialState = {
-  payload: [],
+  payloadClothes: [],
+  payloadPatterns: [],
   shownPatterns: [],
   shownClothes: [],
   basket: [],
@@ -21,19 +22,30 @@ const reducer = (state=initialState, action)=> {
   const copyOfState = {...state};
 
   switch(action.type) {
-    case 'FETCHDATA':
-    copyOfState.payload = action.payload;
-    copyOfState.shownPatterns = action.payload;
-    copyOfState.shownClothes = action.payload;
-    console.table(copyOfState.payload);
+    case 'FETCHDATA_clothes':
+    copyOfState.payloadClothes = action.payloadClothes;
+    copyOfState.shownClothes = action.payloadClothes;
     return copyOfState;
-    case 'FILTERDATA':
-    const filteredPatterns = copyOfState.payload.filter(obj=> {
+
+    case 'FETCHDATA_patterns':
+    copyOfState.payloadPatterns = action.payloadPatterns;
+    copyOfState.shownPatterns = action.payloadPatterns;
+    return copyOfState;
+
+    case 'FILTERDATA_patterns':
+    const filteredPatterns = copyOfState.payloadPatterns.filter(obj=> {
      return obj.category.toLowerCase() === action.ev.target.innerText.toLowerCase();
       });
-    copyOfState.shownPatterns = filteredPatterns;
-    copyOfState.shownClothes = filteredPatterns;
-    return copyOfState;
+      copyOfState.shownPatterns = filteredPatterns;
+      return copyOfState;
+
+      case 'FILTERDATA_clothes':
+      const filteredClothes = copyOfState.payloadClothes.filter(obj=> {
+       return obj.category.toLowerCase() === action.ev.target.innerText.toLowerCase();
+        });
+      copyOfState.shownClothes = filteredClothes;
+      return copyOfState;
+
     case 'NEXT':
     console.table(copyOfState);
     for (let i=0; i< copyOfState.payload[i].produktfotos.length; i++) {
@@ -52,15 +64,25 @@ const reducer = (state=initialState, action)=> {
   }
     console.log(copyOfState.next);
     return copyOfState;
-    case 'BUYITEM':
-    console.table(copyOfState);
-    for (let i=0; i< copyOfState.payload.length; i++) {
-      if (copyOfState.payload[i].id===action.ev.target.parentElement.id) {
-        copyOfState.basket = [...state.basket,copyOfState.payload[i]];
+    case 'BUY_clothes':
+    console.table(copyOfState.basket);
+    for (let i=0; i< copyOfState.payloadClothes.length; i++) {
+      if (copyOfState.payloadClothes[i].id===action.ev.target.parentElement.id) {
+        copyOfState.basket = [...state.basket,copyOfState.payloadClothes[i]];
       }
     }
     copyOfState.total = copyOfState.basket.reduce((total, order)=> {return total+order.preis},0).toFixed(2);
     return copyOfState;
+    case 'BUY_patterns':
+    console.table(copyOfState.basket);
+    for (let i=0; i< copyOfState.payloadPatterns.length; i++) {
+      if (copyOfState.payloadPatterns[i].id===action.ev.target.parentElement.id) {
+        copyOfState.basket = [...state.basket,copyOfState.payloadPatterns[i]];
+      }
+    }
+    copyOfState.total = copyOfState.basket.reduce((total, order)=> {return total+order.preis},0).toFixed(2);
+    return copyOfState;
+
     case 'REMOVEITEM':
     // console.log(copyOfState.basket);
     // console.log(action.id);
@@ -81,11 +103,10 @@ const reducer = (state=initialState, action)=> {
     copyOfState.basket = [];
     copyOfState.total = 0;
     console.warn(copyOfState);
-
     return copyOfState;
 
     case 'REDIR':
-      return copyOfState;
+    return copyOfState;
 
     default:
     return copyOfState;
@@ -105,21 +126,34 @@ const authenticated = async (req, res, next) => {
   }
 }
 
-export const bringPayload = (data)=> {
-  console.log(data);
+export const bringPayloadPatterns = (data)=> {
   return {
-    type: 'FETCHDATA',
-    payload: data,
-    shownPatterns: data,
-    shownClothes: data,
+    type: 'FETCHDATA_patterns',
+    payloadPatterns: data,
+    // shownPatterns: data,
     }
 }
-export const filterPayload = (ev)=> {
+export const bringPayloadClothes = (data)=> {
   return {
-    type: 'FILTERDATA',
+    type: 'FETCHDATA_clothes',
+    payloadClothes: data,
+    // shownClothes: data,
+    }
+}
+
+export const filterPatterns = (ev)=> {
+  return {
+    type: 'FILTERDATA_patterns',
     ev: ev,
   }
 }
+export const filterClothes = (ev)=> {
+  return {
+    type: 'FILTERDATA_clothes',
+    ev: ev,
+  }
+}
+
 export const nextPic = (ev)=> {
   console.log(ev.target.parentElement.id)
   return {
@@ -129,19 +163,26 @@ export const nextPic = (ev)=> {
     id: ev.target.parentElement.id,
   }
 }
-
-export const buyItem = (ev)=> {
+//actions to the basket
+export const buyPatterns = (ev)=> {
   console.log(ev.target.id)
   return {
-    type: 'BUYITEM',
+    type: 'BUY_patterns',
     ev: ev,
     target: ev.target,
     id: ev.target.id,
   }
 }
-
+export const buyClothes = (ev)=> {
+  console.log(ev.target.id)
+  return {
+    type: 'BUY_clothes',
+    ev: ev,
+    target: ev.target,
+    id: ev.target.id,
+  }
+}
 export const removeItem = (ev)=> {
-  // console.log(ev.target.parentElement.id);
   return {
     type: 'REMOVEITEM',
     ev: ev,
@@ -154,6 +195,7 @@ export const submitOrder = (ev)=> {
     ev: ev,
   }
 }
+
 export const redir = (ev)=> {
     return {
       type: 'REDIR',
@@ -161,16 +203,27 @@ export const redir = (ev)=> {
     }
 }
 
-export const fetchFromExpress = ()=> {
+export const fetchPatterns = ()=> {
   return function(dispatch) {
     fetch('/patterns/getPatterns')
     .then(res=> res.json())
     .then(data=> {
-      dispatch(bringPayload(data))
+      dispatch(bringPayloadPatterns(data));
     })
     .catch(err=> console.error(err))
   }
 }
+export const fetchClothes = ()=> {
+  return function(dispatch) {
+    fetch('/clothes/getAllClothes')
+    .then(res=> res.json())
+    .then(data=> {
+      dispatch(bringPayloadClothes(data))
+    })
+    .catch(err=> console.error(err))
+  }
+}
+// actions on users-collection:
 export const hasFailedAction = () => {
   return {
     type: 'HAS_FAILED',

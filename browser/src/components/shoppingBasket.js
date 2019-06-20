@@ -18,10 +18,6 @@ const MuiBox = styled(Box)({
         fontWeight: 'lighter',
         letterSpacing: '0.5rem',
         color: '#ad8262',
-        '&:hover': {
-          cursor: 'pointer',
-          fontWeight: 'bolder',
-        }
       },
 
       '& span': {
@@ -177,9 +173,6 @@ const MuiBox = styled(Box)({
 
 class ShoppingBasket extends React.Component {
 
-  componentDidMount() {
-    console.log(this.props);
-  }
   render() {
     return(
       <>
@@ -194,8 +187,8 @@ class ShoppingBasket extends React.Component {
 
               {this.props.basket.map((obj, index)=>{
                 return (
-                  <div>
-                    <li key={index}>
+                  <div key={index}>
+                    <li>
                       <Button id={obj.id} onClick={this.props.removeItem}>X</Button>
                       <img onClick={(ev)=>console.log(ev.target.id)} src={require(`../content/produktfotos_ef/${obj.produktfotos[0]}.jpg`)} alt="pic"></img>
                       <div>

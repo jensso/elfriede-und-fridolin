@@ -8,8 +8,8 @@ import { NavLink } from 'react-router-dom';
 // import { NavGallery } from './navGallery.js';
 // import { NavHome } from './navHome.js';
 // import { ShoppingBasketRX } from './shoppingBasket.js';
-import { UserLogin } from './userLogin.js';
-import { AdminLogin } from './adminLogin.js';
+// import { UserLogin } from './userLogin.js';
+// import { AdminLogin } from './adminLogin.js';
 // import { NewsSection } from './news.js';
 // import watercolour_green from '../content/images/watercolour_green.png';
 

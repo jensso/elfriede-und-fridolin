@@ -1,10 +1,13 @@
 import {
   submitOrder,
   redir,
-  buyItem,
+  buyPatterns,
+  buyClothes,
   removeItem,
-  fetchFromExpress,
-  filterPayload,
+  fetchPatterns,
+  fetchClothes,
+  filterPatterns,
+  filterClothes,
   nextPic,
   hasFailedAction,
   changeAction,
@@ -18,7 +21,8 @@ import {
 
 export const mapStateToProps = (state)=> {
   return {
-    payload: state.payload,
+    payloadClothes: state.payloadClothes,
+    payloadPatterns: state.payloadPatterns,
     shownPatterns: state.shownPatterns,
     shownClothes: state.shownClothes,
     basket: state.basket,
@@ -36,10 +40,13 @@ export const mapStateToProps = (state)=> {
 }
 export const mapDispatchToProps = (dispatch)=> {
    return {
-    makeFetch: (ev)=> dispatch(fetchFromExpress(ev)),
-    filterData: (ev)=> dispatch(filterPayload(ev)),
+    fetchPatterns: (ev)=> dispatch(fetchPatterns(ev)),
+    fetchClothes: (ev)=> dispatch(fetchClothes(ev)),
+    filterPatterns: (ev)=> dispatch(filterPatterns(ev)),
+    filterClothes: (ev)=> dispatch(filterClothes(ev)),
     nextPic: (ev)=> dispatch(nextPic(ev)),
-    buyItem: (ev)=> dispatch(buyItem(ev)),
+    buyClothes: (ev)=> dispatch(buyClothes(ev)),
+    buyPatterns: (ev)=> dispatch(buyPatterns(ev)),
     removeItem: (ev)=> dispatch(removeItem(ev)),
     submit: (ev)=> dispatch(submitOrder(ev)),
     redir: (ev)=> dispatch(redir(ev)),

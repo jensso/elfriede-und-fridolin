@@ -175,9 +175,8 @@ const MuiBox = styled(Box)({
 })
 
 export class CuttingPatterns extends React.Component {
-
   componentDidMount() {
-    this.props.makeFetch();
+    this.props.fetchPatterns();
   }
 
   render() {
@@ -186,13 +185,13 @@ export class CuttingPatterns extends React.Component {
         <NavBar />
           <MuiBox>
             <section>
-              <h2 onClick={this.props.makeFetch}>Schnittmuster</h2>
+              <h2 onClick={this.props.fetchPatterns}>Schnittmuster</h2>
               <div>
-                <Button onClick={this.props.filterData}>Damen</Button>
+                <Button onClick={this.props.filterPatterns}>Damen</Button>
                 <span>|</span>
-                <Button onClick={this.props.filterData}>Kinder</Button>
+                <Button onClick={this.props.filterPatterns}>Kinder</Button>
                 <span>|</span>
-                <Button onClick={this.props.filterData}>Accessoires</Button>
+                <Button onClick={this.props.filterPatterns}>Accessoires</Button>
               </div>
             </section>
 
@@ -206,7 +205,7 @@ export class CuttingPatterns extends React.Component {
                       <p>{obj.produktbeschreibung}</p>
                       <div id={obj.id}>
                        <span>{(obj.preis).toFixed(2)} €</span>
-                       <button id={obj.id} onClick={this.props.buyItem}>
+                       <button id={obj.id} onClick={this.props.buyPatterns}>
                          <i className="material-icons">&#xe8cc;</i>
                        </button>
                       </div>
