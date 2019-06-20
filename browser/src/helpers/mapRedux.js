@@ -38,7 +38,14 @@ export const mapStateToProps = (state)=> {
     loginFail: state.loginFail,
     redirHome: state.redirHome,
     newProduct: state.newProduct,
-    inputVal: state.inputVal,
+    inputVal1: state.inputVal1,
+    inputVal2: state.inputVal2,
+    inputVal3: state.inputVal3,
+    inputVal4: state.inputVal4,
+    inputVal5: state.inputVal5,
+    inputVal6: state.inputVal6,
+    inputVal7: state.inputVal7,
+    inputVal8: state.inputVal8,
   }
 }
 export const mapDispatchToProps = (dispatch)=> {

@@ -17,7 +17,14 @@ const initialState = {
   loginFail: false,
   redirHome: false,
   newProduct: {},
-  inputVal: '',
+  inputVal1: '',
+  inputVal2: '',
+  inputVal3: '',
+  inputVal4: '',
+  inputVal5: '',
+  inputVal6: '',
+  inputVal7: '',
+  inputVal8: '',
  };
 
 const reducer = (state=initialState, action)=> {
@@ -46,10 +53,46 @@ const reducer = (state=initialState, action)=> {
       return copyOfState;
     case 'INPUT':
     // action.event.preventDefault();
-      console.log(copyOfState.newOrder);
-      copyOfState.inputVal = action.target.value;
-      copyOfState.newOrder.produktname = copyOfState.inputVal;
+    console.log(copyOfState.newProduct);
+    console.log(action.value);
+
+    switch(document.getElementById(`${action.target.id}`).id) {
+      case 'produktname':
+      copyOfState.inputVal1 = action.value;
+      copyOfState.newProduct.produktname = copyOfState.inputVal1;
       return copyOfState;
+      case 'produktnummer':
+      copyOfState.inputVal2 = action.value;
+      copyOfState.newProduct.produktnummer = copyOfState.inputVal2;
+      return copyOfState;
+      case 'produktfotos':
+      copyOfState.inputVal3 = action.value;
+      copyOfState.newProduct.produktfotos = copyOfState.inputVal3;
+      return copyOfState;
+      case 'preis':
+      copyOfState.inputVal4 = action.value;
+      copyOfState.newProduct.preis = copyOfState.inputVal4;
+      return copyOfState;
+      case 'produktTyp':
+      copyOfState.inputVal5 = action.value;
+      copyOfState.newProduct.produktnummer = copyOfState.inputVal5;
+      return copyOfState;
+      case 'produktbeschreibung':
+      copyOfState.inputVal6 = action.value;
+      copyOfState.newProduct.produktnummer = copyOfState.inputVal6;
+      return copyOfState;
+      case 'category':
+      copyOfState.inputVal7 = action.value;
+      copyOfState.newProduct.produktnummer = copyOfState.inputVal7;
+      return copyOfState;
+      case 'id':
+      copyOfState.inputVal8 = action.value;
+      copyOfState.newProduct.produktnummer = copyOfState.inputVal8;
+      return copyOfState;
+
+      default:
+      return copyOfState;
+      }
 
     case 'NEXT':
     console.table(copyOfState);
