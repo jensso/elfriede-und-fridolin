@@ -1,6 +1,5 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
-import { NavBar } from './navbar.js';
 import { styled } from '@material-ui/styles';
 import Markise from '../content/images/mood_markise.jpg';
 import Livi from '../content/images/mood_livi.jpg';
@@ -107,7 +106,6 @@ export class ContactFooter extends React.Component {
   render() {
     return (
       <>
-        <NavBar />
         <MuiContactFooter>
           <div>
             <h2>Kontakt</h2>

@@ -75,7 +75,7 @@ const useStyles = makeStyles(theme => ({
   },
   header: {
     display: 'flex',
-    height: '4vw',
+    // height: 'vw',
     padding: '2vw',
     backgroundColor: '#753',
     color: 'white',
@@ -85,12 +85,7 @@ const useStyles = makeStyles(theme => ({
   },
   img: {
     width: '100%',
-    height: '50vw',
-    overflow: 'hidden',
-    // '&:nth-of-type(odd)':
-    // {
-    //   transform: 'scaleX(-1)',
-    // },
+    height: '35vw',
   },
 }));
 
