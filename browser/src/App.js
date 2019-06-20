@@ -44,6 +44,7 @@ class App extends React.Component {
       <Route path='/Warenkorb' component={ShoppingBasketRX}/>
       <Route path='/Login' component={UserLogin}/>
       <Route path='/UserRegistration' component={UserRegistration}/>
+      <Route path='/Kontakt' component={NavBar}/>
       <Route path='/Kontakt' component={ContactFooter}/>
       <Route path='/Galerie' component={HomeGallery}/>
       <Route path='/UPDATE' component={AdminUpdate}/>
