@@ -202,7 +202,7 @@ class ShopSummary extends React.Component {
           <section>
               <span>netto {(this.props.total/1.19).toFixed(2)}</span>
               <p>zzgl. MwSt {(this.props.total*0.19/1.19).toFixed(2)}</p>
-              <span>Summe: € {(this.props.total}</span>
+              <span>Summe: € {this.props.total}</span>
               {this.props.total !==0 && <p>+ Versandkosten {(6.9).toFixed(2)}</p>}
           </section>
 

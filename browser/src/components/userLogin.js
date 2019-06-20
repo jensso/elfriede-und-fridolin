@@ -6,7 +6,11 @@ import { NavBar } from './navbar.js';
 
 const MuiUserLogin = styled(Container)({
 
-    width: '60%',
+  width: '100%',
+  padding: '0 30%',
+  '@media (max-width: 600px)': {
+    padding: '0 10%',
+  },
 
   '& h2': {
     fontFamily: 'Open Sans Condensed',
@@ -17,7 +21,7 @@ const MuiUserLogin = styled(Container)({
     textAlign: 'center',
     // borderBottom: '1px solid #9C938E',
     paddingBottom: '1vw',
-    margin: '33% 0 15% 0'
+    margin: '10% 0 15% 0'
     },
 
   '& h5': {
@@ -27,11 +31,6 @@ const MuiUserLogin = styled(Container)({
       fontWeight: 'bolder',
       color: '#9C938E',
       letterSpacing: '0.2rem',
-      // fontFamily: 'Open Sans Condensed',
-      // textTransform: 'uppercase',
-      // fontWeight: 'lighter',
-      // color: '#ad8262',
-      // letterSpacing: '0.3rem',
       textAlign: 'center',
       },
 
@@ -52,7 +51,8 @@ const MuiUserLogin = styled(Container)({
     float: 'right',
     border: 'none',
     borderBottom: '1px solid #9C938E',
-    margin: '0.3vw 0',
+    marginTop: '0.6vw',
+    width: '50%',
     },
   },
 
@@ -81,6 +81,7 @@ const MuiUserLogin = styled(Container)({
   },
 
 })
+
 export class UserLogin extends React.Component {
   render() {
     return (
