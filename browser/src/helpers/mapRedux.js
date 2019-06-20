@@ -8,6 +8,7 @@ import {
   fetchClothes,
   filterPatterns,
   filterClothes,
+  changeInput,
   nextPic,
   hasFailedAction,
   changeAction,
@@ -36,6 +37,8 @@ export const mapStateToProps = (state)=> {
     userInfo: state.userInfo,
     loginFail: state.loginFail,
     redirHome: state.redirHome,
+    newProduct: state.newProduct,
+    inputVal: state.inputVal,
   }
 }
 export const mapDispatchToProps = (dispatch)=> {
@@ -57,5 +60,6 @@ export const mapDispatchToProps = (dispatch)=> {
     redirHome: ()=> dispatch(redirectToHome()),
     loginFetch: (credentials)=> dispatch(loginFetch(credentials)),
     reduxLogout: ()=> dispatch(reduxLogout()),
+    changeInput: (ev)=> dispatch(changeInput(ev)),
   }
 }

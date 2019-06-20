@@ -9,9 +9,6 @@ import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { NavBar } from './navbar.js';
 
-// import home_1 from '../content/images/home_1.jpg';
-// import home_2 from '../content/images/home_2.jpg';
-
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const tutorialSteps = [
   {
@@ -32,8 +29,8 @@ const tutorialSteps = [
           label: 'Quadra 1',
           imgPath: require(`../content/produktfotos_ef/quadra1.jpg`)  },
   {
-            label: 'Quadra 2',
-            imgPath: require(`../content/produktfotos_ef/quadra2.jpg`)  },
+            label: 'stylisch - individuell - einmalig',
+            imgPath: require(`../content/images/home_2.jpg`)  },
   {
     label: 'Quadra 3',
     imgPath: require(`../content/produktfotos_ef/quadra3.jpg`)  },
@@ -67,25 +64,43 @@ const tutorialSteps = [
   label: 'Hoody',
   imgPath: require(`../content/images/home_1.jpg`)
   },
+  {
+  label: 'www.elfriede-und-friedolin.de',
+  imgPath: require(`../content/images/logo.jpg`)
+  },
 ];
 
 const useStyles = makeStyles(theme => ({
   root: {
-    margin: '1vw auto',
+    margin: '0.1vw auto',
+    fontSize: '3rem',
+  },
+  myStyle: {
+    background: '#753',
+    padding: '2rem',
+    textAlign: 'right',
+    textShadow: '0.1rem 0.2rem 0.3rem lime',
+    color: 'white',
+    fontFamily: 'Open Sans Condensed',
   },
   header: {
     display: 'flex',
-    // height: 'vw',
+    height: '2vw',
     padding: '2vw',
     backgroundColor: '#753',
     color: 'white',
+    fontFamily: 'Open Sans Condensed',
+
+
     '& button': {
+      fontSize: '4rem',
+      fontFamily: 'Open Sans Condensed',
       color: 'white',
     }
   },
   img: {
     width: '100%',
-    height: '35vw',
+    height: '25vw',
   },
 }));
 
@@ -109,7 +124,7 @@ function SwipeableTextMobileStepper() {
 
   return (
     <div className={classes.root}>
-      <Paper square elevation={0} className={classes.header}>
+      <Paper square elevation={0} className={classes.myStyle}>
         <Typography>{tutorialSteps[activeStep].label}</Typography>
       </Paper>
       <AutoPlaySwipeableViews

@@ -5,7 +5,7 @@ import { NavBar } from './components/navbar.js';
 import { LandingPage } from './components/main.js';
 import { HomeGallery } from './components/homeGallery.js';
 import { NavHome } from './components/navHome.js';
-import { AdminUpdate } from './components/adminUpdate.js';
+import { AdminUpdateRX } from './components/adminUpdate.js';
 
 // import { SwipeableTextMobileStepper } from './components/homeGallery.js';
 import { ContactFooter } from './components/contactFooter.js';
@@ -49,7 +49,7 @@ class App extends React.Component {
       <Route path='/Kontakt' component={NavBar}/>
       <Route path='/Kontakt' component={ContactFooter}/>
       <Route path='/Galerie' component={HomeGallery}/>
-      <Route path='/UPDATE' component={AdminUpdate}/>
+      <Route path='/UPDATE' component={AdminUpdateRX}/>
     </BrowserRouter>
     </div>
   )};

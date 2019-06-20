@@ -1,5 +1,7 @@
 import React from 'react';
 import Input from '@material-ui/core/Input';
+import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
 import Box from '@material-ui/core/Box';
 import { styled } from '@material-ui/styles';
 
@@ -27,17 +29,17 @@ const newProduct = {
   category: '',
   id: '',
 }
-export class AdminUpdate extends React.Component {
+class AdminUpdate extends React.Component {
 
   render() {
     return (
       <MuiBox>
         <h4>Hallo Antje, willkommen auf deiner AdminSeite</h4>
         <form>
-          <label>1.produktname</label>
-          <Input type="" value=""></Input>
+          <label >1.produktname</label>
+          <Input id="produktname" type="text" onChange={this.props.changeInput} value={this.props.inputVal}></Input>
           <label>2.produktnummer</label>
-          <Input type="text"></Input>
+          <Input id="produktnummer" type="text" onChange={this.props.changeInput} value={this.props.inputVal}></Input>
           <label>3.produktfotos</label>
           <Input type=""></Input>
           <label>4.preis</label>
@@ -56,3 +58,4 @@ export class AdminUpdate extends React.Component {
   }
 
 }
+export const AdminUpdateRX = connect(mapStateToProps,mapDispatchToProps)(AdminUpdate);

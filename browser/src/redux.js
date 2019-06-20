@@ -16,6 +16,8 @@ const initialState = {
   userInfo: null,
   loginFail: false,
   redirHome: false,
+  newProduct: {},
+  inputVal: '',
  };
 
 const reducer = (state=initialState, action)=> {
@@ -26,24 +28,27 @@ const reducer = (state=initialState, action)=> {
     copyOfState.payloadClothes = action.payloadClothes;
     copyOfState.shownClothes = action.payloadClothes;
     return copyOfState;
-
     case 'FETCHDATA_patterns':
     copyOfState.payloadPatterns = action.payloadPatterns;
     copyOfState.shownPatterns = action.payloadPatterns;
     return copyOfState;
-
     case 'FILTERDATA_patterns':
     const filteredPatterns = copyOfState.payloadPatterns.filter(obj=> {
      return obj.category.toLowerCase() === action.ev.target.innerText.toLowerCase();
       });
       copyOfState.shownPatterns = filteredPatterns;
       return copyOfState;
-
-      case 'FILTERDATA_clothes':
+    case 'FILTERDATA_clothes':
       const filteredClothes = copyOfState.payloadClothes.filter(obj=> {
        return obj.category.toLowerCase() === action.ev.target.innerText.toLowerCase();
         });
       copyOfState.shownClothes = filteredClothes;
+      return copyOfState;
+    case 'INPUT':
+    // action.event.preventDefault();
+      console.log(copyOfState.newOrder);
+      copyOfState.inputVal = action.target.value;
+      copyOfState.newOrder.produktname = copyOfState.inputVal;
       return copyOfState;
 
     case 'NEXT':
@@ -82,17 +87,14 @@ const reducer = (state=initialState, action)=> {
     }
     copyOfState.total = copyOfState.basket.reduce((total, order)=> {return total+order.preis},0).toFixed(2);
     return copyOfState;
-
     case 'REMOVEITEM':
-    // console.log(copyOfState.basket);
-    // console.log(action.id);
+
     for (let i=0; i< copyOfState.basket.length; i++) {
       if (copyOfState.basket[i].id===action.id) {
         // console.log(copyOfState.basket[i].id===action.id);
         copyOfState.basket.splice(i, 1);
         copyOfState.basket = [...state.basket];
         copyOfState.total = copyOfState.basket.reduce((total, order)=> {return total+order.preis},0).toFixed(2);
-
         return copyOfState;
       }
     }
@@ -140,7 +142,6 @@ export const bringPayloadClothes = (data)=> {
     // shownClothes: data,
     }
 }
-
 export const filterPatterns = (ev)=> {
   return {
     type: 'FILTERDATA_patterns',
@@ -153,7 +154,14 @@ export const filterClothes = (ev)=> {
     ev: ev,
   }
 }
-
+export const changeInput = (ev)=> {
+  return {
+    type: 'INPUT',
+    event: ev,
+    value: ev.currentTarget.value,
+    target: ev.currentTarget,
+  }
+}
 export const nextPic = (ev)=> {
   console.log(ev.target.parentElement.id)
   return {
@@ -163,7 +171,7 @@ export const nextPic = (ev)=> {
     id: ev.target.parentElement.id,
   }
 }
-//actions to the basket
+//actions to the basket:
 export const buyPatterns = (ev)=> {
   console.log(ev.target.id)
   return {
