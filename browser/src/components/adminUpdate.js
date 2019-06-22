@@ -25,8 +25,8 @@ const MuiBox = styled(Box)({
     color: 'navy',
     background: 'lightblue',
     '&:hover': {
-      background: 'grey',
-      color: 'lightblue',
+      background: 'green',
+      color: 'lightgreen',
     },
   },
 },
@@ -38,7 +38,7 @@ class AdminUpdate extends React.Component {
     return (
       <MuiBox>
         <h4>Hallo Antje, willkommen auf deiner AdminSeite</h4>
-        <form>
+        <form  type="submit" onSubmit={this.props.submitUpdating}>
           <label >1.produktname</label>
           <Input id="produktname" type="text" onChange={this.props.changeInput} value={this.props.inputVal1}></Input>
           <label>2.produktnummer</label>
@@ -52,10 +52,10 @@ class AdminUpdate extends React.Component {
           <label>6.produktbeschreibung</label>
           <Input id="produktbeschreibung" type="text" onChange={this.props.changeInput} value={this.props.inputVal6}></Input>
           <label>7.category</label>
-          <Input id="category" type="select" onChange={this.props.changeInput} value={this.props.inputVal7}></Input>
+          <Input id="category" type="text" onChange={this.props.changeInput} value={this.props.inputVal7}></Input>
           <label>8.id</label>
           <Input id="id" type="text" onChange={this.props.changeInput} value={this.props.inputVal8}></Input>
-          <Button>neuen Artikel senden und Datenbank aktualisieren</Button>
+          <Button  type="submit">neuen Artikel senden und Datenbank aktualisieren</Button>
         </form>
       </MuiBox>
     )

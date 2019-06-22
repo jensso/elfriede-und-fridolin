@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
 
 const MuiBox = styled(Box)({
+
   '& section': {
       display: 'flex',
       flexDirection: 'column',
@@ -174,7 +175,7 @@ const MuiBox = styled(Box)({
   },
 })
 
-export class CuttingPatterns extends React.Component {
+class CuttingPatterns extends React.Component {
   componentDidMount() {
     this.props.fetchPatterns();
   }

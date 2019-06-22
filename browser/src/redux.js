@@ -52,10 +52,7 @@ const reducer = (state=initialState, action)=> {
       copyOfState.shownClothes = filteredClothes;
       return copyOfState;
     case 'INPUT':
-    // action.event.preventDefault();
     console.log(copyOfState.newProduct);
-    console.log(action.value);
-
     switch(document.getElementById(`${action.target.id}`).id) {
       case 'produktname':
       copyOfState.inputVal1 = action.value;
@@ -75,24 +72,28 @@ const reducer = (state=initialState, action)=> {
       return copyOfState;
       case 'produktTyp':
       copyOfState.inputVal5 = action.value;
-      copyOfState.newProduct.produktnummer = copyOfState.inputVal5;
+      copyOfState.newProduct.produktTyp = copyOfState.inputVal5;
       return copyOfState;
       case 'produktbeschreibung':
       copyOfState.inputVal6 = action.value;
-      copyOfState.newProduct.produktnummer = copyOfState.inputVal6;
+      copyOfState.newProduct.produktbeschreibung = copyOfState.inputVal6;
       return copyOfState;
       case 'category':
       copyOfState.inputVal7 = action.value;
-      copyOfState.newProduct.produktnummer = copyOfState.inputVal7;
+      copyOfState.newProduct.category = copyOfState.inputVal7;
       return copyOfState;
       case 'id':
       copyOfState.inputVal8 = action.value;
-      copyOfState.newProduct.produktnummer = copyOfState.inputVal8;
+      copyOfState.newProduct.id = copyOfState.inputVal8;
       return copyOfState;
 
       default:
       return copyOfState;
       }
+    case 'SUBMIT_UPDATING':
+    action.event.preventDefault();
+    console.table(copyOfState.newProduct);
+    return copyOfState;
 
     case 'NEXT':
     console.table(copyOfState);
@@ -143,11 +144,9 @@ const reducer = (state=initialState, action)=> {
     }
     break;
     case 'SUBMIT':
-    console.log(copyOfState);
     copyOfState.newOrder = copyOfState.basket;
     copyOfState.basket = [];
     copyOfState.total = 0;
-    console.warn(copyOfState);
     return copyOfState;
 
     case 'REDIR':
@@ -175,14 +174,12 @@ export const bringPayloadPatterns = (data)=> {
   return {
     type: 'FETCHDATA_patterns',
     payloadPatterns: data,
-    // shownPatterns: data,
     }
 }
 export const bringPayloadClothes = (data)=> {
   return {
     type: 'FETCHDATA_clothes',
     payloadClothes: data,
-    // shownClothes: data,
     }
 }
 export const filterPatterns = (ev)=> {
@@ -203,6 +200,22 @@ export const changeInput = (ev)=> {
     event: ev,
     value: ev.currentTarget.value,
     target: ev.currentTarget,
+  }
+}
+export const submitUpdating = (ev)=> {
+  console.log('sendNewProduct to DB');
+
+
+    return {
+    type: 'SUBMIT_UPDATING',
+    event: ev,
+  }
+}
+export const sendNewProduct = (ev)=> {
+  console.log('DISPATCHED');
+  return {
+    type: 'SEND_NEWPRODUCT',
+    event: ev,
   }
 }
 export const nextPic = (ev)=> {
@@ -246,7 +259,6 @@ export const submitOrder = (ev)=> {
     ev: ev,
   }
 }
-
 export const redir = (ev)=> {
     return {
       type: 'REDIR',

@@ -174,7 +174,8 @@ const MuiBox = styled(Box)({
     },
   },
 })
-export class Clothes extends React.Component {
+
+class Clothes extends React.Component {
   componentDidMount() {
     this.props.fetchClothes();
   }

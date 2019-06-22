@@ -140,7 +140,7 @@ export class NavHome extends React.Component {
               Für den perfekten Sitz werden all meine Schnitte von einer Schnittdirectrice gradiert.<br/>
               <br/>
               Neben dem designen von Schnittmustern erschaffe ich auch gern praktische Kleinigkeiten für dich und mich und andere an meiner Nähmaschine.<br/>
-              Diese Einzelstücke findest du auch <Link className="link" to={`/Schnittmuster`}>hier in meinem Shop</Link>.
+              Diese Einzelstücke findest du auch <Link className="link" to={'/Kleidung'}>hier in meinem Shop</Link>.
               Aber Achtung: es handelt sich (meist) um absolute Einzelstücke, die es so eben nur ein einziges Mal geben wird.
               <i>Es gilt also: Wenn weg, dann weg.</i>
               <br/>

@@ -64,22 +64,25 @@ const MuiUserRegistration = styled(Container)({
     fontSize: '1vw',
     },
 
-  '& button': {
-    fontSize: '1rem',
-    color: 'white',
-    fontFamily: 'Open Sans Condensed',
-    // fontWeight: 'bolder',
-    letterSpacing: '0.1rem',
-    background: '#ad8262',
-    textTransform: 'uppercase',
-    margin: '5% 35%',
-    '&:hover': {
-      background: '#B5C4AF',
+    '& button': {
+      fontSize: '1rem',
+      color: 'white',
+      fontFamily: 'Open Sans Condensed',
+      letterSpacing: '0.1rem',
+      background: '#ad8262',
+      textTransform: 'uppercase',
+      margin: '10% 35%',
+      padding: '0.4rem',
+
+      '&:hover': {
+        fontWeight: 'bolder',
+        cursor: 'pointer',
+        background: '#B5C4AF',
+      },
+      '&:focus': {
+        outline: 'none',
+      },
     },
-    '&:focus': {
-      outline: 'none',
-    },
-  },
 })
 export class UserRegistration extends React.Component {
   render() {

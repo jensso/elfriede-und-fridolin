@@ -6,8 +6,7 @@ import { LandingPage } from './components/main.js';
 import { HomeGallery } from './components/homeGallery.js';
 import { NavHome } from './components/navHome.js';
 import { AdminUpdateRX } from './components/adminUpdate.js';
-
-// import { SwipeableTextMobileStepper } from './components/homeGallery.js';
+import { FreeProducts } from './components/freeProducts.js';
 import { ContactFooter } from './components/contactFooter.js';
 import { CuttingPatternsRX } from './components/cuttingPatterns.js';
 import { ClothesRX } from './components/clothes.js';
@@ -49,6 +48,8 @@ class App extends React.Component {
       <Route path='/Kontakt' component={NavBar}/>
       <Route path='/Kontakt' component={ContactFooter}/>
       <Route path='/Galerie' component={HomeGallery}/>
+      <Route path='/forfree' component={NavBar}/>
+      <Route path='/forfree' component={FreeProducts}/>
       <Route path='/UPDATE' component={AdminUpdateRX}/>
     </BrowserRouter>
     </div>

@@ -32,6 +32,10 @@ function SimpleMenuHome() {
         <MenuItem onClick={handleClose}>
           <NavLink to="/">Home</NavLink>
         </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/Galerie">Galerie</NavLink>
+        </MenuItem>
+
       </Menu>
     </div>
     )
@@ -136,6 +140,9 @@ return (
   <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
     <MenuItem onClick={handleClose}>
       <NavLink to="/Warenkorb">Warenkorb</NavLink>
+    </MenuItem>
+    <MenuItem onClick={handleClose}>
+      <NavLink to="/forfree">for free!</NavLink>
     </MenuItem>
   </Menu>
 </div>

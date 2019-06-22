@@ -170,6 +170,56 @@ const MuiBox = styled(Box)({
     },
   },
 })
+// const anotherBox = styled(Box)({
+//   '& section': {
+//       display: 'flex',
+//       flexDirection: 'column',
+//       textAlign: 'center',
+//
+//       '& h2': {
+//         fontFamily: 'Open Sans Condensed',
+//         textTransform: 'uppercase',
+//         fontWeight: 'lighter',
+//         letterSpacing: '0.5rem',
+//         color: '#ad8262',
+//       },
+//
+//       '& span': {
+//         fontFamily: 'Open Sans Condensed',
+//         fontWeight: 'bolder',
+//         textTransform: 'capitalize',
+//         letterSpacing: '0.2rem',
+//         margin: '0 1rem',
+//         fontSize: '0.8rem',
+//         color: '#9C938E',
+//
+//         '&:hover': {
+//           color: '#B5C4AF',
+//         },
+//         '&:active': {
+//           color: '#B5C4AF',
+//         },
+//       },
+//
+//       '& button': {
+//         backgroundColor: 'rgba(0, 0, 0, 0.00)',
+//         color: '#9C938E',
+//         '&:hover': {
+//           backgroundColor: 'rgba(0, 0, 0, 0.00)',
+//           cursor: 'pointer',
+//           color: '#B5C4AF',
+//           },
+//         '&:focus': {
+//           outline: 'none',
+//           }
+//       }
+//
+//   },
+//
+//   '& main': {
+//     color: '#753',
+//     },
+// })
 
 class ShoppingBasket extends React.Component {
 

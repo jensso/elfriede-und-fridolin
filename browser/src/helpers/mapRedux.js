@@ -17,6 +17,8 @@ import {
   redirectToHome,
   loginFetch,
   reduxLogout,
+  submitUpdating,
+  sendNewProduct,
  } from '../redux.js';
 
 
@@ -68,5 +70,7 @@ export const mapDispatchToProps = (dispatch)=> {
     loginFetch: (credentials)=> dispatch(loginFetch(credentials)),
     reduxLogout: ()=> dispatch(reduxLogout()),
     changeInput: (ev)=> dispatch(changeInput(ev)),
+    submitUpdating: (ev)=> dispatch(submitUpdating(ev)),
+    sendNewProduct: (ev)=> dispatch(sendNewProduct(ev)),
   }
 }

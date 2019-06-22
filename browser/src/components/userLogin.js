@@ -1,6 +1,5 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
-// import Button from '@material-ui/core/Button';
 import { styled } from '@material-ui/styles';
 import { NavBar } from './navbar.js';
 
@@ -66,18 +65,30 @@ const MuiUserLogin = styled(Container)({
     fontSize: '1rem',
     color: 'white',
     fontFamily: 'Open Sans Condensed',
-    // fontWeight: 'bolder',
     letterSpacing: '0.1rem',
     background: '#ad8262',
     textTransform: 'uppercase',
     margin: '10% 35%',
+    padding: '0.4rem',
 
     '&:hover': {
+      fontWeight: 'bolder',
+      cursor: 'pointer',
       background: '#B5C4AF',
     },
     '&:focus': {
       outline: 'none',
     },
+  },
+  '& a': {
+    float: 'right',
+    marginTop: '-1vw',
+    color: '#9C938E',
+    fontFamily: 'Open Sans Condensed',
+    '&:hover': {
+      fontWeight: 'bolder',
+      textDecoration: 'none',
+    }
   },
 
 })
@@ -101,15 +112,18 @@ export class UserLogin extends React.Component {
                 <label>Kennwort*</label>
                 <input
                   type="password"
-                />
+                /><br/><br/>
+                <a href="#">Kennwort vergessen?</a>
               </div>
 
               <span>* Pflichtfelder</span><br />
 
+
           </form>
 
           <div>
-            <button type="submit">Registrieren</button>
+
+            <button type="submit">Anmelden</button>
           </div>
         </MuiUserLogin>
       </>
