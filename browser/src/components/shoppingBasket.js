@@ -40,22 +40,21 @@ const MuiBasket = styled(Box)({
         borderBottom: '1px dotted #ad8262',
         alignItems: 'start',
 
-        '@media (max-width: 600px)': {
-          // display: 'flex',
-        },
+        // '@media (max-width: 600px)': {
+        //   // display: 'flex',
+        // },
 
         '& div': {
             height: 'auto',
-            // border: '1px solid turquoise',
 
           '& img': {
+            alignSelf: 'center',
             maxwidth: '20vw',
             objectFit: 'cover',
             alignSelf: 'start',
-            // border: '1px solid red',
             width: '100px',
             height: '100px',
-            margin: '0 auto',
+            margin: '1rem auto',
             },
 
           '& h4': {
@@ -65,7 +64,7 @@ const MuiBasket = styled(Box)({
             // border: '3px solid red',
             fontFamily: 'Amatic SC',
             fontWeight: 'lighter',
-            margin: '0 1rem',
+            margin: '1rem 1rem',
           },
 
           '& p' : {
@@ -84,7 +83,6 @@ const MuiBasket = styled(Box)({
             textDecoration: 'underline',
             marginLeft: '10vw',
             textAlign: 'right',
-            // backgroundColor: 'rgba(173,130,98,0.5)',
             fontFamily: 'Open Sans',
             fontWeight: 'bolder',
             color: '#9C938E',
@@ -120,41 +118,26 @@ class ShoppingBasket extends React.Component {
           <h2 onClick={this.props.makeFetch}>Deine Bestellung</h2>
 
           <main>
-            <section>
-              <div>
-                <img src={require(`../content/produktfotos_ef/quadra3.jpg`)} alt="pic"></img>
-              </div>
-              <div>
-                <h4>blablabla</h4>
-                <p>By default, flex items will all try to fit onto one line. You can change that and allow the items to wrap as needed with this property.</p>
-              </div>
-              <div>
-                <Button>Entfernen</Button>
-                <article>3,44 EUR</article>
-              </div>
-            </section>
+              {this.props.basket.map((obj, index)=>{
+                return (
+                  <section key={index}>
+                    <div>
+                      <img onClick={(ev)=>console.log(ev.target.id)} src={require(`../content/produktfotos_ef/${obj.produktfotos[0]}.jpg`)} alt="pic"></img>
+                    </div>
+                    <div>
+                      <h4>{obj.produktname}</h4>
+                      <p>{obj.produktbeschreibung}</p>
+                    </div>
+                    <div>
+                      <Button id={obj.id} onClick={this.props.removeItem}>Entfernen</Button>
+                      <article>€ {(obj.preis).toFixed(2)}</article>
+                    </div>
+                  </section>
+                )
+              })}
+
+            <ShopSummaryRX />
           </main>
-
-              <main>
-                <ul>
-                  {this.props.basket.map((obj, index)=>{
-                    return (
-                      <div>
-                        <li key={index}>
-                          <h4>{obj.produktname}</h4>
-                          <img onClick={(ev)=>console.log(ev.target.id)} src={require(`../content/produktfotos_ef/${obj.produktfotos[0]}.jpg`)} alt="pic"></img>
-                          <p>{obj.produktbeschreibung}</p>
-                          <p>{obj.preis} EUR</p>
-                          <Button id={obj.id} onClick={this.props.removeItem}>X</Button>
-                          <hr/ >
-                        </li>
-                      </div>
-                    )
-                  })}
-                </ul>
-
-                <ShopSummaryRX />
-              </main>
 
           </MuiBasket>
       </>

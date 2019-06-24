@@ -20,6 +20,7 @@ const MuiShopSummary = styled(Box)({
       width: '100%',
 
       '& section': {
+        padding: '1vw 1vw !important',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -64,29 +65,15 @@ class ShopSummary extends React.Component {
     return(
       <MuiShopSummary>
         <>
-
-        <div>
-          <section>
-            <span>netto
-            <p>zzgl. MwSt</p>
-            <p>+ Versandkosten</p>
-            Summe: EUR
-            </span><br></br>
-
-            <Button onClick={this.props.submit}>bestellen</Button>
-          </section>
-        </div>
-
         {this.props.total === 0 && <h3>Dein Warenkorb ist leer.</h3>}
         {this.props.total !==0 &&
           <div>
             <section>
-              <span>netto {(this.props.total/1.19).toFixed(2)}
-              <p>zzgl. MwSt {(this.props.total*0.19/1.19).toFixed(2)}</p>
-              <p>+ Versandkosten {(6.9).toFixed(2)}</p>
+              <span>netto € {(this.props.total/1.19).toFixed(2)}
+              <p>zzgl. MwSt € {(this.props.total*0.19/1.19).toFixed(2)}</p>
+              <p>+ Versandkosten € {(6.9).toFixed(2)}</p>
               Summe: € {this.props.total}
               </span><br></br>
-
               <Button onClick={this.props.submit}>bestellen</Button>
             </section>
           </div> }
