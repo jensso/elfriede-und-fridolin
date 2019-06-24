@@ -10,6 +10,7 @@ const usersRoutes = require('./routes/usersRoutes');
 const patternsRoutes = require('./routes/patternsRoutes');
 const clothesRoutes = require('./routes/clothesRoutes');
 const emailRoutes = require('./routes/emailRoutes');
+const paymentRoutes = require('./routes/paymentRoutes');
 
 
 
@@ -28,5 +29,6 @@ server.use('/users', usersRoutes);
 server.use('/patterns', patternsRoutes);
 server.use('/clothes', clothesRoutes);
 server.use('/email', emailRoutes);
+server.use('/payment', paymentRoutes);
 
 server.use(errorHandler);
