@@ -5,13 +5,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
 import { NavLink } from 'react-router-dom';
-// import { NavGallery } from './navGallery.js';
-// import { NavHome } from './navHome.js';
-// import { ShoppingBasketRX } from './shoppingBasket.js';
 import { UserLogin } from './userLogin.js';
 import { AdminLogin } from './adminLogin.js';
-// import { NewsSection } from './news.js';
-// import watercolour_green from '../content/images/watercolour_green.png';
 
 function SimpleMenuHome() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -31,6 +26,10 @@ function SimpleMenuHome() {
       <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
         <MenuItem onClick={handleClose}>
           <NavLink to="/">Home</NavLink>
+        </MenuItem>
+
+        <MenuItem onClick={handleClose}>
+          <NavLink to="/Gallerie">Gallerie</NavLink>
         </MenuItem>
       </Menu>
     </div>
@@ -89,34 +88,13 @@ function SimpleMenuNews() {
         </MenuItem>
 
         <MenuItem onClick={handleClose}>
-          <NavLink to="/Info">Info</NavLink>
+          <NavLink to="/Blog">Info</NavLink>
         </MenuItem>
       </Menu>
     </div>
   );
 }
-// function SimpleMenuGallery() {
-//   const [anchorEl, setAnchorEl] = React.useState(null);
-//
-//     function handleClick(event) {
-//       setAnchorEl(event.currentTarget);
-//     }
-//
-//     function handleClose() {
-//       setAnchorEl(null);
-//     }
-//
-//   return (
-//     <div>
-//       <Button aria-owns={anchorEl ? 'simple-menu' : undefined} aria-haspopup="true" onClick={handleClick}>
-//        GALLERY
-//       </Button>
-//       <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-//         <MenuItem onClick={handleClose}><NavGallery /></MenuItem>
-//       </Menu>
-//     </div>
-//   );
-// }
+
 function SimpleMenuBasket() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 

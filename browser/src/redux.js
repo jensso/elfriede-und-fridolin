@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-const initialState = {
-  payload: [],
+import thunk from 'redux-thunk'; // YOU NEED THUNK IF YOU USE MIDDLEWARE // NPM INSTALLED HELPER
+const initialState = { // YOU HAVE TO DEFINE A initialState ANYTIME YOU WANT CHANGE A VALUE
+  payload: [], // PAYLOAD IS THE DATA WHICH YOU GET FROM THE SERVER
   shownPatterns: [],
   shownClothes: [],
   basket: [],
@@ -17,7 +17,7 @@ const initialState = {
   redirHome: false,
  };
 
-const reducer = (state=initialState, action)=> {
+const reducer = (state=initialState, action)=> { // REDUCER = FCT. WITH TWO ARGUMENTS (ACTION = OBJECT)
   const copyOfState = {...state};
 
   switch(action.type) {
@@ -64,11 +64,12 @@ const reducer = (state=initialState, action)=> {
     case 'REMOVEITEM':
     // console.log(copyOfState.basket);
     // console.log(action.id);
-    for (let i=0; i< copyOfState.basket.length; i++) {
-      if (copyOfState.basket[i].id===action.id) {
+    for (let i=0; i< copyOfState.basket.length; i++) { // LOOP THROUGH ELEMENTS IN BASKET AND
+      if (copyOfState.basket[i].id===action.id) { // FIND THE CLICKED ONE
         // console.log(copyOfState.basket[i].id===action.id);
         copyOfState.basket.splice(i, 1);
         copyOfState.basket = [...state.basket];
+        // THIS HAS TO HAPPEN!!! IN ORDER TO RERENDER THE COMPONENT AND MAKE YOUR CHANGES VISIBLE
         copyOfState.total = copyOfState.basket.reduce((total, order)=> {return total+order.preis},0).toFixed(2);
 
         return copyOfState;
@@ -92,6 +93,7 @@ const reducer = (state=initialState, action)=> {
   }
 }
 const jwt = require('jsonwebtoken');
+// LOGIN AUTHENTIFICATION PART // IS THE LOGIN SUCCESFUL USR GETS TOKEN HERE
 const authenticated = async (req, res, next) => {
   try {
     const tokenCookie = req.cookies.authToken.split(' ')[1];
@@ -114,6 +116,11 @@ export const bringPayload = (data)=> {
     shownClothes: data,
     }
 }
+
+// FOR EVERY TRIGGERED FETCH WE GET DATA THIS FILLS WITH EVERY FETCH THE EMPTY EXISTING ARRAYS IN
+// THE STATES WHICH ARE ESSENTIAL FOR OUR FILTERING THUS THE DATA IS FETCHED ONCE AND AFTER THAT
+// ONLY FILTERED IN THE BROWSER - GOOD PERFORMANCE!
+
 export const filterPayload = (ev)=> {
   return {
     type: 'FILTERDATA',
@@ -140,7 +147,9 @@ export const buyItem = (ev)=> {
   }
 }
 
-export const removeItem = (ev)=> {
+export const removeItem = (ev) => { // EV SHOULD ALWAYS BE TRANSPORTED
+  // THESE DEFINED CONSTS ARE LIKE ENVELOPES FOR TRANSFERRING INFO TO COMPONENTS BY REDUX
+
   // console.log(ev.target.parentElement.id);
   return {
     type: 'REMOVEITEM',
@@ -225,6 +234,7 @@ export const loginFetch = credentials => {
     })
   }
 }
+
 export const reduxLogout = () => {
   return function(dispatch) {
     fetch('/users/loggedOut')

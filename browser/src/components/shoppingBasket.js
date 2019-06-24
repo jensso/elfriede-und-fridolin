@@ -1,176 +1,107 @@
 import React from 'react';
-import {Box,Button} from '@material-ui/core';
+import { Box,Button } from '@material-ui/core';
 import { styled } from '@material-ui/styles';
 import { NavBar } from './navbar.js';
 import { connect } from 'react-redux';
 import { ShopSummaryRX } from './shopSummary.js';
 import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
+import { makeStyles } from '@material-ui/styles';
 
-const MuiBox = styled(Box)({
-  '& section': {
-      display: 'flex',
-      flexDirection: 'column',
-      textAlign: 'center',
 
-      '& h2': {
-        fontFamily: 'Open Sans Condensed',
-        textTransform: 'uppercase',
-        fontWeight: 'lighter',
-        letterSpacing: '0.5rem',
-        color: '#ad8262',
-        '&:hover': {
-          cursor: 'pointer',
-          fontWeight: 'bolder',
-        }
-      },
+const MuiBasket = styled(Box)({
+    fontFamily: 'Open Sans Condensed',
+    textAlign: 'center',
+    letterSpacing: '0.3rem',
+    textTransform: 'uppercase',
+    color: '#9C938E',
 
-      '& span': {
-        fontFamily: 'Open Sans Condensed',
+    '& h2': {
+      marginBottom: '5vw',
+      fontWeight: 'lighter',
+      color: '#ad8262',
+      '&:hover': {
+        cursor: 'pointer',
         fontWeight: 'bolder',
-        textTransform: 'capitalize',
-        letterSpacing: '0.2rem',
-        margin: '0 1rem',
-        fontSize: '0.8rem',
-        color: '#9C938E',
-
-        '&:hover': {
-          color: '#B5C4AF',
         },
-        '&:active': {
-          color: '#B5C4AF',
+      '@media (max-width: 600px)': {
+        marginBottom: '10vw',
         },
-      },
-
-      '& button': {
-        backgroundColor: 'rgba(0, 0, 0, 0.00)',
-        color: '#9C938E',
-        '&:hover': {
-          backgroundColor: 'rgba(0, 0, 0, 0.00)',
-          cursor: 'pointer',
-          color: '#B5C4AF',
-          },
-        '&:focus': {
-          outline: 'none',
-          }
-      }
-
-  },
-
-  '& main': {
-    display: 'flex',
-    width: '100%',
-    margin: '0 auto',
-
-    '@media (max-width: 600px)': {
-      flexWrap: 'wrap',
     },
 
-    '& div': {
+    '& main': {
+      margin: '0 10%',
+      width: '80%',
+      textAlign: 'center',
       display: 'flex',
-      flexGrow: '1',
-      alignItems: 'center',
       flexDirection: 'column',
-      width: '33.33%',
-      margin: '1rem 2rem',
 
-      '& h5': {
-        fontFamily: 'Amatic SC',
-        textAlign: 'center',
-        fontSize: '0.rem',
-        letterSpacing: '0.1rem',
-        color: '#ad8262',
+      '& section': {
+        display: 'flex',
+        borderBottom: '1px dotted #ad8262',
+        alignItems: 'start',
+
+        '@media (max-width: 600px)': {
+          // display: 'flex',
         },
 
-      '& img': {
-        maxWidth: '90%',
-        margin: '1rem auto',
-        // padding: '0.3rem',
+        '& div': {
+            height: 'auto',
+            // border: '1px solid turquoise',
+
+          '& img': {
+            maxwidth: '20vw',
+            objectFit: 'cover',
+            alignSelf: 'start',
+            // border: '1px solid red',
+            width: '100px',
+            height: '100px',
+            margin: '0 auto',
+            },
+
+          '& h4': {
+            letterSpacing: '0,5',
+            fontSize: '1.2rem',
+            textAlign: 'left',
+            // border: '3px solid red',
+            fontFamily: 'Amatic SC',
+            fontWeight: 'lighter',
+            margin: '0 1rem',
           },
 
-      '& p' : {
-        fontSize: '0.5rem',
-        fontFamily: 'Open Sans',
-        color: '#9C938E',
-        textAlign: 'left',
-        margin: '1rem 1rem',
-      },
-
-      '& button': {
-        border: 'none',
-      },
-
-      '& div': {
-        marginLeft: '0',
-        marginRight: '0',
-      },
-
-        '&:nth-of-type(1)': {
-          '& section': {
-          outline: '0.1rem dotted #ad8262',
-          outlineOffset: '0.2rem',
-
-          '& div': {
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between'
-          },
-
-          '& span': {
-            '&:hover': {
-              color: '#9C938E',
-            }
-          }
-
-        },
-      },
-
-        '&:nth-of-type(even)': {
-          '& section': {
-          backgroundColor: '#ad8262',
-          marginTop: '-0.2rem',
-          paddingTop: '0.2rem',
-
-          '& div': {
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between'
-          },
-
-          '& p, span': {
-            color: 'white',
-          },
+          '& p' : {
+            width: '80%',
+            fontSize: '0.8rem',
+            textAlign: 'left',
+            margin: '1rem 1rem',
+            letterSpacing: '0',
+            textTransform: 'none',
+            textWeight: 'bolder !important',
+            },
 
           '& button': {
-            color: 'white',
-            '&:hover': {
-              color: '#B5C4AF',
-            }
+            fontSize: '0.5rem',
+            textTransform: 'capitalize',
+            textDecoration: 'underline',
+            marginLeft: '10vw',
+            textAlign: 'right',
+            // backgroundColor: 'rgba(173,130,98,0.5)',
+            fontFamily: 'Open Sans',
+            fontWeight: 'bolder',
+            color: '#9C938E',
+            padding: '0',
+            },
+
+          '& article': {
+            paddingTop: '20%',
+            paddingBottom: '10%',
+            textAlign: 'right',
+
+            '@media (max-width: 600px)': {
+              paddingTop: '80%',
+              },
+            },
+
           }
-        },
-      },
-
-        '&:nth-of-type(3)': {
-          '& section': {
-          outline: '0.1rem solid #ad8262',
-          outlineOffset: '0.2rem',
-
-          '& div': {
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between'
-          },
-
-          '& span': {
-            '&:hover': {
-              color: '#9C938E',
-            }
-          }
-        },
-      },
-
     },
   },
 })
@@ -180,40 +111,52 @@ class ShoppingBasket extends React.Component {
   componentDidMount() {
     console.log(this.props);
   }
+
   render() {
     return(
       <>
-
         <NavBar />
-          <MuiBox>
+          <MuiBasket>
+          <h2 onClick={this.props.makeFetch}>Deine Bestellung</h2>
+
+          <main>
             <section>
-              <h2 onClick={this.props.makeFetch}>Deine Bestellung</h2>
+              <div>
+                <img src={require(`../content/produktfotos_ef/quadra3.jpg`)} alt="pic"></img>
+              </div>
+              <div>
+                <h4>blablabla</h4>
+                <p>By default, flex items will all try to fit onto one line. You can change that and allow the items to wrap as needed with this property.</p>
+              </div>
+              <div>
+                <Button>Entfernen</Button>
+                <article>3,44 EUR</article>
+              </div>
             </section>
+          </main>
 
-            <main>
-
-              {this.props.basket.map((obj, index)=>{
-                return (
-                  <div>
-                    <li key={index}>
-                      <Button id={obj.id} onClick={this.props.removeItem}>X</Button>
-                      <img onClick={(ev)=>console.log(ev.target.id)} src={require(`../content/produktfotos_ef/${obj.produktfotos[0]}.jpg`)} alt="pic"></img>
+              <main>
+                <ul>
+                  {this.props.basket.map((obj, index)=>{
+                    return (
                       <div>
-                        <p>{obj.produktname}</p>
-                        <p>{obj.produktbeschreibung}</p>
-                        <p>{obj.preis}</p>
-                        <hr/ >
-                        <p>{obj.id}</p>
+                        <li key={index}>
+                          <h4>{obj.produktname}</h4>
+                          <img onClick={(ev)=>console.log(ev.target.id)} src={require(`../content/produktfotos_ef/${obj.produktfotos[0]}.jpg`)} alt="pic"></img>
+                          <p>{obj.produktbeschreibung}</p>
+                          <p>{obj.preis} EUR</p>
+                          <Button id={obj.id} onClick={this.props.removeItem}>X</Button>
+                          <hr/ >
+                        </li>
                       </div>
-                    </li>
-                  </div>
-                )
-              })}
+                    )
+                  })}
+                </ul>
 
-          <ShopSummaryRX />
+                <ShopSummaryRX />
+              </main>
 
-        </main>
-      </MuiBox>
+          </MuiBasket>
       </>
     )
   }
