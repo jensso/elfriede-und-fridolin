@@ -10,15 +10,7 @@ import {
   filterClothes,
   changeInput,
   nextPic,
-  hasFailedAction,
-  changeAction,
-  requestAction,
-  redirectToLogin,
-  redirectToHome,
-  loginFetch,
-  reduxLogout,
-  submitUpdating,
-  sendNewProduct,
+  updatingDB,
  } from '../redux.js';
 
 
@@ -62,15 +54,7 @@ export const mapDispatchToProps = (dispatch)=> {
     removeItem: (ev)=> dispatch(removeItem(ev)),
     submit: (ev)=> dispatch(submitOrder(ev)),
     redir: (ev)=> dispatch(redir(ev)),
-    hasFailed: ()=> dispatch(hasFailedAction()),
-    changeAction: (userPayload)=> dispatch(changeAction(userPayload)),
-    reqAction: (userData)=> dispatch(requestAction(userData)),
-    redirLogin: ()=> dispatch(redirectToLogin()),
-    redirHome: ()=> dispatch(redirectToHome()),
-    loginFetch: (credentials)=> dispatch(loginFetch(credentials)),
-    reduxLogout: ()=> dispatch(reduxLogout()),
     changeInput: (ev)=> dispatch(changeInput(ev)),
-    submitUpdating: (ev)=> dispatch(submitUpdating(ev)),
-    sendNewProduct: (ev)=> dispatch(sendNewProduct(ev)),
+    submitUpdating: (obj)=> dispatch(updatingDB(obj))
   }
 }

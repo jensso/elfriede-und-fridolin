@@ -34,11 +34,24 @@ const MuiBox = styled(Box)({
 
 class AdminUpdate extends React.Component {
 
+  submitUpdating = (ev)=> {
+    ev.preventDefault();
+    this.props.submitUpdating({produktname: this.props.inputVal1,
+                              produktnummer: this.props.inputVal2,
+                              produktfotos: this.props.inputVal3,
+                              preis: this.props.inputVal4,
+                              produktTyp: this.props.inputVal5,
+                              produktbeschreibung: this.props.inputVal6,
+                              category: this.props.inputVal7,
+                              id: this.props.inputVal8
+                            });
+  }
+
   render() {
     return (
       <MuiBox>
         <h4>Hallo Antje, willkommen auf deiner AdminSeite</h4>
-        <form  type="submit" onSubmit={this.props.submitUpdating}>
+        <form  type="submit" onSubmit={this.submitUpdating}>
           <label >1.produktname</label>
           <Input id="produktname" type="text" onChange={this.props.changeInput} value={this.props.inputVal1}></Input>
           <label>2.produktnummer</label>

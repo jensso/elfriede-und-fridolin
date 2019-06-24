@@ -1,6 +1,6 @@
 import React from 'react';
 import { ProductCardStern, ProductCardMute, ProductCardTutorial } from './productCard.js';
-import { Button, Box } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import {styled} from '@material-ui/core/styles';
 
 const MuiBox = styled(Box)({

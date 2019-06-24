@@ -52,7 +52,7 @@ const reducer = (state=initialState, action)=> {
       copyOfState.shownClothes = filteredClothes;
       return copyOfState;
     case 'INPUT':
-    console.log(copyOfState.newProduct);
+    // console.log(copyOfState.newProduct);
     switch(document.getElementById(`${action.target.id}`).id) {
       case 'produktname':
       copyOfState.inputVal1 = action.value;
@@ -91,7 +91,6 @@ const reducer = (state=initialState, action)=> {
       return copyOfState;
       }
     case 'SUBMIT_UPDATING':
-    action.event.preventDefault();
     console.table(copyOfState.newProduct);
     return copyOfState;
 
@@ -156,19 +155,6 @@ const reducer = (state=initialState, action)=> {
     return copyOfState;
   }
 }
-const jwt = require('jsonwebtoken');
-const authenticated = async (req, res, next) => {
-  try {
-    const tokenCookie = req.cookies.authToken.split(' ')[1];
-    await jwt.verify(tokenCookie, process.env.SECRET);
-
-    req.token = tokenCookie;
-
-    next();
-  }catch (error) {
-    next(error);
-  }
-}
 
 export const bringPayloadPatterns = (data)=> {
   return {
@@ -205,16 +191,8 @@ export const changeInput = (ev)=> {
 export const submitUpdating = (ev)=> {
   console.log('sendNewProduct to DB');
 
-
     return {
     type: 'SUBMIT_UPDATING',
-    event: ev,
-  }
-}
-export const sendNewProduct = (ev)=> {
-  console.log('DISPATCHED');
-  return {
-    type: 'SEND_NEWPRODUCT',
     event: ev,
   }
 }
@@ -286,76 +264,23 @@ export const fetchClothes = ()=> {
     .catch(err=> console.error(err))
   }
 }
-// actions on users-collection:
-export const hasFailedAction = () => {
-  return {
-    type: 'HAS_FAILED',
-  }
-}
-export const changeAction = userPayload => {
-  return {
-    type: 'CHANGE',
-    userPayload: userPayload,
-  }
-}
-export const requestAction = userData => {
-  return {
-    type: 'FETCH_DATA',
-    userData: userData,
-  }
-}
-export const redirectToLogin = () => {
-  return {
-    type: 'REDIRECT_LOGIN',
-  }
-}
-export const redirectToHome = () => {
-  return {
-    type: 'REDIRECT_HOME',
-  }
-}
-export const loginFetch = credentials => {
+export const updatingDB = (product)=> {
   return function(dispatch) {
-    fetch('/users/login', {
-      method: 'post',
-      mode: 'cors',
-      headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify(credentials)
-    })
-    .then(res => {
-      if (res.status === 400 || res.status === 404) {
-        throw new Error('Authentication failed');
-      }
-
-      return res.json();
-    })
-    .then(userData => {
-      console.log(userData);
-      authenticated.login();
-      dispatch(requestAction(userData));
-      dispatch(redirectToLogin());
-    })
-    .catch(err => {
-      console.warn(err);
-      dispatch(hasFailedAction());
-    })
-  }
+    console.log(product);
+  fetch('patterns/addPatterns',{
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify(product)
+  })
+  .then(res=> res.json())
+  .then(data=> {
+    console.log(data);
+    // dispatch(submitUpdating(dispatch))
+  })
+  .catch(err=> console.error(err))
 }
-export const reduxLogout = () => {
-  return function(dispatch) {
-    fetch('/users/loggedOut')
-      .then(res => {
-        if (res.status === 400 || res.status === 404) {
-          throw new Error('Log out failed');
-        }
-        return res.json();
-      })
-      .then(msgData => {
-        console.log(msgData);
-        dispatch(redirectToHome());
-      })
-      .catch(err => console.warn(err))
-  }
 }
 
 export const store = createStore(reducer, applyMiddleware(thunk));

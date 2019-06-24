@@ -113,7 +113,7 @@ export class UserLogin extends React.Component {
                 <input
                   type="password"
                 /><br/><br/>
-                <a href="#">Kennwort vergessen?</a>
+                <a href="/forgot">Kennwort vergessen?</a>
               </div>
 
               <span>* Pflichtfelder</span><br />
