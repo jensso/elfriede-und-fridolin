@@ -12,6 +12,7 @@ import { ContactFooter } from './components/contactFooter.js';
 import { CuttingPatternsRX } from './components/cuttingPatterns.js';
 import { ClothesRX } from './components/clothes.js';
 import { NewProductsRX } from './components/newProducts.js';
+import { OffersRX } from './components/offers.js';
 import { ShoppingBasketRX } from './components/shoppingBasket.js';
 import { NewsSection } from './components/news.js';
 import { UserLogin } from './components/userLogin.js';
@@ -44,6 +45,7 @@ class App extends React.Component {
       <Route path='/Schnittmuster' component={CuttingPatternsRX}/>
       <Route path='/Kleidung' component={ClothesRX}/>
       <Route path='/Neuheiten' component={NewProductsRX}/>
+      <Route path='/Angebote' component={OffersRX}/>
       <Route path='/Warenkorb' component={ShoppingBasketRX}/>
       <Route path='/Login' component={UserLogin}/>
       <Route path='/UserRegistration' component={UserRegistration}/>
