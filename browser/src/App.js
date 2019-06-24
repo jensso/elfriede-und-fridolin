@@ -13,7 +13,7 @@ import { ClothesRX } from './components/clothes.js';
 import { ShoppingBasketRX } from './components/shoppingBasket.js';
 import { NewsSection } from './components/news.js';
 import { UserLogin } from './components/userLogin.js';
-import { UserRegistration } from './components/userRegistration.js';
+import { UserRegistrationRX } from './components/userRegistration.js';
 import { Admin } from './components/adminLogin.js';
 
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -43,7 +43,7 @@ class App extends React.Component {
       <Route path='/Neuheiten' component={NewsSection}/>
       <Route path='/Warenkorb' component={ShoppingBasketRX}/>
       <Route path='/Login' component={UserLogin}/>
-      <Route path='/UserRegistration' component={UserRegistration}/>
+      <Route path='/UserRegistration' component={UserRegistrationRX}/>
       <Route path='/Admin' component={Admin}/>
       <Route path='/Kontakt' component={NavBar}/>
       <Route path='/Kontakt' component={ContactFooter}/>

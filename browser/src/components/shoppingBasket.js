@@ -6,171 +6,7 @@ import { connect } from 'react-redux';
 import { ShopSummaryRX } from './shopSummary.js';
 import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
 
-// const MuiBox = styled(Box)({
-//   '& section': {
-//       display: 'flex',
-//       flexDirection: 'column',
-//       textAlign: 'center',
-//
-//       '& h2': {
-//         fontFamily: 'Open Sans Condensed',
-//         textTransform: 'uppercase',
-//         fontWeight: 'lighter',
-//         letterSpacing: '0.5rem',
-//         color: '#ad8262',
-//       },
-//
-//       '& span': {
-//         fontFamily: 'Open Sans Condensed',
-//         fontWeight: 'bolder',
-//         textTransform: 'capitalize',
-//         letterSpacing: '0.2rem',
-//         margin: '0 1rem',
-//         fontSize: '0.8rem',
-//         color: '#9C938E',
-//
-//         '&:hover': {
-//           color: '#B5C4AF',
-//         },
-//         '&:active': {
-//           color: '#B5C4AF',
-//         },
-//       },
-//
-//       '& button': {
-//         backgroundColor: 'rgba(0, 0, 0, 0.00)',
-//         color: '#9C938E',
-//         '&:hover': {
-//           backgroundColor: 'rgba(0, 0, 0, 0.00)',
-//           cursor: 'pointer',
-//           color: '#B5C4AF',
-//           },
-//         '&:focus': {
-//           outline: 'none',
-//           }
-//       }
-//
-//   },
-//
-//   '& main': {
-//     display: 'flex',
-//     width: '100%',
-//     margin: '0 auto',
-//
-//     '@media (max-width: 600px)': {
-//       flexWrap: 'wrap',
-//     },
-//
-//     '& div': {
-//       display: 'flex',
-//       flexGrow: '1',
-//       alignItems: 'center',
-//       flexDirection: 'column',
-//       width: '33.33%',
-//       margin: '1rem 2rem',
-//
-//       '& h5': {
-//         fontFamily: 'Amatic SC',
-//         textAlign: 'center',
-//         fontSize: '0.rem',
-//         letterSpacing: '0.1rem',
-//         color: '#ad8262',
-//         },
-//
-//       '& img': {
-//         maxWidth: '90%',
-//         margin: '1rem auto',
-//         // padding: '0.3rem',
-//           },
-//
-//       '& p' : {
-//         fontSize: '0.5rem',
-//         fontFamily: 'Open Sans',
-//         color: '#9C938E',
-//         textAlign: 'left',
-//         margin: '1rem 1rem',
-//       },
-//
-//       '& button': {
-//         border: 'none',
-//       },
-//
-//       '& div': {
-//         marginLeft: '0',
-//         marginRight: '0',
-//       },
-//
-//         '&:nth-of-type(1)': {
-//           '& section': {
-//           outline: '0.1rem dotted #ad8262',
-//           outlineOffset: '0.2rem',
-//
-//           '& div': {
-//             width: '100%',
-//             display: 'flex',
-//             flexDirection: 'row',
-//             justifyContent: 'space-between'
-//           },
-//
-//           '& span': {
-//             '&:hover': {
-//               color: '#9C938E',
-//             }
-//           }
-//
-//         },
-//       },
-//
-//         '&:nth-of-type(even)': {
-//           '& section': {
-//           backgroundColor: '#ad8262',
-//           marginTop: '-0.2rem',
-//           paddingTop: '0.2rem',
-//
-//           '& div': {
-//             width: '100%',
-//             display: 'flex',
-//             flexDirection: 'row',
-//             justifyContent: 'space-between'
-//           },
-//
-//           '& p, span': {
-//             color: 'white',
-//           },
-//
-//           '& button': {
-//             color: 'white',
-//             '&:hover': {
-//               color: '#B5C4AF',
-//             }
-//           }
-//         },
-//       },
-//
-//         '&:nth-of-type(3)': {
-//           '& section': {
-//           outline: '0.1rem solid #ad8262',
-//           outlineOffset: '0.2rem',
-//
-//           '& div': {
-//             width: '100%',
-//             display: 'flex',
-//             flexDirection: 'row',
-//             justifyContent: 'space-between'
-//           },
-//
-//           '& span': {
-//             '&:hover': {
-//               color: '#9C938E',
-//             }
-//           }
-//         },
-//       },
-//
-//     },
-//   },
-// })
-const AnotherBasket = styled(Box)({
+const MuiBox = styled(Box)({
   '& section': {
       display: 'flex',
       flexDirection: 'column',
@@ -217,38 +53,122 @@ const AnotherBasket = styled(Box)({
   },
 
   '& main': {
-    color: '#753',
-    margin: '0.5vw auto',
+    display: 'flex',
+    width: '100%',
+    margin: '0 auto',
+
+    '@media (max-width: 600px)': {
+      flexWrap: 'wrap',
+    },
+
     '& div': {
-      width: '80%',
-      margin: '0.5vw auto',
-      '& li': {
-        display: 'flex',
-        margin: '0.5vw auto',
-        listStyleType: 'none',
-        '& button': {
-          background: '#753',
-          width: '2vw',
-          margin: '5vw auto',
+      display: 'flex',
+      flexGrow: '1',
+      alignItems: 'center',
+      flexDirection: 'column',
+      width: '33.33%',
+      margin: '1rem 2rem',
+
+      '& h5': {
+        fontFamily: 'Amatic SC',
+        textAlign: 'center',
+        fontSize: '0.rem',
+        letterSpacing: '0.1rem',
+        color: '#ad8262',
         },
-        '& img': {
-          padding: '1vw',
-          width: '25%',
-        },
-        '& div': {
-          flexGrow: '1',
-          padding: '1vw',
-          margin: '0.5vw auto',
-          '& p': {
-            padding: '1vw',
-            background: '#753',
-            color: 'white',
-            textAlign: 'right',
+
+      '& img': {
+        maxWidth: '90%',
+        margin: '1rem auto',
+        // padding: '0.3rem',
           },
+
+      '& p' : {
+        fontSize: '0.5rem',
+        fontFamily: 'Open Sans',
+        color: '#9C938E',
+        textAlign: 'left',
+        margin: '1rem 1rem',
+      },
+
+      '& button': {
+        border: 'none',
+      },
+
+      '& div': {
+        marginLeft: '0',
+        marginRight: '0',
+      },
+
+        '&:nth-of-type(1)': {
+          '& section': {
+          outline: '0.1rem dotted #ad8262',
+          outlineOffset: '0.2rem',
+
+          '& div': {
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between'
+          },
+
+          '& span': {
+            '&:hover': {
+              color: '#9C938E',
+            }
+          }
+
         },
       },
+
+        '&:nth-of-type(even)': {
+          '& section': {
+          backgroundColor: '#ad8262',
+          marginTop: '-0.2rem',
+          paddingTop: '0.2rem',
+
+          '& div': {
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between'
+          },
+
+          '& p, span': {
+            color: 'white',
+          },
+
+          '& button': {
+            color: 'white',
+            '&:hover': {
+              color: '#B5C4AF',
+            }
+          }
+        },
+      },
+
+        '&:nth-of-type(3)': {
+          '& section': {
+          outline: '0.1rem solid #ad8262',
+          outlineOffset: '0.2rem',
+
+          '& div': {
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between'
+          },
+
+          '& span': {
+            '&:hover': {
+              color: '#9C938E',
+            }
+          }
+        },
+      },
+
     },
-    },
+  },
 })
 
 class ShoppingBasket extends React.Component {
@@ -258,7 +178,7 @@ class ShoppingBasket extends React.Component {
       <>
 
         <NavBar />
-          <AnotherBasket>
+          <MuiBox>
             <section>
               <h2 onClick={this.props.makeFetch}>Deine Bestellung</h2>
             </section>
@@ -284,7 +204,7 @@ class ShoppingBasket extends React.Component {
           <ShopSummaryRX />
 
         </main>
-      </AnotherBasket>
+      </MuiBox>
       </>
     )
   }

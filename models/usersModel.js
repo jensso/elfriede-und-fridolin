@@ -2,13 +2,14 @@ const mongoose = require('mongoose');
 
 
 const userSchema = new mongoose.Schema({
-  Anrede: {type: String, required: true},
+  // Anrede: {type: String, required: true},
   Vorname: {type: String, required: true},
   Nachname: {type: String, required: true},
   Strasse: {type: String, required: true},
-  Postleitzahl: {type: Number, required: true},
+  HausNr: {type: String, required: true},
+  Postleitzahl: {type: string, required: true},
   Ort: {type: String, required: true},
-  Land: {type: String, required: true},
+  // Land: {type: String, required: true},
   Email: {type: String, required: true},
   Password: {type: String, required: true},
   resetPasswordToken: String,

@@ -11,6 +11,7 @@ import {
   changeInput,
   nextPic,
   updatingDB,
+  createUser,
  } from '../redux.js';
 
 
@@ -32,14 +33,24 @@ export const mapStateToProps = (state)=> {
     loginFail: state.loginFail,
     redirHome: state.redirHome,
     newProduct: state.newProduct,
-    inputVal1: state.inputVal1,
-    inputVal2: state.inputVal2,
-    inputVal3: state.inputVal3,
-    inputVal4: state.inputVal4,
-    inputVal5: state.inputVal5,
-    inputVal6: state.inputVal6,
-    inputVal7: state.inputVal7,
-    inputVal8: state.inputVal8,
+    inputProduktname: state.inputProduktname,
+    inputProduktnummer: state.inputProduktnummer,
+    inputProduktfotos: state.inputProduktfotos,
+    inputProduktpreis: state.inputProduktpreis,
+    inputProduktTyp: state.inputProduktTyp,
+    inputProduktbeschreibung: state.inputProduktbeschreibung,
+    inputCategory: state.inputCategory,
+    inputId: state.inputId,
+    newUser: state.newUser,
+    inputEmail: state.inputEmail,
+    inputPassword: state.inputPassword,
+    inputPasswordAgain: state.inputPasswordAgain,
+    inputVorname: state.inputVorname,
+    inputName: state.inputName,
+    inputStrasse: state.inputStrasse,
+    inputHausNr: state.inputHausNr,
+    inputPLZ: state.inputPLZ,
+    inputOrt: state.inputOrt,
   }
 }
 export const mapDispatchToProps = (dispatch)=> {
@@ -55,6 +66,7 @@ export const mapDispatchToProps = (dispatch)=> {
     submit: (ev)=> dispatch(submitOrder(ev)),
     redir: (ev)=> dispatch(redir(ev)),
     changeInput: (ev)=> dispatch(changeInput(ev)),
-    submitUpdating: (obj)=> dispatch(updatingDB(obj))
+    submitUpdating: (obj)=> dispatch(updatingDB(obj)),
+    createUser: (user)=> dispatch(createUser(user))
   }
 }

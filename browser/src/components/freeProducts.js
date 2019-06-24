@@ -10,7 +10,7 @@ const MuiBox = styled(Box)({
 
 export class FreeProducts extends React.Component {
   render() {
-    return (
+      return (
       <MuiBox>
             <ProductCardStern />
             <ProductCardTutorial />

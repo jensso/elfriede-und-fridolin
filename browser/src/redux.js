@@ -17,14 +17,24 @@ const initialState = {
   loginFail: false,
   redirHome: false,
   newProduct: {},
-  inputVal1: '',
-  inputVal2: '',
-  inputVal3: '',
-  inputVal4: '',
-  inputVal5: '',
-  inputVal6: '',
-  inputVal7: '',
-  inputVal8: '',
+  inputProduktname: '',
+  inputProduktnummer: '',
+  inputProduktfotos: '',
+  inputProduktpreis: '',
+  inputProduktTyp: '',
+  inputProduktbeschreibung: '',
+  inputCategory: '',
+  inputId: '',
+  newUser: {},
+  inputEmail: '',
+  inputPassword: '',
+  inputPasswordAgain: '',
+  inputVorname: '',
+  inputName: '',
+  inputStrasse: '',
+  inputHausNr: '',
+  inputPLZ: '',
+  inputOrt: '',
  };
 
 const reducer = (state=initialState, action)=> {
@@ -52,39 +62,76 @@ const reducer = (state=initialState, action)=> {
       copyOfState.shownClothes = filteredClothes;
       return copyOfState;
     case 'INPUT':
-    // console.log(copyOfState.newProduct);
+    // console.log(copyOfState);
+    // console.log(action.value);
+    // console.log(action.target);
     switch(document.getElementById(`${action.target.id}`).id) {
       case 'produktname':
-      copyOfState.inputVal1 = action.value;
-      copyOfState.newProduct.produktname = copyOfState.inputVal1;
+      copyOfState.inputValProduktname = action.value;
+      copyOfState.newProduct.produktname = copyOfState.inputValProduktname;
       return copyOfState;
       case 'produktnummer':
-      copyOfState.inputVal2 = action.value;
-      copyOfState.newProduct.produktnummer = copyOfState.inputVal2;
+      copyOfState.inputProduktnummer = action.value;
+      copyOfState.newProduct.produktnummer = copyOfState.inputProduktnummer;
       return copyOfState;
       case 'produktfotos':
-      copyOfState.inputVal3 = action.value;
-      copyOfState.newProduct.produktfotos = copyOfState.inputVal3;
+      copyOfState.inputProduktfotos = action.value;
+      copyOfState.newProduct.produktfotos = copyOfState.inputProduktfotos;
       return copyOfState;
       case 'preis':
-      copyOfState.inputVal4 = action.value;
-      copyOfState.newProduct.preis = copyOfState.inputVal4;
+      copyOfState.inputProduktpreis = action.value;
+      copyOfState.newProduct.preis = copyOfState.inputProduktpreis;
       return copyOfState;
       case 'produktTyp':
-      copyOfState.inputVal5 = action.value;
-      copyOfState.newProduct.produktTyp = copyOfState.inputVal5;
+      copyOfState.inputProduktTyp = action.value;
+      copyOfState.newProduct.produktTyp = copyOfState.inputProduktTyp;
       return copyOfState;
       case 'produktbeschreibung':
-      copyOfState.inputVal6 = action.value;
-      copyOfState.newProduct.produktbeschreibung = copyOfState.inputVal6;
+      copyOfState.inputProduktbeschreibung = action.value;
+      copyOfState.newProduct.produktbeschreibung = copyOfState.inputProduktbeschreibung;
       return copyOfState;
       case 'category':
-      copyOfState.inputVal7 = action.value;
-      copyOfState.newProduct.category = copyOfState.inputVal7;
+      copyOfState.inputCategory = action.value;
+      copyOfState.newProduct.category = copyOfState.inputCategory;
       return copyOfState;
       case 'id':
-      copyOfState.inputVal8 = action.value;
-      copyOfState.newProduct.id = copyOfState.inputVal8;
+      copyOfState.inputValId = action.value;
+      copyOfState.newProduct.id = copyOfState.inputValId;
+      return copyOfState;
+      case 'email':
+      copyOfState.inputEmail = action.value;
+      copyOfState.newUser.email = copyOfState.inputEmail;
+      return copyOfState;
+      case 'password':
+      copyOfState.inputPassword = action.value;
+      copyOfState.newUser.passwort = copyOfState.inputPassword;
+      return copyOfState;
+      case 'pwAgain':
+      // copyOfState.inputPasswordAgain = action.value;
+      return copyOfState;
+      case 'vorname':
+      copyOfState.inputVorname = action.value;
+      copyOfState.newUser.vorname = copyOfState.inputVorname;
+      return copyOfState;
+      case 'name':
+      copyOfState.inputName = action.value;
+      copyOfState.newUser.name = copyOfState.inputName;
+      return copyOfState;
+      case 'str':
+      copyOfState.inputStrasse = action.value;
+      copyOfState.newUser.str = copyOfState.inputStrasse;
+      return copyOfState;
+      case 'hausnr':
+      copyOfState.inputHausNr = action.value;
+      copyOfState.newUser.hausnr = copyOfState.inputHausNr;
+      return copyOfState;
+      case 'plz':
+      copyOfState.inputPLZ = action.value;
+      copyOfState.newUser.plz = copyOfState.inputPLZ;
+      return copyOfState;
+      case 'ort':
+      copyOfState.inputOrt = action.value;
+      copyOfState.newUser.ort = copyOfState.inputOrt;
       return copyOfState;
 
       default:
@@ -189,7 +236,6 @@ export const changeInput = (ev)=> {
   }
 }
 export const submitUpdating = (ev)=> {
-  console.log('sendNewProduct to DB');
 
     return {
     type: 'SUBMIT_UPDATING',
@@ -277,7 +323,23 @@ export const updatingDB = (product)=> {
   .then(res=> res.json())
   .then(data=> {
     console.log(data);
-    // dispatch(submitUpdating(dispatch))
+  })
+  .catch(err=> console.error(err))
+}
+}
+export const createUser = (user)=> {
+  return function(dispatch) {
+    console.log(user);
+  fetch('users/signUp',{
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify(user)
+  })
+  .then(res=> res.json())
+  .then(data=> {
+    console.log(data);
   })
   .catch(err=> console.error(err))
 }

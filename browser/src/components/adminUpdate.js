@@ -36,15 +36,7 @@ class AdminUpdate extends React.Component {
 
   submitUpdating = (ev)=> {
     ev.preventDefault();
-    this.props.submitUpdating({produktname: this.props.inputVal1,
-                              produktnummer: this.props.inputVal2,
-                              produktfotos: this.props.inputVal3,
-                              preis: this.props.inputVal4,
-                              produktTyp: this.props.inputVal5,
-                              produktbeschreibung: this.props.inputVal6,
-                              category: this.props.inputVal7,
-                              id: this.props.inputVal8
-                            });
+    this.props.submitUpdating(this.props.newProduct);
   }
 
   render() {
@@ -53,21 +45,21 @@ class AdminUpdate extends React.Component {
         <h4>Hallo Antje, willkommen auf deiner AdminSeite</h4>
         <form  type="submit" onSubmit={this.submitUpdating}>
           <label >1.produktname</label>
-          <Input id="produktname" type="text" onChange={this.props.changeInput} value={this.props.inputVal1}></Input>
+          <Input id="produktname" type="text" onChange={this.props.changeInput} value={this.props.inputProduktname}></Input>
           <label>2.produktnummer</label>
-          <Input id="produktnummer" type="text" onChange={this.props.changeInput} value={this.props.inputVal2}></Input>
+          <Input id="produktnummer" type="text" onChange={this.props.changeInput} value={this.props.inputProduktnummer}></Input>
           <label>3.produktfotos</label>
-          <Input id="produktfotos" type="text" onChange={this.props.changeInput} value={this.props.inputVal3}></Input>
+          <Input id="produktfotos" type="text" onChange={this.props.changeInput} value={this.props.inputProduktfotos}></Input>
           <label>4.preis</label>
-          <Input id="preis" type="number" onChange={this.props.changeInput} value={this.props.inputVal4}></Input>
+          <Input id="preis" type="number" step="0.1" onChange={this.props.changeInput} value={this.props.inputProduktpreis}></Input>
           <label>5.produktTyp</label>
-          <Input id="produktTyp" type="text" onChange={this.props.changeInput} value={this.props.inputVal5}></Input>
+          <Input id="produktTyp" type="text" onChange={this.props.changeInput} value={this.props.inputProduktTyp}></Input>
           <label>6.produktbeschreibung</label>
-          <Input id="produktbeschreibung" type="text" onChange={this.props.changeInput} value={this.props.inputVal6}></Input>
+          <Input id="produktbeschreibung" type="text" onChange={this.props.changeInput} value={this.props.inputProduktbeschreibung}></Input>
           <label>7.category</label>
-          <Input id="category" type="text" onChange={this.props.changeInput} value={this.props.inputVal7}></Input>
+          <Input id="category" type="text" onChange={this.props.changeInput} value={this.props.inputCategory}></Input>
           <label>8.id</label>
-          <Input id="id" type="text" onChange={this.props.changeInput} value={this.props.inputVal8}></Input>
+          <Input id="id" type="text" onChange={this.props.changeInput} value={this.props.inputId}></Input>
           <Button  type="submit">neuen Artikel senden und Datenbank aktualisieren</Button>
         </form>
       </MuiBox>

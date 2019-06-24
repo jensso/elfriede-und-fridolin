@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
 import Container from '@material-ui/core/Container';
 // import Button from '@material-ui/core/Button';
 import { styled } from '@material-ui/styles';
@@ -84,31 +86,45 @@ const MuiUserRegistration = styled(Container)({
       },
     },
 })
-export class UserRegistration extends React.Component {
+class UserRegistration extends React.Component {
+
+  newUserReg = (ev)=> {
+    ev.preventDefault();
+    this.props.createUser(this.props.newUser);
+  }
   render() {
     return (
       <>
         <NavBar />
         <MuiUserRegistration>
-          <form>
+          <form type="submit" onSubmit={this.newUserReg}>
           <h2>Registrierung</h2>
             <h5>Anmeldedaten</h5>
               <div>
                 <label>Email-Adresse*</label>
                 <input
                   type="email"
+                  id="email"
+                  onChange={this.props.changeInput}
+                  value={this.props.inputEmail}
                 />
               </div>
               <div>
                 <label>Kennwort*</label>
                 <input
                   type="password"
+                  id="password"
+                  onChange={this.props.changeInput}
+                  value={this.props.inputPassword}
                 />
               </div>
               <div>
                 <label>Kennwortbestätigung*</label>
                 <input
                   type="password"
+                  id="pwAgain"
+                  onChange={this.props.changeInput}
+                  value={this.props.inputPasswordAgain}
                 />
               </div>
               <span>* Pflichtfelder</span><br />
@@ -118,36 +134,54 @@ export class UserRegistration extends React.Component {
               <label>Vorname*</label>
               <input
                 type="text"
+                id="vorname"
+                onChange={this.props.changeInput}
+                value={this.props.inputVorname}
               />
             </div>
             <div>
               <label>Name*</label>
               <input
                 type="text"
+                id="name"
+                onChange={this.props.changeInput}
+                value={this.props.inputName}
               />
             </div>
             <div>
               <label>Straße*</label>
               <input
                 type="text"
+                id="str"
+                onChange={this.props.changeInput}
+                value={this.props.inputStrasse}
               />
             </div>
             <div>
               <label>HausNr.*</label>
               <input
                 type="text"
+                id="hausnr"
+                onChange={this.props.changeInput}
+                value={this.props.inputHausNr}
               />
             </div>
             <div>
               <label>PLZ*</label>
               <input
                 type="text"
+                id="plz"
+                onChange={this.props.changeInput}
+                value={this.props.inputPLZ}
               />
             </div>
             <div>
               <label>Ort*</label>
               <input
                 type="text"
+                id="ort"
+                onChange={this.props.changeInput}
+                value={this.props.inputOrt}
               />
             </div>
             <span>* Pflichtfelder</span>
@@ -162,3 +196,4 @@ export class UserRegistration extends React.Component {
     )
   }
 }
+export const UserRegistrationRX = connect(mapStateToProps,mapDispatchToProps)(UserRegistration);
