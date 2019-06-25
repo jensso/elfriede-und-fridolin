@@ -1,5 +1,6 @@
 const ordersModel = require('../models/ordersModel');
 const paypal = require('paypal-rest-sdk');
+const { transporter, adminOrdersInfo, userOrderConfirmation } = require('../utilities/emailOptions');
 
 paypal.configure({
   'mode': 'sandbox', //sandbox or live
@@ -49,8 +50,6 @@ const submitOrder = (req, res, next) => {
             return res.redirect(payment.links[i].href);
           }
         }
-        // console.log(payment);
-        // return res.send('OK');
 
       });
 }
@@ -69,14 +68,21 @@ const successOrder = (req, res, next) => {
     }]
   }
   const executePaymentJson = JSON.stringify(executePayment);
-  paypal.payment.execute(paymentId, executePaymentJson, (error, payment) => {
-    if(error) {
+  paypal.payment.execute(paymentId, executePaymentJson, async (error, payment) => {
+    try {
+      console.log('Get Payment Response');
+      console.log(JSON.stringify(payment));
+      const userMailOptions = userOrderConfirmation(payment.payer_info.email, orderDetails);
+      await transporter.sendMail(userMailOptions);
+      const antje = 'elfriede.und.fridolin@gmail.com';
+      const adminMailOptions = adminOrdersInfo(antje, orderDetails);
+      await transporter.sendMail(adminMailOptions);
+      res.status(202).json({message: 'Successfully Paid!'});
+
+    } catch (error) {
       console.log(error.response);
       return res.status(403).json(error);
     }
-    console.log('Get Payment Response');
-    console.log(JSON.stringify(payment));
-    res.status(200).json({message: 'Successfully Paid!'});
   })
 }
 
