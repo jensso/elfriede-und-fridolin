@@ -188,7 +188,7 @@ const MuiNavBar= styled(Container)({
 export class NavBar extends React.Component {
   render() {
     return(
-      <MuiNavBar injectfirst="true">
+      <MuiNavBar>
         <SimpleMenuHome />
         <SimpleMenuShop />
         <SimpleMenuNews />
