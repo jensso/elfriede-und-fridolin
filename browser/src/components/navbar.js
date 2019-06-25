@@ -8,10 +8,10 @@ import { NavLink } from 'react-router-dom';
 // import { NavGallery } from './navGallery.js';
 // import { NavHome } from './navHome.js';
 // import { ShoppingBasketRX } from './shoppingBasket.js';
-// import { UserLogin } from './userLogin.js';
-// import { AdminLogin } from './adminLogin.js';
 // import { NewsSection } from './news.js';
 // import watercolour_green from '../content/images/watercolour_green.png';
+import { UserLogin } from './userLogin.js';
+import { AdminLogin } from './adminLogin.js';
 
 function SimpleMenuHome() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -33,9 +33,8 @@ function SimpleMenuHome() {
           <NavLink to="/">Home</NavLink>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <NavLink to="/Galerie">Galerie</NavLink>
+          <NavLink to="/Gallerie">Gallerie</NavLink>
         </MenuItem>
-
       </Menu>
     </div>
     )
@@ -93,34 +92,13 @@ function SimpleMenuNews() {
         </MenuItem>
 
         <MenuItem onClick={handleClose}>
-          <NavLink to="/Info">Info</NavLink>
+          <NavLink to="/Blog">Info</NavLink>
         </MenuItem>
       </Menu>
     </div>
   );
 }
-// function SimpleMenuGallery() {
-//   const [anchorEl, setAnchorEl] = React.useState(null);
-//
-//     function handleClick(event) {
-//       setAnchorEl(event.currentTarget);
-//     }
-//
-//     function handleClose() {
-//       setAnchorEl(null);
-//     }
-//
-//   return (
-//     <div>
-//       <Button aria-owns={anchorEl ? 'simple-menu' : undefined} aria-haspopup="true" onClick={handleClick}>
-//        GALLERY
-//       </Button>
-//       <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
-//         <MenuItem onClick={handleClose}><NavGallery /></MenuItem>
-//       </Menu>
-//     </div>
-//   );
-// }
+
 function SimpleMenuBasket() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -217,7 +195,7 @@ const MuiNavBar= styled(Container)({
 export class NavBar extends React.Component {
   render() {
     return(
-      <MuiNavBar injectfirst="true">
+      <MuiNavBar>
         <SimpleMenuHome />
         <SimpleMenuShop />
         <SimpleMenuNews />

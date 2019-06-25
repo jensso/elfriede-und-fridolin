@@ -13,24 +13,22 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const tutorialSteps = [
   {
     label: 'Barcode',
-    imgPath: require(`../content/produktfotos_ef/barcode1.jpg`),
-    },
+    imgPath: require(`../content/produktfotos_ef/barcode1.jpg`) },
   {
     label: 'Liebe-Glaube-Hoffnung',
     imgPath: require(`../content/produktfotos_ef/faith1.jpg`)  },
   {
-      label: 'faith',
-      imgPath: require(`../content/produktfotos_ef/faith2.jpg`)  },
+    label: 'faith',
+    imgPath: require(`../content/produktfotos_ef/faith2.jpg`)  },
   {
-        label: 'Kalotte',
-        imgPath:
-        require(`../content/produktfotos_ef/kalotte1.jpg`)  },
+    label: 'Kalotte',
+    imgPath: require(`../content/produktfotos_ef/kalotte1.jpg`)  },
   {
-          label: 'Quadra 1',
-          imgPath: require(`../content/produktfotos_ef/quadra1.jpg`)  },
+    label: 'Quadra 1',
+    imgPath: require(`../content/produktfotos_ef/quadra1.jpg`)  },
   {
-            label: 'stylisch - individuell - einmalig',
-            imgPath: require(`../content/images/home_2.jpg`)  },
+    label: 'Quadra 2',
+    imgPath: require(`../content/produktfotos_ef/quadra2.jpg`)  },
   {
     label: 'Quadra 3',
     imgPath: require(`../content/produktfotos_ef/quadra3.jpg`)  },
@@ -72,35 +70,24 @@ const tutorialSteps = [
 
 const useStyles = makeStyles(theme => ({
   root: {
-    margin: '0.1vw auto',
-    fontSize: '3rem',
-  },
-  myStyle: {
-    background: '#753',
-    padding: '2rem',
-    textAlign: 'right',
-    textShadow: '0.1rem 0.2rem 0.3rem lime',
-    color: 'white',
-    fontFamily: 'Open Sans Condensed',
+
+    margin: '0 auto',
+    width: '66.6%',
+    height: '40%',
   },
   header: {
     display: 'flex',
-    height: '2vw',
-    padding: '2vw',
-    backgroundColor: '#753',
-    color: 'white',
-    fontFamily: 'Open Sans Condensed',
-
-
+    backgroundColor: 'white',
+    color: '#ad8262',
     '& button': {
-      fontSize: '4rem',
-      fontFamily: 'Open Sans Condensed',
-      color: 'white',
+      color: '#ad8262',
     }
   },
+
   img: {
+    objectFit: 'cover !important',
     width: '100%',
-    height: '25vw',
+    height: '50%',
   },
 }));
 

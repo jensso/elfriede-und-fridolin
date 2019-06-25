@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
 
 const MuiBox = styled(Box)({
-
   '& section': {
       display: 'flex',
       flexDirection: 'column',
@@ -195,11 +194,10 @@ const MuiBox = styled(Box)({
   },
 })
 
-
-class CuttingPatterns extends React.Component {
+export class NewProducts extends React.Component {
 
   componentDidMount() {
-    this.props.fetchPatterns();
+    this.props.makeFetch();
   }
 
   render() {
@@ -208,14 +206,7 @@ class CuttingPatterns extends React.Component {
         <NavBar />
           <MuiBox>
             <section>
-              <h2 onClick={this.props.fetchPatterns}>Schnittmuster</h2>
-              <div>
-                <Button onClick={this.props.filterPatterns}>Damen</Button>
-                <span>|</span>
-                <Button onClick={this.props.filterPatterns}>Kinder</Button>
-                <span>|</span>
-                <Button onClick={this.props.filterPatterns}>Accessoires</Button>
-              </div>
+              <h2 onClick={this.props.makeFetch}>Neuheiten</h2>
             </section>
 
             <main>
@@ -228,7 +219,7 @@ class CuttingPatterns extends React.Component {
                     <p>{obj.produktbeschreibung}</p>
                     <div id={obj.id}>
                       <span>{(obj.preis).toFixed(2)} €</span>
-                      <button id={obj.id} onClick={this.props.buyPatterns}>
+                      <button id={obj.id} onClick={this.props.buyItem}>
                          <i className="material-icons">&#xe8cc;</i>
                        </button>
                     </div>
@@ -241,4 +232,4 @@ class CuttingPatterns extends React.Component {
     )
   }
 }
-export const CuttingPatternsRX = connect(mapStateToProps,mapDispatchToProps)(CuttingPatterns)
+export const NewProductsRX = connect(mapStateToProps,mapDispatchToProps)(NewProducts)

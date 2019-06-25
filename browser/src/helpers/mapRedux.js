@@ -15,7 +15,11 @@ import {
   loginUser
  } from '../redux.js';
 
+ // YOU COULD HAVE THIS ALL IN REDUX.JS ALSO BUT FOR BETTER OVERVIEW PUT IN SEPERATE FILES.
 
+
+// STATETOPROPS IS EVERY VALUE WHICH IS TAKEN FROM GLOBAL STATE
+// VALUES:
 export const mapStateToProps = (state)=> {
   return {
     payloadClothes: state.payloadClothes,
@@ -54,6 +58,10 @@ export const mapStateToProps = (state)=> {
     inputOrt: state.inputOrt,
   }
 }
+
+// DISPATCH ARE FUNCTIONS WHICH INFLUENCE GLOBAL STATES //
+// AND SHOULD BE AVAILABLE FOR DIFFERENT COMPONENTS
+// FUNCTIONS:
 export const mapDispatchToProps = (dispatch)=> {
    return {
     fetchPatterns: (ev)=> dispatch(fetchPatterns(ev)),
