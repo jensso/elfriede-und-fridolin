@@ -72,11 +72,11 @@ export const mapDispatchToProps = (dispatch)=> {
     buyClothes: (ev)=> dispatch(buyClothes(ev)),
     buyPatterns: (ev)=> dispatch(buyPatterns(ev)),
     removeItem: (ev)=> dispatch(removeItem(ev)),
-    submit: (ev)=> dispatch(submitOrder(ev)),
     redir: (ev)=> dispatch(redir(ev)),
     changeInput: (ev)=> dispatch(changeInput(ev)),
     submitUpdating: (obj)=> dispatch(updatingDB(obj)),
     createUser: (user)=> dispatch(createUser(user)),
-    loginUser: (user)=> dispatch(loginUser(user))
+    loginUser: (user)=> dispatch(loginUser(user)),
+    submitOrder: (order)=> dispatch(submitOrder(order))
   }
 }

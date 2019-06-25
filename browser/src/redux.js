@@ -177,7 +177,6 @@ const reducer = (state=initialState, action)=> { // REDUCER = FCT. WITH TWO ARGU
     copyOfState.total = copyOfState.basket.reduce((total, order)=> {return total+order.preis},0).toFixed(2);
     return copyOfState;
     case 'BUY_patterns':
-    console.table(copyOfState.basket);
     for (let i=0; i< copyOfState.payloadPatterns.length; i++) {
       if (copyOfState.payloadPatterns[i].id===action.ev.target.parentElement.id) {
         copyOfState.basket = [...state.basket,copyOfState.payloadPatterns[i]];
@@ -198,13 +197,10 @@ const reducer = (state=initialState, action)=> { // REDUCER = FCT. WITH TWO ARGU
       }
     }
     break;
-    case 'SUBMIT':
+    case 'ORDER_SUBMITTED':
     copyOfState.newOrder = copyOfState.basket;
     copyOfState.basket = [];
     copyOfState.total = 0;
-    return copyOfState;
-
-    case 'REDIR':
     return copyOfState;
 
     default:
@@ -223,6 +219,12 @@ export const bringPayloadClothes = (data)=> {
     type: 'FETCHDATA_clothes',
     payloadClothes: data,
     }
+}
+export const orderSubmitted = (ev)=> {
+  return {
+    type: 'ORDER_SUBMITTED',
+    event: ev,
+  }
 }
 
 export const filterPatterns = (ev)=> {
@@ -270,7 +272,6 @@ export const nextPic = (ev)=> {
 }
 //actions to the basket:
 export const buyPatterns = (ev)=> {
-  console.log(ev.target.id)
   return {
     type: 'BUY_patterns',
     ev: ev,
@@ -297,12 +298,21 @@ export const removeItem = (ev) => { // EV SHOULD ALWAYS BE TRANSPORTED
     id: ev.target.parentElement.id
   }
 }
-export const submitOrder = (ev)=> {
-  return {
-    type: 'SUBMIT',
-    ev: ev,
+export const submitOrder = (order)=> {
+  return function(dipatch) {
+    fetch('orders/checkout',{
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(order)
+    })
+    .then(res=> res.json())
+    .then(msg=> console.log(msg))
+    .catch(err=> console.error(err))
   }
 }
+
 export const redir = (ev)=> {
     return {
       type: 'REDIR',
