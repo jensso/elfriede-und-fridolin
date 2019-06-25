@@ -30,6 +30,9 @@ const MuiBox = styled(Box)({
         textTransform: 'capitalize',
         letterSpacing: '0.2rem',
         margin: '0 1rem',
+        '@media (max-width: 600px)': {
+          margin: '0 0.3rem',
+        },
         fontSize: '0.8rem',
         color: '#9C938E',
 
@@ -53,7 +56,7 @@ const MuiBox = styled(Box)({
           outline: 'none',
         },
         '& i': {
-          fontSize: '3rem',
+          fontSize: '2.3rem',
         }
       }
 
@@ -130,10 +133,11 @@ const MuiBox = styled(Box)({
           outlineOffset: '0.2rem',
 
           '& div': {
-            width: '100%',
+            width: '90%',
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            marginLeft: '1rem',
           },
 
           '& span': {
@@ -152,10 +156,11 @@ const MuiBox = styled(Box)({
           paddingTop: '0.2rem',
 
           '& div': {
-            width: '100%',
+            width: '90%',
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            marginLeft: '1rem',
           },
 
           '& h3, h5, p, span': {
@@ -177,10 +182,11 @@ const MuiBox = styled(Box)({
           outlineOffset: '0.2rem',
 
           '& div': {
-            width: '100%',
+            width: '90%',
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            marginLeft: '1rem',
           },
 
           '& span': {

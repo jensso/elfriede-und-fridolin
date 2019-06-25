@@ -50,8 +50,8 @@ class App extends React.Component {
       <Route path='/Admin' component={Admin}/>
       <Route path='/Kontakt' component={NavBar}/>
       <Route path='/Kontakt' component={ContactFooter}/>
-      <Route path='/forfree' component={NavBar}/>
-      <Route path='/forfree' component={FreeProducts}/>
+      <Route path='/Downloads' component={NavBar}/>
+      <Route path='/Downloads' component={FreeProducts}/>
       <Route path='/UPDATE' component={AdminUpdateRX}/>
     </BrowserRouter>
     </div>
