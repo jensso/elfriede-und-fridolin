@@ -5,6 +5,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
 import { NavLink } from 'react-router-dom';
+// import { NavGallery } from './navGallery.js';
+// import { NavHome } from './navHome.js';
+// import { ShoppingBasketRX } from './shoppingBasket.js';
+// import { NewsSection } from './news.js';
+// import watercolour_green from '../content/images/watercolour_green.png';
 import { UserLogin } from './userLogin.js';
 import { AdminLogin } from './adminLogin.js';
 
@@ -27,7 +32,6 @@ function SimpleMenuHome() {
         <MenuItem onClick={handleClose}>
           <NavLink to="/">Home</NavLink>
         </MenuItem>
-
         <MenuItem onClick={handleClose}>
           <NavLink to="/Gallerie">Gallerie</NavLink>
         </MenuItem>
@@ -114,6 +118,9 @@ return (
   <Menu id="simple-menu" anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
     <MenuItem onClick={handleClose}>
       <NavLink to="/Warenkorb">Warenkorb</NavLink>
+    </MenuItem>
+    <MenuItem onClick={handleClose}>
+      <NavLink to="/forfree">for free!</NavLink>
     </MenuItem>
   </Menu>
 </div>

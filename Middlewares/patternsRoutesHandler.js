@@ -4,7 +4,7 @@ const patternsModel = require('../models/patternsModel');
 const addPatterns = async (req, res, next) => {
   try {
     await patternsModel.create(req.body)
-    res.status(200).json({'message': 'pattern was added successfully!'});
+    res.status(200).json({message: 'pattern was added successfully!'});
   } catch(error) {
     next(error);
   }

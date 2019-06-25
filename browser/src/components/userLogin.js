@@ -1,6 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
 import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button';
 import { styled } from '@material-ui/styles';
 import { NavBar } from './navbar.js';
 
@@ -66,50 +67,77 @@ const MuiUserLogin = styled(Container)({
     fontSize: '1rem',
     color: 'white',
     fontFamily: 'Open Sans Condensed',
-    // fontWeight: 'bolder',
     letterSpacing: '0.1rem',
     background: '#ad8262',
     textTransform: 'uppercase',
     margin: '10% 35%',
+    padding: '0.4rem',
 
     '&:hover': {
+      fontWeight: 'bolder',
+      cursor: 'pointer',
       background: '#B5C4AF',
     },
     '&:focus': {
       outline: 'none',
     },
   },
+  '& a': {
+    float: 'right',
+    marginTop: '-1vw',
+    color: '#9C938E',
+    fontFamily: 'Open Sans Condensed',
+    '&:hover': {
+      fontWeight: 'bolder',
+      textDecoration: 'none',
+    }
+  },
 
 })
 
-export class UserLogin extends React.Component {
+class UserLogin extends React.Component {
+
+  authUserLogin = (ev)=> {
+  ev.preventDefault();
+  this.props.loginUser(this.props.userInfo);
+}
+
   render() {
     return (
       <>
         <NavBar />
         <MuiUserLogin>
-          <form>
+          <form type="submit" onSubmit={this.authUserLogin}>
           <h2>Login</h2>
 
               <div>
                 <label>Email-Adresse*</label>
                 <input
                   type="email"
+                  id="userVal"
+                  onChange={this.props.changeInput}
+                  value={this.props.userVal}
                 />
               </div>
               <div>
                 <label>Kennwort*</label>
                 <input
                   type="password"
-                />
+                  id="pwVal"
+                  onChange={this.props.changeInput}
+                  value={this.props.pwVal}
+                /><br/><br/>
+                <a href="/forgot">Kennwort vergessen?</a>
               </div>
 
               <span>* Pflichtfelder</span><br />
 
+              <button type="submit">Anmelden</button>
+
           </form>
 
           <div>
-            <button type="submit">Registrieren</button>
+
           </div>
         </MuiUserLogin>
       </>
@@ -117,5 +145,5 @@ export class UserLogin extends React.Component {
   }
 }
 
-
+export const UserLoginRX = connect(mapStateToProps, mapDispatchToProps)(UserLogin);
   // <a href="https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md">Passwort vergessen?</a>

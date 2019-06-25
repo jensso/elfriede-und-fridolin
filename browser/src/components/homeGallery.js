@@ -9,9 +9,6 @@ import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { NavBar } from './navbar.js';
 
-// import home_1 from '../content/images/home_1.jpg';
-// import home_2 from '../content/images/home_2.jpg';
-
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const tutorialSteps = [
   {
@@ -27,7 +24,7 @@ const tutorialSteps = [
     label: 'Kalotte',
     imgPath: require(`../content/produktfotos_ef/kalotte1.jpg`)  },
   {
-    abel: 'Quadra 1',
+    label: 'Quadra 1',
     imgPath: require(`../content/produktfotos_ef/quadra1.jpg`)  },
   {
     label: 'Quadra 2',
@@ -65,10 +62,15 @@ const tutorialSteps = [
   label: 'Hoody',
   imgPath: require(`../content/images/home_1.jpg`)
   },
+  {
+  label: 'www.elfriede-und-friedolin.de',
+  imgPath: require(`../content/images/logo.jpg`)
+  },
 ];
 
 const useStyles = makeStyles(theme => ({
   root: {
+
     margin: '0 auto',
     width: '66.6%',
     height: '40%',
@@ -109,7 +111,7 @@ function SwipeableTextMobileStepper() {
 
   return (
     <div className={classes.root}>
-      <Paper square elevation={0} className={classes.header}>
+      <Paper square elevation={0} className={classes.myStyle}>
         <Typography>{tutorialSteps[activeStep].label}</Typography>
       </Paper>
       <AutoPlaySwipeableViews

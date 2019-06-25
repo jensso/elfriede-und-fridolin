@@ -193,9 +193,10 @@ const MuiBox = styled(Box)({
     },
   },
 })
-export class Clothes extends React.Component {
+
+class Clothes extends React.Component {
   componentDidMount() {
-    this.props.makeFetch();
+    this.props.fetchClothes();
   }
 
   render() {
@@ -204,13 +205,13 @@ export class Clothes extends React.Component {
         <NavBar />
           <MuiBox>
             <section>
-              <h2 onClick={this.props.makeFetch}>Kleidung</h2>
+              <h2 onClick={this.props.fetchClothes}>Kleidung</h2>
               <div>
-                <Button onClick={this.props.filterData}>Damen</Button>
+                <Button onClick={this.props.filterClothes}>Damen</Button>
                 <span>|</span>
-                <Button onClick={this.props.filterData}>Kinder</Button>
+                <Button onClick={this.props.filterClothes}>Kinder</Button>
                 <span>|</span>
-                <Button onClick={this.props.filterData}>Accessoires</Button>
+                <Button onClick={this.props.filterClothes}>Accessoires</Button>
               </div>
             </section>
 
@@ -223,8 +224,8 @@ export class Clothes extends React.Component {
                       <img onClick={(ev)=>console.log(obj.id)} src={require(`../content/produktfotos_ef/${obj.produktfotos[this.props.next]}.jpg`)} alt={`pic of ${obj.produktname}`}></img>
                       <p>{obj.produktbeschreibung}</p>
                       <div id={obj.id}>
-                       <span>€ {(obj.preis).toFixed(2)}</span>
-                       <button id={obj.id} onClick={this.props.buyItem}>
+                       <span>{(obj.preis).toFixed(2)} €</span>
+                       <button id={obj.id} onClick={this.props.buyClothes}>
                          <i className="material-icons">&#xe8cc;</i>
                        </button>
                       </div>
@@ -235,7 +236,6 @@ export class Clothes extends React.Component {
         </MuiBox>
       </>
     )
-
   }
 }
 export const ClothesRX = connect(mapStateToProps,mapDispatchToProps)(Clothes);

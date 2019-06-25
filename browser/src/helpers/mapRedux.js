@@ -1,18 +1,18 @@
 import {
   submitOrder,
   redir,
-  buyItem,
+  buyPatterns,
+  buyClothes,
   removeItem,
-  fetchFromExpress,
-  filterPayload,
+  fetchPatterns,
+  fetchClothes,
+  filterPatterns,
+  filterClothes,
+  changeInput,
   nextPic,
-  hasFailedAction,
-  changeAction,
-  requestAction,
-  redirectToLogin,
-  redirectToHome,
-  loginFetch,
-  reduxLogout,
+  updatingDB,
+  createUser,
+  loginUser
  } from '../redux.js';
 
  // YOU COULD HAVE THIS ALL IN REDUX.JS ALSO BUT FOR BETTER OVERVIEW PUT IN SEPERATE FILES.
@@ -22,7 +22,8 @@ import {
 // VALUES:
 export const mapStateToProps = (state)=> {
   return {
-    payload: state.payload,
+    payloadClothes: state.payloadClothes,
+    payloadPatterns: state.payloadPatterns,
     shownPatterns: state.shownPatterns,
     shownClothes: state.shownClothes,
     basket: state.basket,
@@ -36,6 +37,25 @@ export const mapStateToProps = (state)=> {
     userInfo: state.userInfo,
     loginFail: state.loginFail,
     redirHome: state.redirHome,
+    newProduct: state.newProduct,
+    inputProduktname: state.inputProduktname,
+    inputProduktnummer: state.inputProduktnummer,
+    inputProduktfotos: state.inputProduktfotos,
+    inputProduktpreis: state.inputProduktpreis,
+    inputProduktTyp: state.inputProduktTyp,
+    inputProduktbeschreibung: state.inputProduktbeschreibung,
+    inputCategory: state.inputCategory,
+    inputId: state.inputId,
+    newUser: state.newUser,
+    inputEmail: state.inputEmail,
+    inputPassword: state.inputPassword,
+    inputPasswordAgain: state.inputPasswordAgain,
+    inputVorname: state.inputVorname,
+    inputName: state.inputName,
+    inputStrasse: state.inputStrasse,
+    inputHausNr: state.inputHausNr,
+    inputPLZ: state.inputPLZ,
+    inputOrt: state.inputOrt,
   }
 }
 
@@ -44,19 +64,19 @@ export const mapStateToProps = (state)=> {
 // FUNCTIONS:
 export const mapDispatchToProps = (dispatch)=> {
    return {
-    makeFetch: (ev)=> dispatch(fetchFromExpress(ev)),
-    filterData: (ev)=> dispatch(filterPayload(ev)),
+    fetchPatterns: (ev)=> dispatch(fetchPatterns(ev)),
+    fetchClothes: (ev)=> dispatch(fetchClothes(ev)),
+    filterPatterns: (ev)=> dispatch(filterPatterns(ev)),
+    filterClothes: (ev)=> dispatch(filterClothes(ev)),
     nextPic: (ev)=> dispatch(nextPic(ev)),
-    buyItem: (ev)=> dispatch(buyItem(ev)),
+    buyClothes: (ev)=> dispatch(buyClothes(ev)),
+    buyPatterns: (ev)=> dispatch(buyPatterns(ev)),
     removeItem: (ev)=> dispatch(removeItem(ev)),
     submit: (ev)=> dispatch(submitOrder(ev)),
     redir: (ev)=> dispatch(redir(ev)),
-    hasFailed: ()=> dispatch(hasFailedAction()),
-    changeAction: (userPayload)=> dispatch(changeAction(userPayload)),
-    reqAction: (userData)=> dispatch(requestAction(userData)),
-    redirLogin: ()=> dispatch(redirectToLogin()),
-    redirHome: ()=> dispatch(redirectToHome()),
-    loginFetch: (credentials)=> dispatch(loginFetch(credentials)),
-    reduxLogout: ()=> dispatch(reduxLogout()),
+    changeInput: (ev)=> dispatch(changeInput(ev)),
+    submitUpdating: (obj)=> dispatch(updatingDB(obj)),
+    createUser: (user)=> dispatch(createUser(user)),
+    loginUser: (user)=> dispatch(loginUser(user))
   }
 }

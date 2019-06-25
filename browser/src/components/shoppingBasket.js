@@ -5,7 +5,6 @@ import { NavBar } from './navbar.js';
 import { connect } from 'react-redux';
 import { ShopSummaryRX } from './shopSummary.js';
 import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
-import { makeStyles } from '@material-ui/styles';
 
 
 const MuiBasket = styled(Box)({
@@ -106,10 +105,6 @@ const MuiBasket = styled(Box)({
 
 class ShoppingBasket extends React.Component {
 
-  componentDidMount() {
-    console.log(this.props);
-  }
-
   render() {
     return(
       <>
@@ -120,6 +115,7 @@ class ShoppingBasket extends React.Component {
           <main>
               {this.props.basket.map((obj, index)=>{
                 return (
+
                   <section key={index}>
                     <div>
                       <img onClick={(ev)=>console.log(ev.target.id)} src={require(`../content/produktfotos_ef/${obj.produktfotos[0]}.jpg`)} alt="pic"></img>
