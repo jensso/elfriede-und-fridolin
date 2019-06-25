@@ -205,7 +205,7 @@ class CuttingPatterns extends React.Component {
                       <h5>{obj.produktTyp}</h5>
                       <p>{obj.produktbeschreibung}</p>
                       <div id={obj.id}>
-                       <span>{(obj.preis).toFixed(2)} €</span>
+                       <span>{obj.preis} €</span>
                        <button id={obj.id} onClick={this.props.buyPatterns}>
                          <i className="material-icons">&#xe8cc;</i>
                        </button>

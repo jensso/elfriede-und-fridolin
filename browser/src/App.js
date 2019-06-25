@@ -12,7 +12,7 @@ import { CuttingPatternsRX } from './components/cuttingPatterns.js';
 import { ClothesRX } from './components/clothes.js';
 import { ShoppingBasketRX } from './components/shoppingBasket.js';
 import { NewsSection } from './components/news.js';
-import { UserLogin } from './components/userLogin.js';
+import { UserLoginRX } from './components/userLogin.js';
 import { UserRegistrationRX } from './components/userRegistration.js';
 import { Admin } from './components/adminLogin.js';
 
@@ -42,7 +42,7 @@ class App extends React.Component {
       <Route path='/Kleidung' component={ClothesRX}/>
       <Route path='/Neuheiten' component={NewsSection}/>
       <Route path='/Warenkorb' component={ShoppingBasketRX}/>
-      <Route path='/Login' component={UserLogin}/>
+      <Route path='/Login' component={UserLoginRX}/>
       <Route path='/UserRegistration' component={UserRegistrationRX}/>
       <Route path='/Admin' component={Admin}/>
       <Route path='/Kontakt' component={NavBar}/>

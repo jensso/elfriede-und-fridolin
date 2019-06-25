@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
 import Container from '@material-ui/core/Container';
 import { styled } from '@material-ui/styles';
 import { NavBar } from './navbar.js';
@@ -93,37 +95,49 @@ const MuiUserLogin = styled(Container)({
 
 })
 
-export class UserLogin extends React.Component {
+class UserLogin extends React.Component {
+
+  authUserLogin = (ev)=> {
+  ev.preventDefault();
+  this.props.loginUser(this.props.userInfo);
+}
+
   render() {
     return (
       <>
         <NavBar />
         <MuiUserLogin>
-          <form>
+          <form type="submit" onSubmit={this.authUserLogin}>
           <h2>Login</h2>
 
               <div>
                 <label>Email-Adresse*</label>
                 <input
                   type="email"
+                  id="userVal"
+                  onChange={this.props.changeInput}
+                  value={this.props.userVal}
                 />
               </div>
               <div>
                 <label>Kennwort*</label>
                 <input
                   type="password"
+                  id="pwVal"
+                  onChange={this.props.changeInput}
+                  value={this.props.pwVal}
                 /><br/><br/>
                 <a href="/forgot">Kennwort vergessen?</a>
               </div>
 
               <span>* Pflichtfelder</span><br />
 
+              <button type="submit">Anmelden</button>
 
           </form>
 
           <div>
 
-            <button type="submit">Anmelden</button>
           </div>
         </MuiUserLogin>
       </>
@@ -131,5 +145,5 @@ export class UserLogin extends React.Component {
   }
 }
 
-
+export const UserLoginRX = connect(mapStateToProps, mapDispatchToProps)(UserLogin);
   // <a href="https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md">Passwort vergessen?</a>

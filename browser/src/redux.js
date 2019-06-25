@@ -13,7 +13,7 @@ const initialState = {
   userVal: '',
   pwVal: '',
   loginRedir: false,
-  userInfo: null,
+  userInfo: {},
   loginFail: false,
   redirHome: false,
   newProduct: {},
@@ -62,8 +62,8 @@ const reducer = (state=initialState, action)=> {
       copyOfState.shownClothes = filteredClothes;
       return copyOfState;
     case 'INPUT':
-    // console.log(copyOfState);
-    // console.log(action.value);
+    console.log(copyOfState.userInfo);
+    console.log(action.value);
     // console.log(action.target);
     switch(document.getElementById(`${action.target.id}`).id) {
       case 'produktname':
@@ -100,15 +100,15 @@ const reducer = (state=initialState, action)=> {
       return copyOfState;
       case 'email':
       copyOfState.inputEmail = action.value;
-      copyOfState.newUser.email = copyOfState.inputEmail;
+      copyOfState.newUser.Email = copyOfState.inputEmail;
       return copyOfState;
       case 'password':
       copyOfState.inputPassword = action.value;
-      copyOfState.newUser.passwort = copyOfState.inputPassword;
+      copyOfState.newUser.Password = copyOfState.inputPassword;
       return copyOfState;
-      case 'pwAgain':
+      // case 'pwAgain':
       // copyOfState.inputPasswordAgain = action.value;
-      return copyOfState;
+      // return copyOfState;
       case 'vorname':
       copyOfState.inputVorname = action.value;
       copyOfState.newUser.vorname = copyOfState.inputVorname;
@@ -132,6 +132,14 @@ const reducer = (state=initialState, action)=> {
       case 'ort':
       copyOfState.inputOrt = action.value;
       copyOfState.newUser.ort = copyOfState.inputOrt;
+      return copyOfState;
+      case 'userVal':
+      copyOfState.userVal = action.value;
+      copyOfState.userInfo.Email = copyOfState.userVal;
+      return copyOfState;
+      case 'pwVal':
+      copyOfState.pwVal = action.value;
+      copyOfState.userInfo.Password = copyOfState.pwVal
       return copyOfState;
 
       default:
@@ -330,19 +338,36 @@ export const updatingDB = (product)=> {
 export const createUser = (user)=> {
   return function(dispatch) {
     console.log(user);
-  fetch('users/signUp',{
+  fetch('/users/signUp',{
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
     },
     body: JSON.stringify(user)
   })
+  .then(user=> console.log(user))
   .then(res=> res.json())
-  .then(data=> {
-    console.log(data);
+  .then(msg=> {
+    console.log(msg);
   })
   .catch(err=> console.error(err))
+  }
 }
+export const loginUser = (user)=> {
+  console.log(user);
+  return function(dispatch) {
+    fetch('users/login',{
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+    .then(res=> res.json())
+    .then(msg=> {
+      console.log(msg);
+    })
+  }
 }
 
 export const store = createStore(reducer, applyMiddleware(thunk));

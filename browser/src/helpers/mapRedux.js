@@ -12,6 +12,7 @@ import {
   nextPic,
   updatingDB,
   createUser,
+  loginUser
  } from '../redux.js';
 
 
@@ -67,6 +68,7 @@ export const mapDispatchToProps = (dispatch)=> {
     redir: (ev)=> dispatch(redir(ev)),
     changeInput: (ev)=> dispatch(changeInput(ev)),
     submitUpdating: (obj)=> dispatch(updatingDB(obj)),
-    createUser: (user)=> dispatch(createUser(user))
+    createUser: (user)=> dispatch(createUser(user)),
+    loginUser: (user)=> dispatch(loginUser(user))
   }
 }

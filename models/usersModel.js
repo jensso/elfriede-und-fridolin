@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
   Nachname: {type: String, required: true},
   Strasse: {type: String, required: true},
   HausNr: {type: String, required: true},
-  Postleitzahl: {type: string, required: true},
+  Postleitzahl: {type: String, required: true},
   Ort: {type: String, required: true},
   // Land: {type: String, required: true},
   Email: {type: String, required: true},
