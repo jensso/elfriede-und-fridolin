@@ -13,7 +13,6 @@ import { ClothesRX } from './components/clothes.js';
 import { NewProductsRX } from './components/newProducts.js';
 import { OffersRX } from './components/offers.js';
 import { ShoppingBasketRX } from './components/shoppingBasket.js';
-import { NewsSection } from './components/news.js';
 import { UserLoginRX } from './components/userLogin.js';
 import { UserRegistrationRX } from './components/userRegistration.js';
 import { Admin } from './components/adminLogin.js';

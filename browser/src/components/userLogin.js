@@ -146,4 +146,3 @@ class UserLogin extends React.Component {
 }
 
 export const UserLoginRX = connect(mapStateToProps, mapDispatchToProps)(UserLogin);
-  // <a href="https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md">Passwort vergessen?</a>
