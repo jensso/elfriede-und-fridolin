@@ -65,14 +65,13 @@ class ShopSummary extends React.Component {
     ev.preventDefault();
     console.log(this.props.basket);
     this.props.submitOrder(this.props.basket);
-    this.props.orderSubmitted(ev);
 
   }
   render() {
     return(
       <MuiShopSummary>
         <>
-        {this.props.showMessage && <p>{this.props.showMessage}</p>}
+        {this.props.showMessage && <h2>{this.props.showMessage}</h2>}
         {this.props.total == 0 && <h3>Dein Warenkorb ist leer.</h3>}
         {this.props.total > 0 &&
           <div>

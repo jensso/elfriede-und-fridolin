@@ -1,6 +1,6 @@
 import {
   submitOrder,
-  orderSubmitted,
+  showResponse,
   redir,
   buyPatterns,
   buyClothes,
@@ -14,8 +14,7 @@ import {
   updatingDB,
   createUser,
   loginUser,
-  showMessage
- } from '../redux.js';
+  } from '../redux.js';
 
  // YOU COULD HAVE THIS ALL IN REDUX.JS ALSO BUT FOR BETTER OVERVIEW PUT IN SEPERATE FILES.
 
@@ -81,6 +80,6 @@ export const mapDispatchToProps = (dispatch)=> {
     createUser: (user)=> dispatch(createUser(user)),
     loginUser: (user)=> dispatch(loginUser(user)),
     submitOrder: (order)=> dispatch(submitOrder(order)),
-    orderSubmitted: (ev)=> dispatch(orderSubmitted(ev))
+    showResponse: (serverResponse)=> dispatch(showResponse(serverResponse))
   }
 }

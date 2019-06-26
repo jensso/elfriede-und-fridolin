@@ -112,6 +112,7 @@ console.log('forgot');
         <MuiUserLogin>
           <form type="submit" onSubmit={this.authUserLogin}>
           <h2>Login</h2>
+          {this.props.showMessage && <h2>{this.props.showMessage}</h2>}
 
               <div>
                 <label>Email-Adresse*</label>
