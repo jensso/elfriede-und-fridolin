@@ -1,6 +1,9 @@
 const ordersModel = require('../models/ordersModel');
 const paypal = require('paypal-rest-sdk');
 const { transporter, adminOrdersInfo, userOrderConfirmation } = require('../utilities/emailOptions');
+const lodash = require('lodash');
+const lodashObject = require('lodash/fp/object');
+
 
 paypal.configure({
   'mode': 'sandbox', //sandbox or live
@@ -11,8 +14,14 @@ paypal.configure({
 
 
 const submitOrder = (req, res, next) => {
-  console.log(req.body);
-
+  const ordersItems = req.body;
+  console.log(ordersItems);
+  const orderObject = {name: '', sku: 'Items', price: '', currency: 'EUR', quantity: 1} ;
+  for (let i = 0 ; i < ordersItems.length ; i++) {
+      _.pickby(orderObject, ordersItems[i].produktname)
+  }
+  console.log(itemName);
+  const totalPrise =
   const createPayment = {
           intent: "sale",
           payer: {
@@ -36,23 +45,23 @@ const submitOrder = (req, res, next) => {
                   currency: "EUR",
                   total: '100.00'
               },
-              description: "Beautiful Skirt for 100 Euro!"
+              description: "description"
           }]
       };
-      const createPaymentJson = JSON.stringify(createPayment);
-      paypal.payment.create(createPaymentJson, (error, payment) => {
-        if (error) {
-          console.log(error);
-          return res.status(403).json(error);
-        }
-        console.log(payment);
-        for (let i = 0 ; i < payment.links.length ; i++) {
-          if (payment.links[i].rel === 'approval_url') {
-            return res.redirect(payment.links[i].href);
-          }
-        }
-
-      });
+      // const createPaymentJson = JSON.stringify(createPayment);
+      // paypal.payment.create(createPaymentJson, (error, payment) => {
+      //   if (error) {
+      //     console.log(error);
+      //     return res.status(403).json(error);
+      //   }
+      //   console.log(payment);
+      //   for (let i = 0 ; i < payment.links.length ; i++) {
+      //     if (payment.links[i].rel === 'approval_url') {
+      //       return res.redirect(payment.links[i].href);
+      //     }
+      //   }
+      //
+      // });
 
 }
 
