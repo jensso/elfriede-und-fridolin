@@ -55,7 +55,7 @@ const MuiShopSummary = styled(Box)({
           '&:focus': {
             outline: 'none',
             },
-      }
+          }
       },
   }
 })

@@ -16,6 +16,7 @@ import { ShoppingBasketRX } from './components/shoppingBasket.js';
 import { UserLoginRX } from './components/userLogin.js';
 import { UserRegistrationRX } from './components/userRegistration.js';
 import { Admin } from './components/adminLogin.js';
+import { PopUp } from './components/popup.js';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 
@@ -53,6 +54,7 @@ class App extends React.Component {
       <Route path='/Downloads' component={NavBar}/>
       <Route path='/Downloads' component={FreeProducts}/>
       <Route path='/UPDATE' component={AdminUpdateRX}/>
+      <Route path='/popup' component={PopUp}/>
     </BrowserRouter>
     </div>
   )};

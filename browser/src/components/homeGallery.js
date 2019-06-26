@@ -10,6 +10,7 @@ import { autoPlay } from 'react-swipeable-views-utils';
 import { NavBar } from './navbar.js';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+
 const tutorialSteps = [
   {
     label: 'Barcode',
@@ -152,6 +153,7 @@ function SwipeableTextMobileStepper() {
     </div>
   );
 }
+
 export class HomeGallery extends React.Component {
   render() {
     return (
