@@ -32,6 +32,59 @@
   color: #ad8262;
 }
 
-  /* #root > div > div.MuiBox-root.MuiBox-root-34.Styled\(MuiBox\)-root-32 > main {
-    flex-wrap: wrap;
-  } */
+#root > div > div > div > button > span.MuiButton-label {
+  cursor: pointer;
+  color: #ad8262;
+}
+
+#simple-menu > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-paper.MuiPaper-rounded {
+  background-color: #ad8262;
+  position: absolute;
+  top: 20% !important;
+  left: 15% !important;
+  color: white;
+  padding: 1vw;
+  letter-spacing: 0.2rem;
+}
+
+#simple-menu > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-paper.MuiPaper-rounded > ul > li > main > section {
+  flex-direction: column;
+  text-align: center;
+  padding: 2vw 2vw;
+  outline: 0.1rem dotted white;
+}
+
+#simple-menu > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-paper.MuiPaper-rounded > ul > li > main > section > h3 {
+  font-family: Open Sans Condensed;
+  text-transform: uppercase;
+  font-weight: lighter;
+  text-align: center;
+  font-style: italic;
+  font-size: 1rem;
+  margin: 0;
+  letter-spacing: 0.2rem;
+  color: white;
+}
+
+#simple-menu > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-paper.MuiPaper-rounded > ul > li > main > section > button {
+
+    margin: 2vw auto;
+    padding: 0.8vw 2vw;
+    font-size: 0.8rem;
+    color: white;
+    font-family: Open Sans Condensed;
+    font-weight: bolder;
+    letter-spacing: 0.1rem;
+    color: #ad8262;
+    background-color: white;
+    border-radius: 9%;
+}
+
+#simple-menu > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-paper.MuiPaper-rounded > ul > li > main > section > button:hover {
+  background: #9c938e;
+  color: white;
+  }
+
+  #simple-menu > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-paper.MuiPaper-rounded > ul > li > main > section > button:focus {
+  outline: none;
+  }
