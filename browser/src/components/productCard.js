@@ -2,7 +2,7 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
+// import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
@@ -63,12 +63,11 @@ export function ProductCardStern() {
           ..ein Stern der deinen Namen trägt..
            </Typography>
         </CardContent>
-      <CardActions>
-        <Button size="small" className={classes.button}>
-          kostenlos herunterladen
-        </Button>
-      </CardActions>
       </CardActionArea>
+      <Button size="small" className={classes.button}>
+        kostenlos herunterladen
+      </Button>
+
     </Card>
   );
 }
@@ -92,12 +91,10 @@ export function ProductCardMute() {
           stille Nacht, heilige Nacht
            </Typography>
         </CardContent>
-        <CardActions>
-          <Button size="small" className={classes.button}>
-            kostenlos herunterladen
-          </Button>
-        </CardActions>
         </CardActionArea>
+        <Button size="small" className={classes.button}>
+          kostenlos herunterladen
+        </Button>
       </Card>
   );
 }
@@ -121,12 +118,11 @@ export function ProductCardTutorial() {
             In dieser Anleitung zeige ich dir, wie du an jeden beliebigen Schnitt und jede Position ein lace up nähen kannst
            </Typography>
         </CardContent>
-        <CardActions>
-          <Button size="small" className={classes.button}>
-            kostenlos herunterladen
-          </Button>
-        </CardActions>
         </CardActionArea>
+        <Button size="small" className={classes.button}>
+          kostenlos herunterladen
+        </Button>
+
       </Card>
   );
 }

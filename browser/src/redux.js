@@ -35,6 +35,7 @@ const initialState = { // YOU HAVE TO DEFINE A initialState ANYTIME YOU WANT CHA
   inputHausNr: '',
   inputPLZ: '',
   inputOrt: '',
+  showMessage: ''
  };
 
 const reducer = (state=initialState, action)=> { // REDUCER = FCT. WITH TWO ARGUMENTS (ACTION = OBJECT)
@@ -156,19 +157,18 @@ const reducer = (state=initialState, action)=> { // REDUCER = FCT. WITH TWO ARGU
       if (copyOfState.next <= copyOfState.payload[i].produktfotos.length)
         {
           copyOfState.next++;
-          console.error(copyOfState.next);
+          console.log(copyOfState.next);
           return copyOfState;
           }
     else {
           copyOfState.next = 0;
-          console.warn(copyOfState.next);
+          console.log(copyOfState.next);
           return copyOfState;
             }
   }
     console.log(copyOfState.next);
     return copyOfState;
     case 'BUY_clothes':
-    console.table(copyOfState.basket);
     for (let i=0; i< copyOfState.payloadClothes.length; i++) {
       if (copyOfState.payloadClothes[i].id===action.ev.target.parentElement.id) {
         copyOfState.basket = [...state.basket,copyOfState.payloadClothes[i]];
@@ -177,7 +177,6 @@ const reducer = (state=initialState, action)=> { // REDUCER = FCT. WITH TWO ARGU
     copyOfState.total = copyOfState.basket.reduce((total, order)=> {return total+order.preis},0).toFixed(2);
     return copyOfState;
     case 'BUY_patterns':
-    console.table(copyOfState.basket);
     for (let i=0; i< copyOfState.payloadPatterns.length; i++) {
       if (copyOfState.payloadPatterns[i].id===action.ev.target.parentElement.id) {
         copyOfState.basket = [...state.basket,copyOfState.payloadPatterns[i]];
@@ -198,13 +197,15 @@ const reducer = (state=initialState, action)=> { // REDUCER = FCT. WITH TWO ARGU
       }
     }
     break;
-    case 'SUBMIT':
+    case 'ORDER_SUBMITTED':
     copyOfState.newOrder = copyOfState.basket;
     copyOfState.basket = [];
     copyOfState.total = 0;
     return copyOfState;
 
-    case 'REDIR':
+    case 'MESSAGE':
+    console.log(action.message);
+    copyOfState.showMessage = action.message;
     return copyOfState;
 
     default:
@@ -224,7 +225,6 @@ export const bringPayloadClothes = (data)=> {
     payloadClothes: data,
     }
 }
-
 export const filterPatterns = (ev)=> {
   return {
     type: 'FILTERDATA_patterns',
@@ -232,13 +232,9 @@ export const filterPatterns = (ev)=> {
   }
 }
 export const filterClothes = (ev)=> {
-
-
 // FOR EVERY TRIGGERED FETCH WE GET DATA THIS FILLS WITH EVERY FETCH THE EMPTY EXISTING ARRAYS IN
 // THE STATES WHICH ARE ESSENTIAL FOR OUR FILTERING THUS THE DATA IS FETCHED ONCE AND AFTER THAT
 // ONLY FILTERED IN THE BROWSER - GOOD PERFORMANCE!
-
-
   return {
     type: 'FILTERDATA_clothes',
     ev: ev,
@@ -253,7 +249,6 @@ export const changeInput = (ev)=> {
   }
 }
 export const submitUpdating = (ev)=> {
-
     return {
     type: 'SUBMIT_UPDATING',
     event: ev,
@@ -270,7 +265,6 @@ export const nextPic = (ev)=> {
 }
 //actions to the basket:
 export const buyPatterns = (ev)=> {
-  console.log(ev.target.id)
   return {
     type: 'BUY_patterns',
     ev: ev,
@@ -287,22 +281,48 @@ export const buyClothes = (ev)=> {
     id: ev.target.id,
   }
 }
-
-export const removeItem = (ev) => { // EV SHOULD ALWAYS BE TRANSPORTED
+export const removeItem = (ev) => {
+   // EV SHOULD ALWAYS BE TRANSPORTED
   // THESE DEFINED CONSTS ARE LIKE ENVELOPES FOR TRANSFERRING INFO TO COMPONENTS BY REDUX
-
   return {
     type: 'REMOVEITEM',
     ev: ev,
     id: ev.target.parentElement.id
   }
 }
-export const submitOrder = (ev)=> {
+export const orderSubmitted = (ev)=> {
   return {
-    type: 'SUBMIT',
-    ev: ev,
+    type: 'ORDER_SUBMITTED',
+    event: ev,
   }
 }
+
+export const showMessage = (ev)=> {
+  return {
+    type: 'MESSAGE',
+    event: ev,
+  }
+}
+
+export const submitOrder = (order)=> {
+  console.log(order);
+  return function(dispatch) {
+    fetch('orders/checkout',{
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(order)
+    })
+    .then(res=> res.json())
+    .then(msg=> {
+      console.log(msg);
+      dispatch(orderSubmitted(msg))
+    })
+    .catch(err=> console.error(err))
+  }
+}
+
 export const redir = (ev)=> {
     return {
       type: 'REDIR',
@@ -341,8 +361,8 @@ export const updatingDB = (product)=> {
     body: JSON.stringify(product)
   })
   .then(res=> res.json())
-  .then(data=> {
-    console.log(data);
+  .then(msg=> {
+    console.log(msg);
   })
   .catch(err=> console.error(err))
 }

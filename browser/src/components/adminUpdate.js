@@ -62,6 +62,7 @@ class AdminUpdate extends React.Component {
           <Input id="id" type="text" onChange={this.props.changeInput} value={this.props.inputId}></Input>
           <Button  type="submit">neuen Artikel senden und Datenbank aktualisieren</Button>
         </form>
+        {this.props.showMessage!=='' && <p>...</p>}
       </MuiBox>
     )
   }

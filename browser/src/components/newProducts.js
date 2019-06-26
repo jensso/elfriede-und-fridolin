@@ -196,9 +196,6 @@ const MuiBox = styled(Box)({
 
 export class NewProducts extends React.Component {
 
-  componentDidMount() {
-    this.props.makeFetch();
-  }
 
   render() {
     return (

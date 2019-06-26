@@ -61,20 +61,29 @@ const MuiShopSummary = styled(Box)({
 })
 
 class ShopSummary extends React.Component {
+  submitOrder = (ev)=> {
+    ev.preventDefault();
+    console.log(this.props.basket);
+    this.props.submitOrder(this.props.basket);
+    this.props.orderSubmitted(ev);
+
+  }
   render() {
     return(
       <MuiShopSummary>
         <>
-        {this.props.total === 0 && <h3>Dein Warenkorb ist leer.</h3>}
-        {this.props.total !==0 &&
+        {this.props.total == 0 && <h3>Dein Warenkorb ist leer.</h3>}
+        {this.props.total > 0 &&
           <div>
             <section>
               <span>netto € {(this.props.total/1.19).toFixed(2)}
               <p>zzgl. MwSt € {(this.props.total*0.19/1.19).toFixed(2)}</p>
-              <p>+ Versandkosten € {(6.9).toFixed(2)}</p>
               Summe: € {this.props.total}
+              <br/>
+              <p>bei Versand + Versandkosten € {(6.9).toFixed(2)}</p>
+
               </span><br></br>
-              <Button onClick={this.props.submit}>bestellen</Button>
+              <Button onClick={this.submitOrder}>bestellen</Button>
             </section>
           </div> }
         </>

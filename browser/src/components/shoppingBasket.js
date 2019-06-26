@@ -47,7 +47,7 @@ const MuiBasket = styled(Box)({
             height: 'auto',
 
           '& img': {
-            alignSelf: 'center',
+            // alignSelf: 'center',
             maxwidth: '20vw',
             objectFit: 'cover',
             alignSelf: 'start',

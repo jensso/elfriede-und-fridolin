@@ -233,7 +233,7 @@ class CuttingPatterns extends React.Component {
                     <img onClick={(ev)=>console.log(obj.id)} src={require(`../content/produktfotos_ef/${obj.produktfotos[this.props.next]}.jpg`)} alt={`pic of ${obj.produktname}`}></img>
                     <p>{obj.produktbeschreibung}</p>
                     <div id={obj.id}>
-                      <span>{obj.preis} €</span>
+                    <span>{(obj.preis).toFixed(2)} €</span>
                       <button id={obj.id} onClick={this.props.buyPatterns}>
                          <i className="material-icons">&#xe8cc;</i>
                        </button>

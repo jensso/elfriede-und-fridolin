@@ -53,6 +53,7 @@ class App extends React.Component {
       <Route path='/Downloads' component={NavBar}/>
       <Route path='/Downloads' component={FreeProducts}/>
       <Route path='/UPDATE' component={AdminUpdateRX}/>
+      <Route path='/Blog' component={NavBar}/>
     </BrowserRouter>
     </div>
   )};
