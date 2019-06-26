@@ -197,18 +197,14 @@ const reducer = (state=initialState, action)=> { // REDUCER = FCT. WITH TWO ARGU
     }
     break;
     case 'ORDER_SUBMITTED':
-    copyOfState.newOrder = copyOfState.basket;
-    copyOfState.basket = [];
-    copyOfState.total = 0;
-    return copyOfState;
-
-    case 'MESSAGE':
-    console.log(action.message);
-    copyOfState.showMessage = action.message;
-    return copyOfState;
+      copyOfState.newOrder = copyOfState.basket;
+      copyOfState.basket = [];
+      copyOfState.total = 0;
+      copyOfState.showMessage = action.payload.msg;
+      return copyOfState;
 
     default:
-    return copyOfState;
+      return copyOfState;
   }
 }
 
@@ -289,23 +285,17 @@ export const removeItem = (ev) => {
     id: ev.target.parentElement.id
   }
 }
-export const orderSubmitted = (ev)=> {
+export const orderSubmitted = (serverResponse)=> {
   return {
     type: 'ORDER_SUBMITTED',
-    event: ev,
-  }
-}
-
-export const showMessage = (ev)=> {
-  return {
-    type: 'MESSAGE',
-    event: ev,
+    payload: serverResponse,
   }
 }
 
 export const submitOrder = (order)=> {
+  console.log(order);
   return function(dispatch) {
-    fetch('orders/checkout',{
+    fetch('orders/checkout', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -331,6 +321,7 @@ export const redir = (ev)=> {
 export const fetchPatterns = ()=> {
   return function(dispatch) {
     fetch('/patterns/getPatterns')
+    // ----this happens on server!!!----
     .then(res=> res.json())
     .then(data=> {
       dispatch(bringPayloadPatterns(data));
