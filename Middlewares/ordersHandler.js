@@ -1,9 +1,6 @@
 const ordersModel = require('../models/ordersModel');
 const paypal = require('paypal-rest-sdk');
 const { transporter, adminOrdersInfo, userOrderConfirmation } = require('../utilities/emailOptions');
-const lodash = require('lodash');
-const lodashObject = require('lodash/fp/object');
-
 
 paypal.configure({
   'mode': 'sandbox', //sandbox or live
@@ -11,17 +8,10 @@ paypal.configure({
   'client_secret': 'EKVgj2OKCh3jX7wAU-Mi2ASWSye54kBEiuvtg4rPgIOcbq6K5_Ab_PbEdXC_vZnEhaTzkaR7nFW6agt7'
 });
 
-
-
 const submitOrder = (req, res, next) => {
   const ordersItems = req.body;
   console.log(ordersItems);
   const orderObject = {name: '', sku: 'Items', price: '', currency: 'EUR', quantity: 1} ;
-  for (let i = 0 ; i < ordersItems.length ; i++) {
-      _.pickby(orderObject, ordersItems[i].produktname)
-  }
-  console.log(itemName);
-  const totalPrise =
   const createPayment = {
           intent: "sale",
           payer: {

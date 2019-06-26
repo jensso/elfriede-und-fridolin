@@ -18,7 +18,7 @@ const getAllUsers = async (req, res, next) => {
 }
 
 const createUsers = async (req, res, next) => {
-
+  console.log(req.body);
   const errors = validationResult(req);
   if (errors.isEmpty()) {
     try {
