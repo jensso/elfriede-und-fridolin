@@ -58,10 +58,7 @@ const userLogin = async (req, res, next) => {
             const token = 'Bearer ' + initialToken;
             res.cookie('authToken', token, {httpOnly: true});
             res.status(200).json({message: 'Authentication Success!', Email: userFound.Email, isAdmin: userFound.isAdmin});
-
         }
-
-
    catch (error) {
     next(error);
   }
@@ -124,13 +121,30 @@ const resetPass = async (req, res, next) => {
     req.body.password = hashedPassword;
     await userModel.update({resetPasswordToken: req.params.token}, {$set: {Password: req.body.password}, $unset: {resetPasswordToken: undefined, resetPasswordExpires: undefined}});
     res.status(200).json({message: 'Your Password has been successfully reset!'});
+  } catch(error) {
+    next(error);
+  }
+}
 
-
-
+const adminLogin = async (req, res, next) => {
+  try {
+    const findAdmin = await userModel.findOne({Email: req.body.email, isAdmin: true});
+    if (!findAdmin) {
+      return res.status(401).json({message: 'Authentication Failed!'});
+    }
+    const matchedPassword = await bcrypt.compare(req.body.password, findAdmin.Password);
+    if (!matchedPassword) {
+      return res.status(401).json({message: 'Authentication Failed!'});
+        }
+          const initialToken = await jwt.sign({Email: findAdmin.Email, isAdmin: findAdmin.isAdmin}, process.env.SECRET);
+          const token = 'Bearer ' + initialToken;
+          res.cookie('authToken', token, {httpOnly: true});
+          res.status(200).json({message: 'Authentication Success!', Email: findAdmin.Email, isAdmin: findAdmin.isAdmin});
   } catch(error) {
     next(error);
   }
 }
 
 
-module.exports = { getAllUsers, createUsers, userLogin, userLoggedOut, deleteUserById, sendTokenToResetPass, resetPass };
+
+module.exports = { getAllUsers, createUsers, userLogin, userLoggedOut, deleteUserById, sendTokenToResetPass, resetPass, adminLogin };

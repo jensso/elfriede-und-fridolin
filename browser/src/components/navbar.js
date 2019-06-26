@@ -113,7 +113,7 @@ return (
       <NavLink to="/Warenkorb">Warenkorb</NavLink>
     </MenuItem>
     <MenuItem onClick={handleClose}>
-      <NavLink to="/forfree">for free!</NavLink>
+      <NavLink to="/Downloads">Downloads</NavLink>
     </MenuItem>
   </Menu>
 </div>
