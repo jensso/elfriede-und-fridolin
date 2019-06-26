@@ -37,7 +37,7 @@
   color: #ad8262;
 }
 
-#simple-menu > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-paper.MuiPaper-rounded {
+/* #simple-menu > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-paper.MuiPaper-rounded {
   background-color: #ad8262;
   position: absolute;
   top: 20% !important;
@@ -87,4 +87,4 @@
 
   #simple-menu > div.MuiPaper-root.MuiMenu-paper.MuiPaper-elevation8.MuiPopover-paper.MuiPaper-rounded > ul > li > main > section > button:focus {
   outline: none;
-  }
+  } */
