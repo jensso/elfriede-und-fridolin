@@ -398,6 +398,20 @@ export const loginUser = (user)=> {
     })
   }
 }
-
+export const forgotPassword = (user)=> {
+  return function(dispatch) {
+    fetch('users/forgot',{
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify()
+    })
+    .then(res=> res.json(user))
+    .then(msg=> {
+      console.log(msg);
+    })
+  }
+}
 
 export const store = createStore(reducer, applyMiddleware(thunk));
