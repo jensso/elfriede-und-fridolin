@@ -7,6 +7,8 @@ const userCreateValidator = [
     const existedEmail = await usersModel.findOne({Email: emailProvided});
     if (existedEmail) {
       throw new Error(`User with this Email: "${emailProvided}" already exists`);
+    } else {
+      return true;
     }
   })
     .exists().withMessage('Please provide an email for this field')

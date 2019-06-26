@@ -18,10 +18,10 @@ const getAllUsers = async (req, res, next) => {
 }
 
 const createUsers = async (req, res, next) => {
+  try {
   console.log(req.body);
   const errors = validationResult(req);
   if (errors.isEmpty()) {
-    try {
       req.body.isConfirmed = false;
       const createTimestamp = Date.now();
       const createMathRandom = Math.round(Math.random() * 10000);
@@ -34,13 +34,13 @@ const createUsers = async (req, res, next) => {
       const mailOptions = createOptions(req.body.Email, req.body.temporaryToken);
       await transporter.sendMail(mailOptions);
 
-      res.status(200).json({'message': 'User has been created. Check your inbox for confirmation'});
+      res.status(200).json({message: 'User has been created. Check your inbox for confirmation'});
+    } else {
+      next(createError(403, errors.array()[0].msg))
+    }
     } catch(error){
       next(error);
     }
-  } else {
-    next(createError(403, errors.array()[0].msg))
-  }
 }
 
 const userLogin = async (req, res, next) => {
