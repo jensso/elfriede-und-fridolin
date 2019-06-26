@@ -11,20 +11,19 @@ paypal.configure({
 const submitOrder = async (req, res, next) => {
 
   try {
-    let totalPrice = 0;
-    for (let item of req.body) {
-      totalPrice += item.preis;
-    }
+    // let totalPrice = 0;
+    // for (let item of req.body) {
+    //   totalPrice += item.preis;
+    // }
     // const orderData = {userInfo: req.token.Email, orderItems: req.body, totalPries: totalPrice};
     // console.log(orderData);
     // await ordersModel.create(orderData);
 
     // Find the customer from the userInfo of the order! That means you go to database.
     //  You go to database and find info about the user, address and etc
-    res.status(200).json({msg: 'Order has been received succesfully!'});
-    console.log('reach to this point');
+    // res.status(200).json({msg: 'Order has been received succesfully!'});
 
-  // const ordersItems = req.body;
+  const ordersItems = req.body;
   // const orderObject = {name: '', sku: 'Items', price: '', currency: 'EUR', quantity: 1} ;
   const createPayment = {
           intent: "sale",
@@ -66,7 +65,7 @@ const submitOrder = async (req, res, next) => {
       console.log(items);
       //
       createPayment.transactions[0].item_list.items = items;
-      // let totalPrice = 0;
+      let totalPrice = 0;
       for (let item of items) {
         totalPrice += item.price;
         console.log(totalPrice);

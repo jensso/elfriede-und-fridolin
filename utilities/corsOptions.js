@@ -1,4 +1,4 @@
-const whitelist = ['http://example1.com', 'http://example2.com']
+const whitelist = ['https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-3PV35749HU926544N'];
 const corsOptions = {
   origin: (origin, callback) => {
     if (whitelist.indexOf(origin) !== -1) {
