@@ -11,6 +11,6 @@ const patternsSchema = new mongoose.Schema({
   id: {type: String, required: true},
 }, {versionKey: false})
 
-const patternsModel = mongoose.model('cuttingPatterns', patternsSchema);
+const patternsModel = mongoose.model('cuttingpatterns', patternsSchema);
 
 module.exports = patternsModel;

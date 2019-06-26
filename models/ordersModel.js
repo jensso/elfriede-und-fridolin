@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const ordersSchema = new mongoose.Schema({
-  userInfo: {type: Array, require: true},
-  orders: {type: Array, require: true},
-  totalPries: {type: Number, require: true}
+  userInfo: {type: String, required: true},
+  orderItems: {type: [mongoose.Mixed], required: true},
+  totalPries: {type: Number, required: true}
 }, {versionKey: false})
 
 const ordersModel = mongoose.model('orders', ordersSchema);

@@ -101,6 +101,9 @@ class UserLogin extends React.Component {
   ev.preventDefault();
   this.props.loginUser(this.props.userInfo);
 }
+forgotPassword = ()=> {
+console.log('forgot');
+}
 
   render() {
     return (
@@ -127,7 +130,7 @@ class UserLogin extends React.Component {
                   onChange={this.props.changeInput}
                   value={this.props.pwVal}
                 /><br/><br/>
-                <a href="/forgot">Kennwort vergessen?</a>
+                <a href='/forgot' onClick={this.forgotPassword}>Kennwort vergessen?</a>
               </div>
 
               <span>* Pflichtfelder</span><br />

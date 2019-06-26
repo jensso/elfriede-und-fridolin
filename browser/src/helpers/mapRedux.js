@@ -67,7 +67,7 @@ export const mapStateToProps = (state)=> {
 // FUNCTIONS:
 export const mapDispatchToProps = (dispatch)=> {
    return {
-    fetchPatterns: (ev)=> dispatch(fetchPatterns(ev)),
+    fetchPatterns: ()=> dispatch(fetchPatterns()),
     fetchClothes: (ev)=> dispatch(fetchClothes(ev)),
     filterPatterns: (ev)=> dispatch(filterPatterns(ev)),
     filterClothes: (ev)=> dispatch(filterClothes(ev)),
@@ -81,7 +81,6 @@ export const mapDispatchToProps = (dispatch)=> {
     createUser: (user)=> dispatch(createUser(user)),
     loginUser: (user)=> dispatch(loginUser(user)),
     submitOrder: (order)=> dispatch(submitOrder(order)),
-    orderSubmitted: (ev)=> dispatch(orderSubmitted(ev)),
-    showMessage: (msg)=> dispatch(showMessage(msg))
+    orderSubmitted: (ev)=> dispatch(orderSubmitted(ev))
   }
 }

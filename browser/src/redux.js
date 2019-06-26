@@ -63,7 +63,6 @@ const reducer = (state=initialState, action)=> { // REDUCER = FCT. WITH TWO ARGU
       copyOfState.shownClothes = filteredClothes;
       return copyOfState;
     case 'INPUT':
-    console.log(copyOfState.userInfo);
     console.log(action.value);
     // console.log(action.target);
     switch(document.getElementById(`${action.target.id}`).id) {
@@ -112,27 +111,27 @@ const reducer = (state=initialState, action)=> { // REDUCER = FCT. WITH TWO ARGU
       // return copyOfState;
       case 'vorname':
       copyOfState.inputVorname = action.value;
-      copyOfState.newUser.vorname = copyOfState.inputVorname;
+      copyOfState.newUser.Vorname = copyOfState.inputVorname;
       return copyOfState;
       case 'name':
       copyOfState.inputName = action.value;
-      copyOfState.newUser.name = copyOfState.inputName;
+      copyOfState.newUser.Nachname = copyOfState.inputName;
       return copyOfState;
       case 'str':
       copyOfState.inputStrasse = action.value;
-      copyOfState.newUser.str = copyOfState.inputStrasse;
+      copyOfState.newUser.Strasse = copyOfState.inputStrasse;
       return copyOfState;
       case 'hausnr':
       copyOfState.inputHausNr = action.value;
-      copyOfState.newUser.hausnr = copyOfState.inputHausNr;
+      copyOfState.newUser.HausNr = copyOfState.inputHausNr;
       return copyOfState;
       case 'plz':
       copyOfState.inputPLZ = action.value;
-      copyOfState.newUser.plz = copyOfState.inputPLZ;
+      copyOfState.newUser.Postleitzahl = copyOfState.inputPLZ;
       return copyOfState;
       case 'ort':
       copyOfState.inputOrt = action.value;
-      copyOfState.newUser.ort = copyOfState.inputOrt;
+      copyOfState.newUser.Ort = copyOfState.inputOrt;
       return copyOfState;
       case 'userVal':
       copyOfState.userVal = action.value;
@@ -198,18 +197,14 @@ const reducer = (state=initialState, action)=> { // REDUCER = FCT. WITH TWO ARGU
     }
     break;
     case 'ORDER_SUBMITTED':
-    copyOfState.newOrder = copyOfState.basket;
-    copyOfState.basket = [];
-    copyOfState.total = 0;
-    return copyOfState;
-
-    case 'MESSAGE':
-    console.log(action.message);
-    copyOfState.showMessage = action.message;
-    return copyOfState;
+      copyOfState.newOrder = copyOfState.basket;
+      copyOfState.basket = [];
+      copyOfState.total = 0;
+      copyOfState.showMessage = action.payload.msg;
+      return copyOfState;
 
     default:
-    return copyOfState;
+      return copyOfState;
   }
 }
 
@@ -290,24 +285,17 @@ export const removeItem = (ev) => {
     id: ev.target.parentElement.id
   }
 }
-export const orderSubmitted = (ev)=> {
+export const orderSubmitted = (serverResponse)=> {
   return {
     type: 'ORDER_SUBMITTED',
-    event: ev,
-  }
-}
-
-export const showMessage = (ev)=> {
-  return {
-    type: 'MESSAGE',
-    event: ev,
+    payload: serverResponse,
   }
 }
 
 export const submitOrder = (order)=> {
   console.log(order);
   return function(dispatch) {
-    fetch('orders/checkout',{
+    fetch('orders/checkout', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -333,6 +321,7 @@ export const redir = (ev)=> {
 export const fetchPatterns = ()=> {
   return function(dispatch) {
     fetch('/patterns/getPatterns')
+    // ----this happens on server!!!----
     .then(res=> res.json())
     .then(data=> {
       dispatch(bringPayloadPatterns(data));
@@ -369,7 +358,7 @@ export const updatingDB = (product)=> {
 }
 export const createUser = (user)=> {
   return function(dispatch) {
-    console.log(user);
+    console.table(user);
   fetch('/users/signUp',{
     method: 'POST',
     headers: {
@@ -377,7 +366,6 @@ export const createUser = (user)=> {
     },
     body: JSON.stringify(user)
   })
-  .then(user=> console.log(user))
   .then(res=> res.json())
   .then(msg=> {
     console.log(msg);
@@ -401,6 +389,20 @@ export const loginUser = (user)=> {
     })
   }
 }
-
+export const forgotPassword = (user)=> {
+  return function(dispatch) {
+    fetch('users/forgot',{
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify()
+    })
+    .then(res=> res.json(user))
+    .then(msg=> {
+      console.log(msg);
+    })
+  }
+}
 
 export const store = createStore(reducer, applyMiddleware(thunk));
