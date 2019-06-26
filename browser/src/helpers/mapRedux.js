@@ -1,5 +1,6 @@
 import {
   submitOrder,
+  orderSubmitted,
   redir,
   buyPatterns,
   buyClothes,
@@ -12,7 +13,8 @@ import {
   nextPic,
   updatingDB,
   createUser,
-  loginUser
+  loginUser,
+  showMessage
  } from '../redux.js';
 
  // YOU COULD HAVE THIS ALL IN REDUX.JS ALSO BUT FOR BETTER OVERVIEW PUT IN SEPERATE FILES.
@@ -56,6 +58,7 @@ export const mapStateToProps = (state)=> {
     inputHausNr: state.inputHausNr,
     inputPLZ: state.inputPLZ,
     inputOrt: state.inputOrt,
+    showMessage: state.showMessage
   }
 }
 
@@ -77,6 +80,8 @@ export const mapDispatchToProps = (dispatch)=> {
     submitUpdating: (obj)=> dispatch(updatingDB(obj)),
     createUser: (user)=> dispatch(createUser(user)),
     loginUser: (user)=> dispatch(loginUser(user)),
-    submitOrder: (order)=> dispatch(submitOrder(order))
+    submitOrder: (order)=> dispatch(submitOrder(order)),
+    orderSubmitted: (ev)=> dispatch(orderSubmitted(ev)),
+    showMessage: (msg)=> dispatch(showMessage(msg))
   }
 }
