@@ -11,6 +11,7 @@ paypal.configure({
 
 
 const submitOrder = (req, res, next) => {
+  console.log(req.body);
 
   const createPayment = {
           intent: "sale",
@@ -52,6 +53,7 @@ const submitOrder = (req, res, next) => {
         }
 
       });
+
 }
 
 const successOrder = (req, res, next) => {
