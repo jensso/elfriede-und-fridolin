@@ -46,7 +46,7 @@ const createUsers = async (req, res, next) => {
 const userLogin = async (req, res, next) => {
   try {
     const userFound = await userModel.findOne({Email: req.body.Email})
-
+    console.log(userFound);
       if (!userFound) {
         return res.status(401).json({message: 'Authentication email Failed!'});
       }

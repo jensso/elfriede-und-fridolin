@@ -1,12 +1,11 @@
 import React from 'react';
 import { styled } from '@material-ui/styles';
-import {Box,Button} from '@material-ui/core';
+import {Box} from '@material-ui/core';
 import { NavBar } from './navbar.js';
 import { connect } from 'react-redux';
 import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
 
 const MuiBox = styled(Box)({
-
   '& section': {
       display: 'flex',
       flexDirection: 'column',
@@ -30,9 +29,6 @@ const MuiBox = styled(Box)({
         textTransform: 'capitalize',
         letterSpacing: '0.2rem',
         margin: '0 1rem',
-        '@media (max-width: 600px)': {
-          margin: '0 0.3rem',
-        },
         fontSize: '0.8rem',
         color: '#9C938E',
 
@@ -56,7 +52,7 @@ const MuiBox = styled(Box)({
           outline: 'none',
         },
         '& i': {
-          fontSize: '2.3rem',
+          fontSize: '3rem',
         }
       }
 
@@ -133,11 +129,10 @@ const MuiBox = styled(Box)({
           outlineOffset: '0.2rem',
 
           '& div': {
-            width: '90%',
+            width: '100%',
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginLeft: '1rem',
+            justifyContent: 'space-between'
           },
 
           '& span': {
@@ -156,11 +151,10 @@ const MuiBox = styled(Box)({
           paddingTop: '0.2rem',
 
           '& div': {
-            width: '90%',
+            width: '100%',
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginLeft: '1rem',
+            justifyContent: 'space-between'
           },
 
           '& h3, h5, p, span': {
@@ -182,11 +176,10 @@ const MuiBox = styled(Box)({
           outlineOffset: '0.2rem',
 
           '& div': {
-            width: '90%',
+            width: '100%',
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginLeft: '1rem',
+            justifyContent: 'space-between'
           },
 
           '& span': {
@@ -201,11 +194,10 @@ const MuiBox = styled(Box)({
   },
 })
 
-
-class CuttingPatterns extends React.Component {
+export class NewProducts extends React.Component {
 
   componentDidMount() {
-    this.props.fetchPatterns();
+    this.props.makeFetch();
   }
 
   render() {
@@ -214,14 +206,7 @@ class CuttingPatterns extends React.Component {
         <NavBar />
           <MuiBox>
             <section>
-              <h2 onClick={this.props.fetchPatterns}>Schnittmuster</h2>
-              <div>
-                <Button onClick={this.props.filterPatterns}>Damen</Button>
-                <span>|</span>
-                <Button onClick={this.props.filterPatterns}>Kinder</Button>
-                <span>|</span>
-                <Button onClick={this.props.filterPatterns}>Accessoires</Button>
-              </div>
+              <h2 onClick={this.props.makeFetch}>Neuheiten</h2>
             </section>
 
             <main>
@@ -233,8 +218,8 @@ class CuttingPatterns extends React.Component {
                     <img onClick={(ev)=>console.log(obj.id)} src={require(`../content/produktfotos_ef/${obj.produktfotos[this.props.next]}.jpg`)} alt={`pic of ${obj.produktname}`}></img>
                     <p>{obj.produktbeschreibung}</p>
                     <div id={obj.id}>
-                      <span>{obj.preis} €</span>
-                      <button id={obj.id} onClick={this.props.buyPatterns}>
+                      <span>{(obj.preis).toFixed(2)} €</span>
+                      <button id={obj.id} onClick={this.props.buyItem}>
                          <i className="material-icons">&#xe8cc;</i>
                        </button>
                     </div>
@@ -247,4 +232,4 @@ class CuttingPatterns extends React.Component {
     )
   }
 }
-export const CuttingPatternsRX = connect(mapStateToProps,mapDispatchToProps)(CuttingPatterns)
+export const NewProductsRX = connect(mapStateToProps,mapDispatchToProps)(NewProducts)

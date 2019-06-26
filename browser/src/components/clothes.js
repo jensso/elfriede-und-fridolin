@@ -21,7 +21,6 @@ const MuiBox = styled(Box)({
           cursor: 'pointer',
           fontWeight: 'bolder',
         }
-
       },
 
       '& span': {
@@ -30,6 +29,9 @@ const MuiBox = styled(Box)({
         textTransform: 'capitalize',
         letterSpacing: '0.2rem',
         margin: '0 1rem',
+        '@media (max-width: 600px)': {
+          margin: '0 0.3rem',
+        },
         fontSize: '0.8rem',
         color: '#9C938E',
 
@@ -51,48 +53,68 @@ const MuiBox = styled(Box)({
           },
         '&:focus': {
           outline: 'none',
-          }
+        },
+        '& i': {
+          fontSize: '2,3rem',
+        }
       }
 
   },
 
   '& main': {
     display: 'flex',
-    width: '100%',
+    flexWrap: 'wrap',
+    width: '90%',
     margin: '0 auto',
+    color: '#9c938e',
 
     '@media (max-width: 600px)': {
       flexWrap: 'wrap',
+      width: '100%',
     },
 
     '& div': {
+      margin: '1rem 0.5rem',
       display: 'flex',
       flexGrow: '1',
       alignItems: 'center',
       flexDirection: 'column',
-      width: '33.33%',
-      margin: '1rem 2rem',
+      width: '26.33%',
+      '@media (max-width: 600px)': {
+        width: '100%',
+      },
+
+      '& h3': {
+        fontFamily: 'Amatic SC',
+        fontWeight: 'lighter',
+        textAlign: 'center',
+        fontSize: '1.5rem',
+        margin: '0',
+        letterSpacing: '0.2rem',
+        },
 
       '& h5': {
-        fontFamily: 'Amatic SC',
-        textAlign: 'center',
-        fontSize: '0.rem',
-        letterSpacing: '0.1rem',
-        color: '#ad8262',
+        fontFamily: 'Open Sans Condensed',
+        fontWeight: 'bolder',
+        letterSpacing: '0.2rem',
+        marginBottom: '0',
         },
 
       '& img': {
+        width: '30vw',
+        height: '20vw',
+        objectFit: 'cover',
         maxWidth: '90%',
         margin: '1rem auto',
         // padding: '0.3rem',
           },
 
       '& p' : {
-        fontSize: '0.5rem',
+        fontSize: '0.7rem',
         fontFamily: 'Open Sans',
         color: '#9C938E',
         textAlign: 'left',
-        margin: '1rem 1rem',
+        margin: '0 1rem',
       },
 
       '& button': {
@@ -104,16 +126,17 @@ const MuiBox = styled(Box)({
         marginRight: '0',
       },
 
-        '&:nth-of-type(1)': {
+        '&:nth-child(1)': {
           '& section': {
           outline: '0.1rem dotted #ad8262',
           outlineOffset: '0.2rem',
 
           '& div': {
-            width: '100%',
+            width: '90%',
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            marginLeft: '1rem',
           },
 
           '& span': {
@@ -125,20 +148,21 @@ const MuiBox = styled(Box)({
         },
       },
 
-        '&:nth-of-type(even)': {
+        '&:nth-child(2n+2)': {
           '& section': {
           backgroundColor: '#ad8262',
           marginTop: '-0.2rem',
           paddingTop: '0.2rem',
 
           '& div': {
-            width: '100%',
+            width: '90%',
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            marginLeft: '1rem',
           },
 
-          '& p, span': {
+          '& h3, h5, p, span': {
             color: 'white',
           },
 
@@ -151,16 +175,17 @@ const MuiBox = styled(Box)({
         },
       },
 
-        '&:nth-of-type(3)': {
+        '&:nth-child(3n+3)': {
           '& section': {
           outline: '0.1rem solid #ad8262',
           outlineOffset: '0.2rem',
 
           '& div': {
-            width: '100%',
+            width: '90%',
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
+            marginLeft: '1rem',
           },
 
           '& span': {
@@ -174,41 +199,39 @@ const MuiBox = styled(Box)({
     },
   },
 })
-export class Clothes extends React.Component {
+
+class Clothes extends React.Component {
   componentDidMount() {
-    this.props.makeFetch();
+    this.props.fetchClothes();
   }
 
   render() {
-    console.log(this.props.next);
-    console.log(this.props.shownClothes);
-
     return (
       <>
         <NavBar />
           <MuiBox>
             <section>
-              <h2 onClick={this.props.makeFetch}>Kleidung</h2>
+              <h2 onClick={this.props.fetchClothes}>Kleidung</h2>
               <div>
-                <Button onClick={this.props.filterData}>Damen</Button>
+                <Button onClick={this.props.filterClothes}>Damen</Button>
                 <span>|</span>
-                <Button onClick={this.props.filterData}>Kinder</Button>
+                <Button onClick={this.props.filterClothes}>Kinder</Button>
                 <span>|</span>
-                <Button onClick={this.props.filterData}>Accessoires</Button>
+                <Button onClick={this.props.filterClothes}>Accessoires</Button>
               </div>
             </section>
 
             <main>
               {this.props.shownClothes.map((obj, index)=>
                 <div key={index}>
-                  <h5>{obj.produktname}</h5>
                   <section>
-                      <img onClick={(ev)=>console.log(obj.id)} src={require(`../content/produktfotos_ef/${obj.produktfotos[this.props.next]}.jpg`)} alt={`pic of ${obj.produktname}`}></img>
+                      <h3>{obj.produktname}</h3>
                       <h5>{obj.produktTyp}</h5>
+                      <img onClick={(ev)=>console.log(obj.id)} src={require(`../content/produktfotos_ef/${obj.produktfotos[this.props.next]}.jpg`)} alt={`pic of ${obj.produktname}`}></img>
                       <p>{obj.produktbeschreibung}</p>
                       <div id={obj.id}>
                        <span>{(obj.preis).toFixed(2)} €</span>
-                       <button id={obj.id} onClick={this.props.buyItem}>
+                       <button id={obj.id} onClick={this.props.buyClothes}>
                          <i className="material-icons">&#xe8cc;</i>
                        </button>
                       </div>
@@ -219,7 +242,6 @@ export class Clothes extends React.Component {
         </MuiBox>
       </>
     )
-
   }
 }
 export const ClothesRX = connect(mapStateToProps,mapDispatchToProps)(Clothes);

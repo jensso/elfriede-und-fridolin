@@ -6,6 +6,7 @@ import { NavBar } from './navbar.js';
 // import { mapStateToProps, mapDispatchToProps } from '../helpers/mapRedux.js';
 
 const MuiBox = styled(Box)({
+  textAlign: 'center',
   '& h2': {
     fontFamily: 'Amatic SC',
     margin: '4vw',
@@ -21,26 +22,18 @@ const MuiBox = styled(Box)({
   },
   '& main': {
     display: 'flex',
-    flexWrap: 'wrap',
     margin: '2vw auto',
   '& section': {
+    color: '#ad8262',
     display: 'flex',
-    padding: '1vw',
     margin: '0.5vw',
-    border: '0.5vw dotted #bda96c',
-    width: '20%',
-    '&:nth-of-type(even)': {
-      background: '#ad8262',
-      '& span': {
-        color: 'white',
-      }
-
-    },
+    border: '0.6vw dotted red',
+    padding: '1.5vw',
     '& img': {
-      width: '60%',
-      height: '60%',
-      padding: '0.2vw',
-      border: '0.1vw solid #999',
+      width: '30%',
+      height: '20%',
+      padding: '2vw',
+      border: '0.2vw solid red',
       background: '#b5c4af',
     },
     '& div': {
@@ -50,17 +43,31 @@ const MuiBox = styled(Box)({
       '& h5': {
         fontFamily: 'Amatic SC',
         fontSize: '1.5vw',
-
       },
       '& p': {
         textAlign: 'justify',
         fontFamily: 'Amatic SC',
         fontSize: '1vw',
         flexGrow: '1',
+        padding: '1vw',
+      },
+      '& b': {
+        color: 'green',
+        background: 'white',
+        border: '0.2vw solid lime',
+        width: '50%',
+        padding: '1vw 0',
+        borderRadius: '50%',
+        zIndex: '2',
       },
       '& span': {
-        color: 'grey',
-        fontSize: '1vw',
+        color: 'white',
+        background: 'salmon',
+        fontSize: '2vw',
+        margin: '-0.1vw',
+        padding: '0 2vw 0vw 1vw',
+        transform: 'skew(-45deg,15deg)',
+        textDecoration: 'line-through #755',
       },
 
     },
@@ -82,26 +89,29 @@ export class NewsSection extends React.Component {
         <Button>Angebote</Button>
         <main>
           <section>
-            <img alt="#"></img>
+            <img src={require('../content/images/logo.jpg')} alt="produktfoto"></img>
             <div>
                 <h5>Oversized Sweater Maxima</h5>
                 <p>some text to provide.some text to provide.some text to provide.some text to provide.some text to provide.</p>
+                <b>€ 4, - </b>
                 <span>€ 6,90</span><i className="material-icons">&#xe8cc;</i>
               </div>
           </section>
           <section>
-            <img alt="#"></img>
+            <img src={require('../content/images/logo.jpg')} alt="produktfoto"></img>
             <div>
                 <h5>Oversized Sweater Maxima</h5>
                 <p>some text to provide.some text to provide.some text to provide.some text to provide.some text to provide.</p>
-                <span>€ 6,90</span><i className="material-icons">&#xe8cc;</i>
+                <b>€ 3,99</b>
+                <span>€  6,90</span><i className="material-icons">&#xe8cc;</i>
               </div>
           </section>
           <section>
-            <img alt="#"></img>
+            <img src={require('../content/images/logo.jpg')} alt="produktfoto"></img>
             <div>
                 <h5>Oversized Sweater Maxima</h5>
                 <p>some text to provide.some text to provide.some text to provide.some text to provide.some text to provide.</p>
+                <b>€ 4, - </b>
                 <span>€ 6,90</span><i className="material-icons">&#xe8cc;</i>
               </div>
           </section>

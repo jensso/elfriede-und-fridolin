@@ -9,31 +9,26 @@ import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { NavBar } from './navbar.js';
 
-// import home_1 from '../content/images/home_1.jpg';
-// import home_2 from '../content/images/home_2.jpg';
-
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const tutorialSteps = [
   {
     label: 'Barcode',
-    imgPath: require(`../content/produktfotos_ef/barcode1.jpg`),
-    },
+    imgPath: require(`../content/produktfotos_ef/barcode1.jpg`) },
   {
     label: 'Liebe-Glaube-Hoffnung',
     imgPath: require(`../content/produktfotos_ef/faith1.jpg`)  },
   {
-      label: 'faith',
-      imgPath: require(`../content/produktfotos_ef/faith2.jpg`)  },
+    label: 'faith',
+    imgPath: require(`../content/produktfotos_ef/faith2.jpg`)  },
   {
-        label: 'Kalotte',
-        imgPath:
-        require(`../content/produktfotos_ef/kalotte1.jpg`)  },
+    label: 'Kalotte',
+    imgPath: require(`../content/produktfotos_ef/kalotte1.jpg`)  },
   {
-          label: 'Quadra 1',
-          imgPath: require(`../content/produktfotos_ef/quadra1.jpg`)  },
+    label: 'Quadra 1',
+    imgPath: require(`../content/produktfotos_ef/quadra1.jpg`)  },
   {
-            label: 'Quadra 2',
-            imgPath: require(`../content/produktfotos_ef/quadra2.jpg`)  },
+    label: 'Quadra 2',
+    imgPath: require(`../content/produktfotos_ef/quadra2.jpg`)  },
   {
     label: 'Quadra 3',
     imgPath: require(`../content/produktfotos_ef/quadra3.jpg`)  },
@@ -67,25 +62,32 @@ const tutorialSteps = [
   label: 'Hoody',
   imgPath: require(`../content/images/home_1.jpg`)
   },
+  {
+  label: 'www.elfriede-und-friedolin.de',
+  imgPath: require(`../content/images/logo.jpg`)
+  },
 ];
 
 const useStyles = makeStyles(theme => ({
   root: {
-    margin: '1vw auto',
+
+    margin: '0 auto',
+    width: '66.6%',
+    height: '40%',
   },
   header: {
     display: 'flex',
-    // height: 'vw',
-    padding: '2vw',
-    backgroundColor: '#753',
-    color: 'white',
+    backgroundColor: 'white',
+    color: '#ad8262',
     '& button': {
-      color: 'white',
+      color: '#ad8262',
     }
   },
+
   img: {
+    objectFit: 'cover !important',
     width: '100%',
-    height: '35vw',
+    height: '50%',
   },
 }));
 
@@ -109,7 +111,7 @@ function SwipeableTextMobileStepper() {
 
   return (
     <div className={classes.root}>
-      <Paper square elevation={0} className={classes.header}>
+      <Paper square elevation={0} className={classes.myStyle}>
         <Typography>{tutorialSteps[activeStep].label}</Typography>
       </Paper>
       <AutoPlaySwipeableViews
