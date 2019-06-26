@@ -14,8 +14,7 @@ import {
   updatingDB,
   createUser,
   loginUser,
-  showMessage
- } from '../redux.js';
+} from '../redux.js';
 
  // YOU COULD HAVE THIS ALL IN REDUX.JS ALSO BUT FOR BETTER OVERVIEW PUT IN SEPERATE FILES.
 
@@ -67,7 +66,7 @@ export const mapStateToProps = (state)=> {
 // FUNCTIONS:
 export const mapDispatchToProps = (dispatch)=> {
    return {
-    fetchPatterns: (ev)=> dispatch(fetchPatterns(ev)),
+    fetchPatterns: ()=> dispatch(fetchPatterns()),
     fetchClothes: (ev)=> dispatch(fetchClothes(ev)),
     filterPatterns: (ev)=> dispatch(filterPatterns(ev)),
     filterClothes: (ev)=> dispatch(filterClothes(ev)),
@@ -82,6 +81,5 @@ export const mapDispatchToProps = (dispatch)=> {
     loginUser: (user)=> dispatch(loginUser(user)),
     submitOrder: (order)=> dispatch(submitOrder(order)),
     orderSubmitted: (ev)=> dispatch(orderSubmitted(ev)),
-    showMessage: (msg)=> dispatch(showMessage(msg))
   }
 }

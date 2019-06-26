@@ -200,11 +200,7 @@ const reducer = (state=initialState, action)=> { // REDUCER = FCT. WITH TWO ARGU
     copyOfState.newOrder = copyOfState.basket;
     copyOfState.basket = [];
     copyOfState.total = 0;
-    return copyOfState;
-
-    case 'MESSAGE':
-    console.log(action.message);
-    copyOfState.showMessage = action.message;
+    copyOfState.showMessage = action.payload.msg;
     return copyOfState;
 
     default:
@@ -289,19 +285,12 @@ export const removeItem = (ev) => {
     id: ev.target.parentElement.id
   }
 }
-export const orderSubmitted = (ev)=> {
+export const orderSubmitted = (serverResp)=> {
   return {
     type: 'ORDER_SUBMITTED',
-    event: ev,
+    payload: serverResp,
   }
-}
-
-export const showMessage = (ev)=> {
-  return {
-    type: 'MESSAGE',
-    event: ev,
-  }
-}
+};
 
 export const submitOrder = (order)=> {
   return function(dispatch) {

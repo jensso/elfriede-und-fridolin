@@ -39,19 +39,19 @@ const submitOrder = (req, res, next) => {
           }]
       };
       const createPaymentJson = JSON.stringify(createPayment);
-      paypal.payment.create(createPaymentJson, (error, payment) => {
-        if (error) {
-          console.log(error);
-          return res.status(403).json(error);
-        }
-        console.log(payment);
-        for (let i = 0 ; i < payment.links.length ; i++) {
-          if (payment.links[i].rel === 'approval_url') {
-            return res.redirect(payment.links[i].href);
-          }
-        }
-
-      });
+      // paypal.payment.create(createPaymentJson, (error, payment) => {
+      //   if (error) {
+      //     console.log(error);
+      //     return res.status(403).json(error);
+      //   }
+      //   console.log(payment);
+      //   for (let i = 0 ; i < payment.links.length ; i++) {
+      //     if (payment.links[i].rel === 'approval_url') {
+      //       return res.redirect(payment.links[i].href);
+      //     }
+      //   }
+      //
+      // });
 }
 
 const successOrder = (req, res, next) => {
