@@ -56,7 +56,7 @@ const submitOrder = async (req, res, next) => {
     const antje = 'elfriede.und.fridolin@gmail.com';
     const adminMailOptions = adminOrdersInfo(antje, adminInfoToSend);
     await transporter.sendMail(adminMailOptions);
-    return res.status(200).json({msg: 'Order has been received succesfully!'});
+    return res.status(200).json({msg: 'Order has been received succesfully! Check your Inbox for Details!'});
 
 
   // const ordersItems = req.body;
