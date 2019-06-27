@@ -128,7 +128,7 @@ class UserRegistration extends React.Component {
                 />
               </div>
               <span>* Pflichtfelder</span><br />
-              {this.props.showMessage && <h2>{this.props.showMessage}</h2>}
+              {this.props.showMessage && <h2><b>{this.props.showMessage}</b></h2>}
 
             <h5>Adressdaten</h5>
             <div>

@@ -117,8 +117,8 @@ export class ContactFooter extends React.Component {
             </section>
             <h2>Folge Mir:</h2>
             <section>
-              <a href="https://www.facebook.com"><i className='fab'>&#xf09a;</i></a>
-              <a href="https://www.instagram.de"><i className='fab'>&#xf16d;</i></a>
+              <a href="https://www.facebook.com/Elfriede.und.Fridolin"><i className='fab'>&#xf09a;</i></a>
+              <a href="https://www.instagram.com"><i className='fab'>&#xf16d;</i></a>
               <a href="https://www.pinterest.de"><i className='fab'>&#xf0d2;</i></a>
               <img src={watercolour_green} alt="watercolour_green"></img>
             </section>

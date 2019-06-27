@@ -71,7 +71,7 @@ class ShopSummary extends React.Component {
     return(
       <MuiShopSummary>
         <>
-        {this.props.showMessage && <h2>{this.props.showMessage}</h2>}
+        {this.props.showMessage && <h2><b>{this.props.showMessage}</b></h2>}
         {this.props.total == 0 && <h3>Dein Warenkorb ist leer.</h3>}
         {this.props.total > 0 &&
           <div>

@@ -14,6 +14,7 @@ import {
   updatingDB,
   createUser,
   loginUser,
+  forgotPassword
   } from '../redux.js';
 
  // YOU COULD HAVE THIS ALL IN REDUX.JS ALSO BUT FOR BETTER OVERVIEW PUT IN SEPERATE FILES.
@@ -79,6 +80,7 @@ export const mapDispatchToProps = (dispatch)=> {
     submitUpdating: (obj)=> dispatch(updatingDB(obj)),
     createUser: (user)=> dispatch(createUser(user)),
     loginUser: (user)=> dispatch(loginUser(user)),
+    forgotPassword: (user)=> dispatch(forgotPassword(user)),
     submitOrder: (order)=> dispatch(submitOrder(order)),
     showResponse: (serverResponse)=> dispatch(showResponse(serverResponse))
   }

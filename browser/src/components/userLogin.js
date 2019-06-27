@@ -90,6 +90,7 @@ const MuiUserLogin = styled(Container)({
     '&:hover': {
       fontWeight: 'bolder',
       textDecoration: 'none',
+      cursor: 'pointer'
     }
   },
 
@@ -101,9 +102,6 @@ class UserLogin extends React.Component {
   ev.preventDefault();
   this.props.loginUser(this.props.userInfo);
 }
-forgotPassword = ()=> {
-console.log('forgot');
-}
 
   render() {
     return (
@@ -112,7 +110,7 @@ console.log('forgot');
         <MuiUserLogin>
           <form type="submit" onSubmit={this.authUserLogin}>
           <h2>Login</h2>
-          {this.props.showMessage && <h2>{this.props.showMessage}</h2>}
+          {this.props.showMessage && <h2><b>{this.props.showMessage}</b></h2>}
 
               <div>
                 <label>Email-Adresse*</label>
@@ -131,7 +129,7 @@ console.log('forgot');
                   onChange={this.props.changeInput}
                   value={this.props.pwVal}
                 /><br/><br/>
-                <a href='/forgot' onClick={this.forgotPassword}>Kennwort vergessen?</a>
+                <a href="/forgot" onClick={this.forgotPassword}>Kennwort vergessen?</a>
               </div>
 
               <span>* Pflichtfelder</span><br />

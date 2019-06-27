@@ -21,8 +21,7 @@ const submitOrder = async (req, res, next) => {
 
     // Find the customer from the userInfo of the order! That means you go to database.
     //  You go to database and find info about the user, address and etc
-    res.status(200).json({msg: 'Order has been received succesfully!'});
-    console.log('reach to this point');
+    res.status(200).json({msg: 'Ihre Bestellung wurde erfolgreich übermittelt. In Kürze erhalten Sie eine Email mit den Details zu Ihrer Bestellung.'});
 
   // const ordersItems = req.body;
   // const orderObject = {name: '', sku: 'Items', price: '', currency: 'EUR', quantity: 1} ;

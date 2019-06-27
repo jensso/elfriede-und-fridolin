@@ -95,7 +95,7 @@ const sendTokenToResetPass = async (req, res, next) => {
     userFound.resetPasswordToken = createTimestamp.toString() + createMathRandom.toString();
     userFound.resetPasswordExpires = Date.now() + 3600000 ;
 
-    await userModel.findOneAndUpdate({Email: req.body.email}, {$set: {resetPasswordToken: userFound.resetPasswordToken, resetPasswordExpires: userFound.resetPasswordExpires}});
+    await userModel.findOneAndUpdate({Email: req.body.userVal}, {$set: {resetPasswordToken: userFound.resetPasswordToken, resetPasswordExpires: userFound.resetPasswordExpires}});
 
     const token = userFound.resetPasswordToken;
 
