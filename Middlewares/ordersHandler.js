@@ -1,4 +1,5 @@
 const ordersModel = require('../models/ordersModel');
+const userModel = require('../models/usersModel');
 const paypal = require('paypal-rest-sdk');
 const { transporter, adminOrdersInfo, userOrderConfirmation } = require('../utilities/emailOptions');
 
@@ -14,81 +15,114 @@ const submitOrder = async (req, res, next) => {
     let totalPrice = 0;
     for (let item of req.body) {
       totalPrice += item.preis;
-    }
-    // const orderData = {userInfo: req.token.Email, orderItems: req.body, totalPries: totalPrice};
-    // console.log(orderData);
-    // await ordersModel.create(orderData);
+        }
+    const orderData = {userInfo: req.token.Email, orderItems: req.body, totalPries: totalPrice.toFixed(2)};
 
-    // Find the customer from the userInfo of the order! That means you go to database.
-    //  You go to database and find info about the user, address and etc
-    res.status(200).json({msg: 'Order has been received succesfully!'});
-    console.log('reach to this point');
+    await ordersModel.create(orderData);
+
+    const OrderedUserInfo = await userModel.findOne({Email: orderData.userInfo});
+
+    if (!OrderedUserInfo) {
+      return res.status(404).json({msg: 'User does not exist!'});
+    }
+
+    const usersInfoToSend = {
+        EmailAdress: OrderedUserInfo.Email,
+        Vorname: OrderedUserInfo.Vorname,
+        Nachname: OrderedUserInfo.Nachname,
+        Strasse: OrderedUserInfo.Strasse,
+        HausNr: OrderedUserInfo.HausNr,
+        Postleitzahl: OrderedUserInfo.Postleitzahl,
+        Ort: OrderedUserInfo.Ort
+      }
+
+      let ordersInfoToSend = [{totalPries: orderData.totalPries}];
+      const adminInfoToSend = [{totalPries: orderData.totalPries}];
+      adminInfoToSend.push(usersInfoToSend);
+    for (let item of orderData.orderItems) {
+      let orderObject = {
+        Produktnummer: item.produktnummer,
+        Produktname: item.produktname,
+        ProduktTyp: item.produktTyp,
+        Preis: item.preis,
+      }
+      ordersInfoToSend.push(orderObject);
+      adminInfoToSend.push(orderObject);
+    }
+
+    console.log(adminInfoToSend);
+    const userMailOptions = userOrderConfirmation(usersInfoToSend.EmailAdress, ordersInfoToSend);
+    await transporter.sendMail(userMailOptions);
+    const antje = 'elfriede.und.fridolin@gmail.com';
+    const adminMailOptions = adminOrdersInfo(antje, adminInfoToSend);
+    await transporter.sendMail(adminMailOptions);
+    return res.status(200).json({msg: 'Order has been received succesfully!'});
+
 
   // const ordersItems = req.body;
-  // const orderObject = {name: '', sku: 'Items', price: '', currency: 'EUR', quantity: 1} ;
-  const createPayment = {
-          intent: "sale",
-          payer: {
-              payment_method: "paypal"
-          },
-          redirect_urls: {
-              return_url: "http://localhost:4000/orders/success",
-              cancel_url: "http://localhost:4000/orders/cancel"
-          },
-          transactions: [{
-              item_list: {
-                  items: [{
-                      name: 'Cutting Patterns',
-                      sku: "item",
-                      price: 100,
-                      currency: "EUR",
-                      quantity: 1
-                  }]
-              },
-              amount: {
-                  currency: "EUR",
-                  total: '100.00'
-              },
-              description: "description"
-          }]
-      };
+  // const createPayment = {
+  //         intent: "sale",
+  //         payer: {
+  //             payment_method: "paypal"
+  //         },
+  //         redirect_urls: {
+  //             return_url: "http://localhost:4000/orders/success",
+  //             cancel_url: "http://localhost:4000/orders/cancel"
+  //         },
+  //         transactions: [{
+  //             item_list: {
+  //                 items: [{
+  //                     name: 'Cutting Patterns',
+  //                     sku: "item",
+  //                     price: 100,
+  //                     currency: "EUR",
+  //                     quantity: 1
+  //                 }]
+  //             },
+  //             amount: {
+  //                 currency: "EUR",
+  //                 total: '100.00'
+  //             },
+  //             description: "description"
+  //         }]
+  //     };
 
-      const items = ordersItems.map(orderItem => {
-        return {
-          name: orderItem.produktname,
-          price: orderItem.preis,
-          sku: "item",
-          currency: "EUR",
-          quantity: 1
-        }
-      })
+      // const items = ordersItems.map(orderItem => {
+      //   return {
+      //     name: orderItem.produktname,
+      //     price: orderItem.preis,
+      //     sku: "item",
+      //     currency: "EUR",
+      //     quantity: 1
+      //   }
+      // })
 
-      console.log(items);
+      // console.log(items);
       //
-      createPayment.transactions[0].item_list.items = items;
+      // createPayment.transactions[0].item_list.items = items;
       // let totalPrice = 0;
-      for (let item of items) {
-        totalPrice += item.price;
-        console.log(totalPrice);
-      }
-      createPayment.transactions[0].amount.total = totalPrice;
-
-      const createPaymentJson = JSON.stringify(createPayment);
-      paypal.payment.create(createPaymentJson, (error, payment) => {
-        if (error) {
-          console.log(error);
-          return res.status(403).json(error);
-        }
-
-        console.log(payment.links);
-
-        for ( let i = 0 ; i < payment.links.length ; i++ ) {
-          if (payment.links[i].rel === 'approval_url') {
-            return res.redirect(payment.links[i].href);
-          }
-        }
-
-      });
+      // for (let item of items) {
+      //   totalPrice += item.price;
+      //   console.log(totalPrice);
+      // }
+      // createPayment.transactions[0].amount.total = totalPrice;
+      //
+      // const createPaymentJson = JSON.stringify(createPayment);
+      // paypal.payment.create(createPaymentJson, (error, payment) => {
+      //   if (error) {
+      //     console.log(error);
+      //     return res.status(403).json(error);
+      //   }
+      //
+      //   console.log(payment.links);
+      //
+      //   for ( let i = 0 ; i < payment.links.length ; i++ ) {
+      //     if (payment.links[i].rel === 'approval_url') {
+      //       return res.redirect(payment.links[i].href);
+      //     }
+      //   }
+      //
+      // });
 
     } catch(error) {
       next(error);
