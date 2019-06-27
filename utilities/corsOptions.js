@@ -1,4 +1,4 @@
-const whitelist = ['https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-3PV35749HU926544N'];
+const whitelist = ['http://localhost:4000/'];
 const corsOptions = {
   origin: (origin, callback) => {
     if (whitelist.indexOf(origin) !== -1) {
@@ -7,6 +7,12 @@ const corsOptions = {
       callback(new Error('Not allowed by CORS'))
     }
   }
+}
+
+const cors = (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
 }
 
 module.exports = corsOptions;

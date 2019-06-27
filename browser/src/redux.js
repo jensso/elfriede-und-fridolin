@@ -297,6 +297,7 @@ export const submitOrder = (order)=> {
   return function(dispatch) {
     fetch('orders/checkout', {
       method: 'POST',
+      mode: 'cors',
       headers: {
         'content-type': 'application/json'
       },
