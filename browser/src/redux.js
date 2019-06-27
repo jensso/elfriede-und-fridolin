@@ -27,6 +27,7 @@ const initialState = { // YOU HAVE TO DEFINE A initialState ANYTIME YOU WANT CHA
   inputId: '',
   newUser: {},
   inputEmail: '',
+  // inputForgot: '',
   inputPassword: '',
   inputPasswordAgain: '',
   inputVorname: '',
@@ -35,7 +36,6 @@ const initialState = { // YOU HAVE TO DEFINE A initialState ANYTIME YOU WANT CHA
   inputHausNr: '',
   inputPLZ: '',
   inputOrt: '',
-  showMessage: ''
  };
 
 const reducer = (state=initialState, action)=> { // REDUCER = FCT. WITH TWO ARGUMENTS (ACTION = OBJECT)
@@ -101,45 +101,70 @@ const reducer = (state=initialState, action)=> { // REDUCER = FCT. WITH TWO ARGU
       case 'email':
       copyOfState.inputEmail = action.value;
       copyOfState.newUser.Email = copyOfState.inputEmail;
+      action.payload ? copyOfState.showMessage = action.payload.msg : copyOfState.showMessage = '';
       return copyOfState;
+
       case 'password':
       copyOfState.inputPassword = action.value;
-      copyOfState.newUser.Password = copyOfState.inputPassword;
+      action.payload ? copyOfState.showMessage = action.payload.msg : copyOfState.showMessage = '';
       return copyOfState;
-      // case 'pwAgain':
-      // copyOfState.inputPasswordAgain = action.value;
-      // return copyOfState;
+      case 'pwAgain':
+        copyOfState.inputPasswordAgain = action.value;
+      if (copyOfState.inputPassword === copyOfState.inputPasswordAgain) {
+        copyOfState.newUser.Password = copyOfState.inputPassword;
+        action.payload ? copyOfState.showMessage = action.payload.msg : copyOfState.showMessage = '';
+        return copyOfState;
+      }
+      else {
+        action.payload ? copyOfState.showMessage = action.payload.msg : copyOfState.showMessage = '';
+        return copyOfState;
+      }
       case 'vorname':
       copyOfState.inputVorname = action.value;
       copyOfState.newUser.Vorname = copyOfState.inputVorname;
+      action.payload ? copyOfState.showMessage = action.payload.msg : copyOfState.showMessage = '';
       return copyOfState;
       case 'name':
       copyOfState.inputName = action.value;
       copyOfState.newUser.Nachname = copyOfState.inputName;
+      action.payload ? copyOfState.showMessage = action.payload.msg : copyOfState.showMessage = '';
       return copyOfState;
       case 'str':
       copyOfState.inputStrasse = action.value;
       copyOfState.newUser.Strasse = copyOfState.inputStrasse;
+      action.payload ? copyOfState.showMessage = action.payload.msg : copyOfState.showMessage = '';
       return copyOfState;
       case 'hausnr':
       copyOfState.inputHausNr = action.value;
       copyOfState.newUser.HausNr = copyOfState.inputHausNr;
+      action.payload ? copyOfState.showMessage = action.payload.msg : copyOfState.showMessage = '';
       return copyOfState;
       case 'plz':
       copyOfState.inputPLZ = action.value;
       copyOfState.newUser.Postleitzahl = copyOfState.inputPLZ;
+      action.payload ? copyOfState.showMessage = action.payload.msg : copyOfState.showMessage = '';
       return copyOfState;
       case 'ort':
       copyOfState.inputOrt = action.value;
       copyOfState.newUser.Ort = copyOfState.inputOrt;
+      action.payload ? copyOfState.showMessage = action.payload.msg : copyOfState.showMessage = '';
       return copyOfState;
       case 'userVal':
       copyOfState.userVal = action.value;
       copyOfState.userInfo.Email = copyOfState.userVal;
+      action.payload ? copyOfState.showMessage = action.payload.msg : copyOfState.showMessage = '';
       return copyOfState;
+
+      case 'forgot':
+      copyOfState.userVal = action.value;
+      copyOfState.userInfo.Email = copyOfState.userVal;
+      action.payload ? copyOfState.showMessage = action.payload.msg : copyOfState.showMessage = '';
+      return copyOfState;
+
       case 'pwVal':
       copyOfState.pwVal = action.value;
-      copyOfState.userInfo.Password = copyOfState.pwVal
+      copyOfState.userInfo.Password = copyOfState.pwVal;
+      action.payload ? copyOfState.showMessage = action.payload.msg : copyOfState.showMessage = '';
       return copyOfState;
 
       default:
@@ -196,11 +221,15 @@ const reducer = (state=initialState, action)=> { // REDUCER = FCT. WITH TWO ARGU
       }
     }
     break;
-    case 'ORDER_SUBMITTED':
+    case 'MESSAGE':
+      copyOfState.showMessage = action.payload.msg;
+      return copyOfState;
+
+      case 'RESET':
       copyOfState.newOrder = copyOfState.basket;
       copyOfState.basket = [];
       copyOfState.total = 0;
-      copyOfState.showMessage = action.payload.msg;
+      copyOfState.showMessage = '';
       return copyOfState;
 
     default:
@@ -285,10 +314,15 @@ export const removeItem = (ev) => {
     id: ev.target.parentElement.id
   }
 }
-export const orderSubmitted = (serverResponse)=> {
+export const showResponse = (serverResponse)=> {
   return {
-    type: 'ORDER_SUBMITTED',
+    type: 'MESSAGE',
     payload: serverResponse,
+  }
+}
+const resetMsg = ()=> {
+  return {
+    type: 'RESET'
   }
 }
 
@@ -303,9 +337,13 @@ export const submitOrder = (order)=> {
       body: JSON.stringify(order)
     })
     .then(res=> res.json())
-    .then(msg=> {
-      console.log(msg);
-      dispatch(orderSubmitted(msg))
+    .then(res=> {
+      console.log(res);
+      dispatch(showResponse(res));
+    }).then(msg=> {
+      setTimeout(()=> {
+        dispatch(resetMsg());
+      },5000);
     })
     .catch(err=> console.error(err))
   }
@@ -367,8 +405,13 @@ export const createUser = (user)=> {
     body: JSON.stringify(user)
   })
   .then(res=> res.json())
-  .then(msg=> {
-    console.log(msg);
+  .then(res=> {
+    console.log(res);
+    dispatch(showResponse(res));
+  }).then(msg=> {
+    setTimeout(()=> {
+      dispatch(resetMsg());
+    },5000);
   })
   .catch(err=> console.error(err))
   }
@@ -384,24 +427,35 @@ export const loginUser = (user)=> {
       body: JSON.stringify(user)
     })
     .then(res=> res.json())
-    .then(msg=> {
-      console.log(msg);
+    .then(res=> {
+      console.log(res);
+      dispatch(showResponse(res));
+    }).then(msg=> {
+      setTimeout(()=> {
+        dispatch(resetMsg());
+      },5000);
     })
+    .catch(err=> console.error(err))
   }
 }
-export const forgotPassword = (user)=> {
+const forgotPw = (ev)=> {
+  return {
+    type: 'forgot'
+  }
+}
+export const forgotPassword = (email)=> {
+  console.log(email);
   return function(dispatch) {
     fetch('users/forgot',{
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
       },
-      body: JSON.stringify()
+      body: JSON.stringify(email)
     })
-    .then(res=> res.json(user))
-    .then(msg=> {
-      console.log(msg);
-    })
+    .then(res=> res.json(email))
+    .then(res=> console.log(res))
+    .catch(err=> console.error(err))
   }
 }
 

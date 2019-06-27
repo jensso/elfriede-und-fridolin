@@ -93,7 +93,7 @@ export class NewsSection extends React.Component {
             <div>
                 <h5>Oversized Sweater Maxima</h5>
                 <p>some text to provide.some text to provide.some text to provide.some text to provide.some text to provide.</p>
-                <b>€ 4, - </b>
+                <b>€ 4,50 </b>
                 <span>€ 6,90</span><i className="material-icons">&#xe8cc;</i>
               </div>
           </section>
@@ -111,7 +111,7 @@ export class NewsSection extends React.Component {
             <div>
                 <h5>Oversized Sweater Maxima</h5>
                 <p>some text to provide.some text to provide.some text to provide.some text to provide.some text to provide.</p>
-                <b>€ 4, - </b>
+                <b>€ 5, - </b>
                 <span>€ 6,90</span><i className="material-icons">&#xe8cc;</i>
               </div>
           </section>

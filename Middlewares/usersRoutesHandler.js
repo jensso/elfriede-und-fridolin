@@ -34,7 +34,7 @@ const createUsers = async (req, res, next) => {
       const mailOptions = createOptions(req.body.Email, req.body.temporaryToken);
       await transporter.sendMail(mailOptions);
 
-      res.status(200).json({message: 'User has been created. Check your inbox for confirmation'});
+      res.status(200).json({msg: 'User has been created. Check your inbox for confirmation'});
     } else {
       next(createError(403, errors.array()[0].msg))
     }
@@ -48,16 +48,16 @@ const userLogin = async (req, res, next) => {
     const userFound = await userModel.findOne({Email: req.body.Email})
     console.log(userFound);
       if (!userFound) {
-        return res.status(401).json({message: 'Authentication email Failed!'});
+        return res.status(401).json({msg: 'Authentication email Failed!'});
       }
       const matchedPassword = await bcrypt.compare(req.body.Password, userFound.Password);
         if (!matchedPassword) {
-            return res.status(401).json({message: 'Authentication Failed!'});
+            return res.status(401).json({msg: 'Authentication Failed!'});
           }
             const initialToken = await jwt.sign({Email: userFound.Email, isAdmin: userFound.isAdmin}, process.env.SECRET);
             const token = 'Bearer ' + initialToken;
             res.cookie('authToken', token, {httpOnly: true});
-            res.status(200).json({message: 'Authentication Success!', Email: userFound.Email, isAdmin: userFound.isAdmin});
+            res.status(200).json({msg: 'Authentication Success!', Email: userFound.Email, isAdmin: userFound.isAdmin});
         }
    catch (error) {
     next(error);
@@ -67,7 +67,7 @@ const userLogin = async (req, res, next) => {
 const deleteUserById = async (req, res, next) => {
   try {
     const userToDelete = await userModel.findOneAndDelete({ _id: req.params.userId});
-    userToDelete ? res.status(200).json({message: 'Your account has been deactivated and you logged out!'}) :  res.status(404).json({message: 'User is Not Found!'});
+    userToDelete ? res.status(200).json({msg: 'Your account has been deactivated and you logged out!'}) :  res.status(404).json({msg: 'User is Not Found!'});
 
   } catch (error) {
     next(error);
@@ -77,7 +77,7 @@ const deleteUserById = async (req, res, next) => {
 const userLoggedOut = async (req, res, next) => {
   try {
     res.clearCookie('authToken');
-    res.status(200).json({message: 'User is logged out'});
+    res.status(200).json({msg: 'User is logged out'});
   }catch (error) {
     next(error);
   }
@@ -87,7 +87,7 @@ const sendTokenToResetPass = async (req, res, next) => {
   try {
     const userFound = await userModel.findOne({Email: req.body.email, isConfirmed: true});
     if (!userFound) {
-      return res.status(404).json({message: 'User with this email address does not exist or your email in not confirmed!'});
+      return res.status(404).json({msg: 'User with this email address does not exist or your email in not confirmed!'});
       // return res.redirect('users/forgot');
     }
     const createTimestamp = Date.now();
@@ -95,13 +95,13 @@ const sendTokenToResetPass = async (req, res, next) => {
     userFound.resetPasswordToken = createTimestamp.toString() + createMathRandom.toString();
     userFound.resetPasswordExpires = Date.now() + 3600000 ;
 
-    await userModel.findOneAndUpdate({Email: req.body.email}, {$set: {resetPasswordToken: userFound.resetPasswordToken, resetPasswordExpires: userFound.resetPasswordExpires}});
+    await userModel.findOneAndUpdate({Email: req.body.userVal}, {$set: {resetPasswordToken: userFound.resetPasswordToken, resetPasswordExpires: userFound.resetPasswordExpires}});
 
     const token = userFound.resetPasswordToken;
 
     const mailOptions = resetPassCreateOptions(req.body.email, token);
     await transporter.sendMail(mailOptions);
-    res.status(202).json({message: 'email sent'});
+    res.status(202).json({msg: 'email sent'});
   } catch(error) {
     next(error);
   }
@@ -114,13 +114,13 @@ const resetPass = async (req, res, next) => {
       resetPasswordExpires: {$gt: Date.now()}
     });
     if (!userWithValidToken) {
-      return res.status(401).json({message: 'Password reset Token in invalid or expired!'});
+      return res.status(401).json({msg: 'Password reset Token in invalid or expired!'});
       // res.redirect('back');
     }
     const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
     req.body.password = hashedPassword;
     await userModel.update({resetPasswordToken: req.params.token}, {$set: {Password: req.body.password}, $unset: {resetPasswordToken: undefined, resetPasswordExpires: undefined}});
-    res.status(200).json({message: 'Your Password has been successfully reset!'});
+    res.status(200).json({msg: 'Your Password has been successfully reset!'});
   } catch(error) {
     next(error);
   }
@@ -130,16 +130,16 @@ const adminLogin = async (req, res, next) => {
   try {
     const findAdmin = await userModel.findOne({Email: req.body.email, isAdmin: true});
     if (!findAdmin) {
-      return res.status(401).json({message: 'Authentication Failed!'});
+      return res.status(401).json({msg: 'Authentication Failed!'});
     }
     const matchedPassword = await bcrypt.compare(req.body.password, findAdmin.Password);
     if (!matchedPassword) {
-      return res.status(401).json({message: 'Authentication Failed!'});
+      return res.status(401).json({msg: 'Authentication Failed!'});
         }
           const initialToken = await jwt.sign({Email: findAdmin.Email, isAdmin: findAdmin.isAdmin}, process.env.SECRET);
           const token = 'Bearer ' + initialToken;
           res.cookie('authToken', token, {httpOnly: true});
-          res.status(200).json({message: 'Authentication Success!', Email: findAdmin.Email, isAdmin: findAdmin.isAdmin});
+          res.status(200).json({msg: 'Authentication Success!', Email: findAdmin.Email, isAdmin: findAdmin.isAdmin});
   } catch(error) {
     next(error);
   }
